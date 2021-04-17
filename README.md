@@ -1,2 +1,2 @@
 # Ahoy-
-Team JYJJY makin waves
+Team JYJY makin waves
