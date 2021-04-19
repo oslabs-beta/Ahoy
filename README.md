@@ -1,2 +1,2 @@
 # Ahoy-
-Team JYJY makin waves
+An easy-to-use GUI for Kubernetes Helm
