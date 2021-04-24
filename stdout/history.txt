@@ -1,0 +1,7 @@
+REVISION	UPDATED                 	STATUS    	CHART            	APP VERSION	DESCRIPTION     
+1       	Thu Apr 22 17:20:18 2021	superseded	wordpress-10.10.1	5.7.0      	Install complete
+2       	Thu Apr 22 19:29:13 2021	superseded	wordpress-10.10.3	5.7.1      	Upgrade complete
+3       	Thu Apr 22 19:39:58 2021	superseded	wordpress-10.10.7	5.7.1      	Upgrade complete
+4       	Thu Apr 22 19:40:50 2021	superseded	wordpress-10.10.8	5.7.1      	Upgrade complete
+5       	Thu Apr 22 19:43:23 2021	superseded	wordpress-10.10.7	5.7.1      	Rollback to 3   
+6       	Thu Apr 22 19:44:30 2021	deployed  	wordpress-10.10.3	5.7.1      	Rollback to 2   
