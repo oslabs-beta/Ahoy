@@ -1,21 +1,28 @@
 'use strict'
 
 // Import parts of electron to use
-const { app, BrowserWindow } = require('electron')
+const { app, ipcMain, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
+// handle IPC reqs
+ipcMain.handle('getPath', async (event, arg) => {
+  return await app.getPath(arg);
+});
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 
 // Keep a reference for dev mode
-let dev = false
+let dev = false;
 
 // Broken:
 // if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
 //   dev = true
 // }
+
+
 
 if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
   dev = true
@@ -41,7 +48,7 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  let indexPath
+  let indexPath;
 
   if (dev && process.argv.indexOf('--noDevServer') === -1) {
     indexPath = url.format({
@@ -58,11 +65,12 @@ function createWindow() {
     })
   }
 
-  mainWindow.loadURL(indexPath)
+  mainWindow.loadURL(indexPath);
 
   // Don't show until we are ready and loaded 
   mainWindow.once('ready-to-show', () => {
-    mainWindow.show()
+    mainWindow.show();
+    //mainWindow.send('userData', app.getPath('userData'));
 
     // Open the DevTools automatically if developing
     if (dev) {
@@ -86,7 +94,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
