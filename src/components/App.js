@@ -1,13 +1,16 @@
 import React from 'react'
+import CLI from './CLI.js'
 
 import '../assets/css/App.css'
 
 function App() {
   return (
     <div>
-      <h1>Hello, Electron!</h1>
+      <h1>CLI testing!</h1>
 
-      <p>I hope you enjoy using basic-electron-react-boilerplate to start your dev off right!</p>
+      <p>good luck!</p>
+
+      <CLI />
     </div>
   )
 }
