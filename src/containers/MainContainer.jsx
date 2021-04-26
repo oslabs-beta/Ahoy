@@ -40,6 +40,7 @@ class MainContainer extends Component {
   render(props) {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
+      // <p>HELLLLO</p>
       <LocalChartContainer
         userChartDir={this.state.userChartDir}
         localCharts={this.state.localCharts}

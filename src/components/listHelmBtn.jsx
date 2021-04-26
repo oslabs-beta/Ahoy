@@ -1,7 +1,13 @@
+import React from 'react';
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
 class listHelm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data: {}
+    };
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
@@ -12,9 +18,12 @@ class listHelm extends React.Component {
     // this.setState(state => ({
     //   isToggleOn: !state.isToggleOn
     // }));
-    this.getTableObj().then(result => {
-      return JSON.parse(result)
-    });
+    console.log('button clicked')
+    // this.getTableObj().then(result => console.log(result))
+    this.getTableObj()
+    .then(result => JSON.parse(result))
+    .then(res => this.setState({data: res}))
+    .then(console.log(this.state))
   };
 
   async getTableObj() {
@@ -24,8 +33,10 @@ class listHelm extends React.Component {
     }
     catch (stderr) {
       console.error('stderr:', stderr);
-      return
+      return stderr
     }
+      // const {stdout, stderr} = await exec('helm list -o json')
+      // return stdout;
   };
 
 
