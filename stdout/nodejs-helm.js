@@ -1,3 +1,4 @@
+// This is to use nodejs-helm package someone wrote. Not wroking correctly just yet.
 let helmBinary = '/usr/local/bin/helm';
 let Promise = require("bluebird");
 const Helm = require("nodejs-helm").Helm;
