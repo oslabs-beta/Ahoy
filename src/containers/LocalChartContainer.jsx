@@ -15,14 +15,10 @@ class LocalChartContainer extends Component {
   render(props) {
 
     return(
-      <>
-        <p>LocalChartContainer</p>
-        <LocalChartList localCharts={this.props.localCharts} datafromButton={this.props.datafromButton}/>
+      <div>
+        <LocalChartList localCharts={this.props.localCharts} />
         <HelmListBtn data={this.props.datafromButton}/>
-
-        {/* <Button string={install}, prop2={onclickfcn}} */}
-
-      </>
+      </div>        
     );
   }
 }

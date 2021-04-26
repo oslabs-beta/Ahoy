@@ -13,6 +13,7 @@ class MainContainer extends Component {
       userDataDir: null,
       userChartDir: null,
       localCharts: [],
+      localchartDeployState: [],
       localChartsLoopCount: 0,
       // STDOUT data object(s) here?
     };
@@ -43,11 +44,10 @@ class MainContainer extends Component {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
       <>
-        <Button primary>Semantic Primary</Button>
-        <Button secondary>Semantic Secondary</Button>
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
+          localChartDeployState={this.state.localChartDeployState}
         />
       </>
     );
