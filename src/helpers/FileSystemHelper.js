@@ -15,5 +15,5 @@ const getLocalCharts = function(path) {
 }
 
 export default {
-  getLocalCharts: getLocalCharts,
+  getLocalCharts: getLocalCharts
 }
