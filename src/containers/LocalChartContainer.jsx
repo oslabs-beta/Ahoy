@@ -11,10 +11,7 @@ class LocalChartContainer extends Component {
   render(props) {
 
     return(
-      <>
-        <p>LocalChartContainer</p>
         <LocalChartList localCharts={this.props.localCharts} />
-      </>
     );
   }
 }
