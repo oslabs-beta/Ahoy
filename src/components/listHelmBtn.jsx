@@ -1,6 +1,7 @@
 import React from 'react';
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+import { Button } from 'semantic-ui-react'
 
 class listHelm extends React.Component {
   constructor(props) {
@@ -39,9 +40,9 @@ class listHelm extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
-        {/* {this.state.isToggleOn ? 'ON' : 'OFF'} */}
-      </button>
+      <Button onClick={this.handleClick}>
+        Get Helm List
+      </Button>
     );
   }
 }

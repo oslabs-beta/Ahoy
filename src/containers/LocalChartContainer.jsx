@@ -7,6 +7,9 @@ import HelmListBtn from '../components/listHelmBtn';
 class LocalChartContainer extends Component {
   constructor(props) {
     super(props);
+
+
+    // STDOUT data object(s) here?
   }
 
   render(props) {
@@ -14,8 +17,11 @@ class LocalChartContainer extends Component {
     return(
       <>
         <p>LocalChartContainer</p>
-        {/* <LocalChartList localCharts={this.props.localCharts} /> */}
-        <HelmListBtn />
+        <LocalChartList localCharts={this.props.localCharts} datafromButton={this.props.datafromButton}/>
+        <HelmListBtn data={this.props.datafromButton}/>
+
+        {/* <Button string={install}, prop2={onclickfcn}} */}
+
       </>
     );
   }

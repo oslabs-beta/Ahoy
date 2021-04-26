@@ -14,6 +14,7 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       localChartsLoopCount: 0,
+      // STDOUT data object(s) here?
     };
     ipcRenderer.invoke('getPath', 'userData').then(result => {
       this.setState({ userDataDir: result, userChartDir: result + '/charts' });
