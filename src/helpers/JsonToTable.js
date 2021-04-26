@@ -85,4 +85,5 @@ const historyArray = [
   }
 ]
 
-jsonToTable(historyArray);
+export default jsonToTable;
+// jsonToTable(historyArray);
