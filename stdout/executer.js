@@ -6,7 +6,7 @@ const exec = util.promisify(require('child_process').exec);
 // getTableObj('helm list -o json').then(result => console.log('HELM LIST: ', result))
 // getTableObj('helm history my-wordpress -o json').then(result => console.log('HELM HISTORY: ', result))
 
-getTableObj('helm list -o json').then(result => {
+getTableObj('helm history my-wordpress -o json').then(result => {
 
   // console.log(JSON.parse(result))
   const resultObj = JSON.parse(result)
