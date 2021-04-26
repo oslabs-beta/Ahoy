@@ -30,6 +30,7 @@
     "postpackage": "electron-packager ./ 'Ahoy' --out=./builds"
   },
   "dependencies": {
+    "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
