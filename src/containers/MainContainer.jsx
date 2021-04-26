@@ -42,8 +42,6 @@ class MainContainer extends Component {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
       <>
-        <Button primary>Semantic Primary</Button>
-        <Button secondary>Semantic Secondary</Button>
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
