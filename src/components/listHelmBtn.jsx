@@ -15,15 +15,12 @@ class listHelm extends React.Component {
   }
 
   handleClick() {
-    // this.setState(state => ({
-    //   isToggleOn: !state.isToggleOn
-    // }));
     console.log('button clicked')
-    // this.getTableObj().then(result => console.log(result))
+    // returns the STDOUT as an object from the command
     this.getTableObj()
     .then(result => JSON.parse(result))
-    .then(res => this.setState({data: res}))
-    .then(console.log(this.state))
+    .then(res => console.log(res))
+
   };
 
   async getTableObj() {

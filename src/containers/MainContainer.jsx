@@ -3,6 +3,7 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
+import { Button } from 'semantic-ui-react'
 //import InstalledChartContainer from './InstalledChartContainer';
 
 class MainContainer extends Component {
@@ -40,11 +41,14 @@ class MainContainer extends Component {
   render(props) {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
-      // <p>HELLLLO</p>
-      <LocalChartContainer
-        userChartDir={this.state.userChartDir}
-        localCharts={this.state.localCharts}
-      />
+      <>
+        <Button primary>Semantic Primary</Button>
+        <Button secondary>Semantic Secondary</Button>
+        <LocalChartContainer
+          userChartDir={this.state.userChartDir}
+          localCharts={this.state.localCharts}
+        />
+      </>
     );
   }
 }
