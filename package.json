@@ -33,7 +33,9 @@
     "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
