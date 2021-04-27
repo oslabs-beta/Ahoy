@@ -8,7 +8,6 @@ class InstalledChartContainer extends Component {
   constructor(props) {
     super(props);
 
-
     // STDOUT data object(s) here?
   }
 

@@ -1,10 +1,16 @@
 import React from 'react';
-import {useEffect, useState} from 'react';
+import { Table } from 'semantic-ui-react';
 import InstalledChart from '../components/InstalledChart';
 
 console.log("InstalledChartList.jsx loaded")
 
 const InstalledChartList = (props) => {
+
+// let listData = [];
+// for(let i = 0; i < props.deployedCharts.length; i ++){
+//   listData.push(<InstalledChart key={`chart-${i}`} chartItem = {props.deployedCharts[i] }/>)
+// } 
+
   // Receive an output JS object of command 'helm list -o' as props
   // console.log(`InstalledList: props = ${props}`);
   console.log('charts at InstalledChartList: ', props.deployedCharts)
@@ -26,31 +32,14 @@ const InstalledChartList = (props) => {
   console.log('list data:', listData);
   
   return (
-      <div id="installed-chart-list">
-        <div>{listData}</div>
-      </div>
+    <Table>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell colSpan='2'>Installed Charts</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>{listData}</Table.Body>
+  </Table>
   )
 };
-
-const chartArray = [
-  {
-    name: 'my-wordpress',
-    namespace: 'default',
-    revision: '6',
-    updated: '2021-04-22 19:44:30.018909 -0700 PDT',
-    status: 'deployed',
-    chart: 'wordpress-10.10.3',
-    app_version: '5.7.1'
-  },
-  {
-    name: 'my-wordpress-jyjy',
-    namespace: 'default',
-    revision: '1',
-    updated: '2021-04-24 10:33:22.59994 -0700 PDT',
-    status: 'deployed',
-    chart: 'wordpress-10.10.1',
-    app_version: '5.7.0'
-  }
-]
-
 export default InstalledChartList;
