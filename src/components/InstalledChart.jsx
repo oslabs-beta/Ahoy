@@ -11,6 +11,8 @@ console.log("InstalledChart.jsx loaded")
 
 const InstalledChart = (props) => {
 
+  console.log('props at InstalledChart: ', props)
+
   const chart = props.chartItem;
   console.log('InstalledChart chart item :', props.chart);
 
@@ -38,6 +40,10 @@ const InstalledChart = (props) => {
     console.log('uninstalling helm chart: ', props.chartItem.name)
     const helmChart = props.chartItem.name;
     const {stdout, stderr} = await exec(`helm uninstall ${helmChart}`)
+
+    console.log('component successfully uninstalled')
+    // update the charts
+    props.getDeployedCharts();
 
   }
 

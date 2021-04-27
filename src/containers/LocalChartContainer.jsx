@@ -22,7 +22,11 @@ class LocalChartContainer extends Component {
 
     return(
       <div>
-        <LocalChartList localCharts={this.props.localCharts} userChartDir={this.props.userChartDir}/>
+        <LocalChartList
+          localCharts={this.props.localCharts}
+          userChartDir={this.props.userChartDir}
+          getDeployedCharts={this.props.getDeployedCharts}
+        />
       </div>        
     );
   }
