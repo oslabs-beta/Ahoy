@@ -3,7 +3,8 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
-import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react';
+import InstalledChartList from '../components/InstalledChartList';
 //import InstalledChartContainer from './InstalledChartContainer';
 
 class MainContainer extends Component {
@@ -46,6 +47,7 @@ class MainContainer extends Component {
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
         />
+        <InstalledChartList />
       </>
     );
   }

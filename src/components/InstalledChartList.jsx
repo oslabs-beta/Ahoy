@@ -1,20 +1,26 @@
 import React from 'react';
+import {useEffect, useState} from 'react';
 import InstalledChart from '../components/InstalledChart';
-import JsonToTable from '../helpers/JsonToTable';
 
-getTableObj();
+console.log("InstalledChartList.jsx loaded")
 
 const InstalledChartList = (props) => {
-  console.log(`InstalledList: props = ${props}`);
-  // const chartArray = [];
+  // Receive an output JS object of command 'helm list -o' as props
+  // console.log(`InstalledList: props = ${props}`);
 
-  const table = JsonToTable(chartArray);
-  console.log(table);
+  // indivisual item will be rendered by the child component Installed Chart by passing the element (object)
+  let listData = ''
 
+  for(let i = 0; i < chartArray.length; i ++){
+        listData += <InstalledChart chartItem = {chartArray[i]}/>
+  } 
+
+  console.log(listData);
+  
   return (
-    <table id="installed-chart-list">
-      <tbody>{lcharts}</tbody>
-    </table>
+      <div id="installed-chart-list">
+        <div>{listData}</div>
+      </div>
   )
 };
 
