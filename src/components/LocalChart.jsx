@@ -13,8 +13,9 @@ const LocalChart = (props) => {
     
     const helmChart = props.name;
     const directory = props.dirPath;
-    console.log(`installing helm chart ${helmChart} at ${directory}`)
-    const {stdout, stderr} = await exec(`helm install ${helmChart} ${directory}` )
+    console.log(`installing helm chart ${helmChart} at ${directory}`);
+    const {stdout, stderr} = await exec(`helm install ${helmChart} ${directory}` );
+    props.getDeployedCharts();
   }
 
   // build the local chart component

@@ -14,7 +14,13 @@ const LocalChartList = (props) => {
   props.localCharts.forEach((item, i) => {
     // console.log('LocalChartDir FullPath: ', props.userChartDir+'\\'+item);
     const dirPath = props.userChartDir + '\\' + item;
-    lcharts.push(<LocalChart name={item} id={i} key={i} dirPath={dirPath}/>)
+    lcharts.push(<LocalChart
+                    name={item}
+                    id={i}
+                    key={i}
+                    dirPath={dirPath}
+                    getDeployedCharts={props.getDeployedCharts}
+                  />)
   })
   return (
     <Table>

@@ -15,6 +15,7 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       deployedCharts: [],
+      isDeployed: [],
       localChartsLoopCount: 0,
       // STDOUT data object(s) here?
     };
@@ -22,6 +23,8 @@ class MainContainer extends Component {
     ipcRenderer.invoke('getPath', 'userData').then(result => {
       this.setState({ userDataDir: result, userChartDir: result + '\\charts' });
     });
+
+    this.getHelmCharts = this.getHelmCharts.bind(this);
   }
 
   componentDidUpdate() {
@@ -41,9 +44,7 @@ class MainContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    // get list of currently deployed helm charts
-    console.log('Main component successfully mounted')
+  getHelmCharts() {
     getDeployedHelmCharts()
     .then(result => JSON.parse(result))
     .then(charts => {
@@ -53,6 +54,19 @@ class MainContainer extends Component {
     });
   }
 
+  componentDidMount() {
+    // get list of currently deployed helm charts
+    console.log('Main component successfully mounted')
+    this.getHelmCharts();
+    // getDeployedHelmCharts()
+    // .then(result => JSON.parse(result))
+    // .then(charts => {
+    //   this.setState( {
+    //     deployedCharts: charts
+    //   })
+    // });
+  }
+
   render(props) {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
@@ -60,9 +74,11 @@ class MainContainer extends Component {
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
+          getDeployedCharts={this.getHelmCharts}
         />
         <InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
+          getDeployedCharts={this.getHelmCharts}
         />
       </>
     );

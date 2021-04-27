@@ -11,10 +11,16 @@ const InstalledChartList = (props) => {
   // indivisual item will be rendered by the child component Installed Chart by passing the element (object)
   let listData = [];
 
-  console.log('charts at InstalledChartList: ', props.deployedCharts)
+  console.log('props at InstalledChartList: ', props)
 
   for(let i = 0; i < props.deployedCharts.length; i ++){
-        listData.push(<InstalledChart key={`chart-${i}`} chartItem = {props.deployedCharts[i] }/>)
+        listData.push(
+          <InstalledChart 
+            key={`chart-${i}`} 
+            chartItem={props.deployedCharts[i]} 
+            getDeployedCharts={props.getDeployedCharts}
+          />
+        )
   } 
 
   console.log('list data:', listData);
