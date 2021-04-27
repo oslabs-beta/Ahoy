@@ -24,14 +24,14 @@ class MainContainer extends Component {
   }
 
   componentDidUpdate() {
-    // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
+
+    // Use a helper to setState a list of local charts
     if (this.state.userDataDir && this.state.localCharts.length === 0) {
       //console.log(`MainContainer: componentDidMount: this.state.userDataDir is truthy`);
       FSHelper.getLocalCharts(this.state.userChartDir)
         .then((result) => {
           //console.log(`MainContainer: componentDidMount: next log is files.`);
-          //console.table(result);
           this.setState({
             localCharts: result, 
             //localChartsLoopCount: this.state.localChartsLoopCount += 1
@@ -42,14 +42,13 @@ class MainContainer extends Component {
 
   componentDidMount() {
     // get list of currently deployed helm charts
-    console.log('Main component successfully mounted')
-    getDeployedHelmCharts()
-    .then(result => JSON.parse(result))
-    .then(charts => {
-      this.setState( {
-        deployedCharts: charts
-      })
-    });
+    //getDeployedHelmCharts()
+    //.then(result => JSON.parse(result))
+    //.then(charts => {
+    //  this.setState( {
+    //    deployedCharts: charts
+    //  })
+    //});
   }
 
   render(props) {
@@ -60,9 +59,9 @@ class MainContainer extends Component {
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
         />
-        <InstalledChartContainer
+        {/*<InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
-        />
+        />*/}
       </>
     );
   }

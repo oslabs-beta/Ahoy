@@ -56,3 +56,4 @@ ehthumbs.db
 # VScode settings #
 #####################
 *.vscode
+.vscode/settings.json
