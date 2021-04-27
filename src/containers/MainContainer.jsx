@@ -3,6 +3,7 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
+import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
 import { Button } from 'semantic-ui-react'
 //import InstalledChartContainer from './InstalledChartContainer';
 
@@ -13,7 +14,7 @@ class MainContainer extends Component {
       userDataDir: null,
       userChartDir: null,
       localCharts: [],
-      localchartDeployState: [],
+      deployedCharts: [],
       localChartsLoopCount: 0,
       // STDOUT data object(s) here?
     };
@@ -39,17 +40,27 @@ class MainContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    // get list of currently deployed helm charts
+    console.log('Main component successfully mounted')
+    getDeployedHelmCharts()
+    .then(result => JSON.parse(result))
+    .then(charts => {
+      this.setState( {
+        deployedCharts: charts
+      })
+    });
+  }
+
 
   render(props) {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
-      <>Co-authored-by: Joe Bigelow <65265765+lilbigs2001@users.noreply.github.com>
-      Co-authored-by: Tobey Forsman <116612+yebot@users.noreply.github.com>
-      Co-authored-by: Yoko Kawamoto <7126966+libero-yoko@users.noreply.github.com> (edited) 
+      <> 
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
-          localChartDeployState={this.state.localChartDeployState}
+          deployedCharts={this.state.deployedCharts}
         />
       </>
     );
