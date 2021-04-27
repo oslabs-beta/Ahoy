@@ -16,9 +16,13 @@ class LocalChartContainer extends Component {
 
     console.log('Props at LocalChartContainer: ', this.props)
 
+    // userChartDir:
+  //"/Users/joebigelow/Library/Application Support/ahoy/charts” <- mac
+  // "C:\Users\Jin\AppData\Roaming\ahoy/charts" <- windows
+
     return(
       <div>
-        <LocalChartList localCharts={this.props.localCharts} />
+        <LocalChartList localCharts={this.props.localCharts} userChartDir={this.props.userChartDir}/>
       </div>        
     );
   }

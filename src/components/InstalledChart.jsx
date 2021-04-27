@@ -17,9 +17,7 @@ const InstalledChart = (props) => {
     chartDetails.push(chart[key])
   }
 
-  // console.log('chart details: ', chartDetails)
-
-
+  // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
     
     console.log('uninstalling helm chart: ', props.chartItem.name)
@@ -28,13 +26,15 @@ const InstalledChart = (props) => {
 
   }
 
+
+  // build the installed chart component
   return (
       <div className = 'chart-item-box'>
         <div className = 'chart-item-details'>
         {chartDetails}
         </div>
         <div className = 'chart-button-container'>
-          <Button onClick={() => uninstallHelmChart()}>Uninstall</Button>
+          <Button compact onClick={() => uninstallHelmChart()}>Uninstall</Button>
         </div>
       </div>
   )
