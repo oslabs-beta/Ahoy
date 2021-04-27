@@ -18,11 +18,20 @@ const LocalChart = (props) => {
     props.getDeployedCharts();
   }
 
+  let button;
+  const disabled = false;
+  if (disabled === true) {
+    button = <Button disabled compact onClick={() => installHelmChart()}>Install</Button>;
+  }
+  else {
+    button = <Button compact onClick={() => installHelmChart()}>Install</Button>;
+  }
   // build the local chart component
   return (
     <Table.Row>
       <Table.Cell>{props.name}</Table.Cell>
-      <Table.Cell><Button compact onClick={() => installHelmChart()}>Install</Button></Table.Cell>
+      {/* <Table.Cell><Button compact onClick={() => installHelmChart()}>Install</Button></Table.Cell> */}
+      <Table.Cell>{button}</Table.Cell>
     </Table.Row>
   )
 };
