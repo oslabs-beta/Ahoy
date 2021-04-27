@@ -3,11 +3,9 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
-import { Button } from 'semantic-ui-react';
+import InstalledChartContainer from './InstalledChartContainer';
 import InstalledChartList from '../components/InstalledChartList';
 import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
-// import { Button } from 'semantic-ui-react'
-// import InstalledChartContainer from './InstalledChartContainer';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -54,7 +52,6 @@ class MainContainer extends Component {
     });
   }
 
-
   render(props) {
     //console.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
     return(
@@ -62,9 +59,11 @@ class MainContainer extends Component {
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}
+        />
+        <InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
         />
-        <InstalledChartList deployedCharts={this.state.deployedCharts}/>
+        {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
   }

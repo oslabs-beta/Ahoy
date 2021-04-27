@@ -14,10 +14,11 @@ class LocalChartContainer extends Component {
 
   render(props) {
 
+    console.log('Props at LocalChartContainer: ', this.props)
+
     return(
       <div>
         <LocalChartList localCharts={this.props.localCharts} />
-        {/* <InstalledChartList localCharts={this.props.deployedCharts} /> */}
       </div>        
     );
   }
