@@ -3,6 +3,8 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
+import { Button } from 'semantic-ui-react';
+import InstalledChartList from '../components/InstalledChartList';
 import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
 import { Button } from 'semantic-ui-react'
 //import InstalledChartContainer from './InstalledChartContainer';
@@ -62,6 +64,7 @@ class MainContainer extends Component {
           localCharts={this.state.localCharts}
           deployedCharts={this.state.deployedCharts}
         />
+        <InstalledChartList />
       </>
     );
   }
