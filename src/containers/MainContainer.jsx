@@ -42,13 +42,13 @@ class MainContainer extends Component {
 
   componentDidMount() {
     // get list of currently deployed helm charts
-    //getDeployedHelmCharts()
-    //.then(result => JSON.parse(result))
-    //.then(charts => {
-    //  this.setState( {
-    //    deployedCharts: charts
-    //  })
-    //});
+    getDeployedHelmCharts()
+    .then(result => JSON.parse(result))
+    .then(charts => {
+      this.setState( {
+        deployedCharts: charts
+      })
+    });
   }
 
   render(props) {
