@@ -3,7 +3,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 import { Button } from 'semantic-ui-react'
 
-class listHelm extends React.Component {
+class genericButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +19,9 @@ class listHelm extends React.Component {
     console.log('button clicked')
     // returns the STDOUT as an object from the command
     this.getTableObj()
-    .then(result => JSON.parse(result))
-    .then(res => console.log(res))
+    // .then(result => JSON.parse(result))
+    // .then(res => console.log(res))
+    .then(this.setState( { stateVar: newState }))
 
   };
 
@@ -47,4 +48,4 @@ class listHelm extends React.Component {
   }
 }
 
-export default listHelm;
+export default genericButton;
