@@ -31,7 +31,8 @@ const InstalledChart = (props) => {
   for(let key in chart){
     chartDetails.push(chart[key] + ' ')
   }
-  // chartDetails.push(<Button className='float-right' onClick={() => uninstallHelmChart()}>Uninstall</Button>)
+
+  // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
     
     console.log('uninstalling helm chart: ', props.chartItem.name)
@@ -40,6 +41,8 @@ const InstalledChart = (props) => {
 
   }
 
+
+  // build the installed chart component
   return (
     <Table.Row>
         <Table.Cell>
