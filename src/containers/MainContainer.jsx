@@ -6,8 +6,8 @@ import LocalChartContainer from './LocalChartContainer';
 import { Button } from 'semantic-ui-react';
 import InstalledChartList from '../components/InstalledChartList';
 import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
-import { Button } from 'semantic-ui-react'
-//import InstalledChartContainer from './InstalledChartContainer';
+// import { Button } from 'semantic-ui-react'
+// import InstalledChartContainer from './InstalledChartContainer';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class MainContainer extends Component {
           localCharts={this.state.localCharts}
           deployedCharts={this.state.deployedCharts}
         />
-        <InstalledChartList />
+        <InstalledChartList deployedCharts={this.state.deployedCharts}/>
       </>
     );
   }

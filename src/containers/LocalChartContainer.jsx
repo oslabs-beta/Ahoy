@@ -17,7 +17,7 @@ class LocalChartContainer extends Component {
     return(
       <div>
         <LocalChartList localCharts={this.props.localCharts} />
-        <InstalledChartList localCharts={this.props.deployedCharts} />
+        {/* <InstalledChartList localCharts={this.props.deployedCharts} /> */}
       </div>        
     );
   }
