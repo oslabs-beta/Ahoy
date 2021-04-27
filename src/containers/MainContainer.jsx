@@ -3,9 +3,9 @@ import fs from 'fs';
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
-import InstalledChartContainer from './installedChartContainer';
+import InstalledChartContainer from './InstalledChartContainer';
+import InstalledChartList from '../components/InstalledChartList';
 import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
-//import InstalledChartContainer from './InstalledChartContainer';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -64,6 +64,7 @@ class MainContainer extends Component {
         <InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
         />
+        {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
   }
