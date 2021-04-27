@@ -28,14 +28,17 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
     "package": "npm run build",
     "postpackage": "electron-packager ./ --out=./builds",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=src/assets/icons/mac/pirate.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . Ahoy --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/win/pirate.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ahoy\"",    
-    "package-linux": "electron-packager . Ahoy --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/icons/png/pirate.png --prune=true --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=src/assets/icons/mac/ahoyIcon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . Ahoy --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/win/ahoyIcon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ahoy\"",    
+    "package-linux": "electron-packager . Ahoy --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/icons/png/ahoyIcon.png --prune=true --out=release-builds"
   },
   "dependencies": {
+    "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
