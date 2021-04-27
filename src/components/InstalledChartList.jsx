@@ -7,14 +7,14 @@ console.log("InstalledChartList.jsx loaded")
 const InstalledChartList = (props) => {
   // Receive an output JS object of command 'helm list -o' as props
   // console.log(`InstalledList: props = ${props}`);
-  console.log('charts at InstalledChartList: ', props.localCharts)
+  console.log('charts at InstalledChartList: ', props.deployedCharts)
   // indivisual item will be rendered by the child component Installed Chart by passing the element (object)
   let listData = [];
 
-  console.log('charts at InstalledChartList: ', props.localCharts)
+  console.log('charts at InstalledChartList: ', props.deployedCharts)
 
-  for(let i = 0; i < props.localCharts.length; i ++){
-        listData.push(<InstalledChart key={`chart-${i}`} chartItem = {props.localCharts[i] }/>)
+  for(let i = 0; i < props.deployedCharts.length; i ++){
+        listData.push(<InstalledChart key={`chart-${i}`} chartItem = {props.deployedCharts[i] }/>)
   } 
 
   console.log('list data:', listData);
