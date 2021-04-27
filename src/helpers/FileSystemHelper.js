@@ -13,7 +13,7 @@ const getLocalCharts = function(path) {
         console.error(`FileSystemHelper.js: ${err}`);
       } else {
         result.forEach(dir => {
-          //console.log(`FileSystemHelper: getLocalCharts: pushing dir = ${dir}`);
+          // console.log(`FileSystemHelper: getLocalCharts: pushing dir = ${dir}`);
           if (dir !== '.DS_Store') {
             // const yaml = getChartYAML(path, dir);
             resultArray.push({ name: dir, version: 'yaml.version.placeholder' });

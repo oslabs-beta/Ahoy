@@ -35,7 +35,6 @@ class MainContainer extends Component {
           //console.log(`MainContainer: componentDidMount: next log is files.`);
           this.setState({
             localCharts: result, 
-            //localChartsLoopCount: this.state.localChartsLoopCount += 1
           });
         });
     }

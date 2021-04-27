@@ -8,7 +8,6 @@ const LocalChartList = (props) => {
 
   // build out the directory to push into LocalChart
   // console.log('userChartDir:', props.userChartDir);
-  
   // console.log('LocalCharts:', props.localCharts);
 
   const lcharts = [];
