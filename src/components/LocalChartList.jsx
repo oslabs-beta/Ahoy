@@ -14,7 +14,7 @@ const LocalChartList = (props) => {
   props.localCharts.forEach((item, i) => {
   const dirPath = path.join(props.userChartDir, item.name);
   lcharts.push(<LocalChart
-                  name={item}
+                  chart={item}
                   id={i}
                   key={i}
                   dirPath={dirPath}

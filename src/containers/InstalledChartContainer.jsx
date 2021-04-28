@@ -7,8 +7,6 @@ import InstalledChartList from '../components/InstalledChartList';
 class InstalledChartContainer extends Component {
   constructor(props) {
     super(props);
-
-    // STDOUT data object(s) here?
   }
 
   render(props) {
@@ -25,6 +23,5 @@ class InstalledChartContainer extends Component {
     );
   }
 }
-
 
 export default InstalledChartContainer;
