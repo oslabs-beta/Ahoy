@@ -6,6 +6,7 @@ import LocalChartContainer from './LocalChartContainer';
 import InstalledChartContainer from './InstalledChartContainer';
 import InstalledChartList from '../components/InstalledChartList';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
+import getHelmHistory from '../helpers/getHelmHistory';
 // import getHelmHistory from '../helpers/getHelmHistory';
 
 class MainContainer extends Component {
@@ -26,6 +27,7 @@ class MainContainer extends Component {
     });
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
+    this.getHistory = this.getHistory.bind(this);
   }
 
   checkDeployedLocalCharts(result) {
@@ -65,8 +67,44 @@ class MainContainer extends Component {
 
 
   // gets the current chart's history and populates the chart's history
-  getHistory(currentChart) {
-    getHelmHistory(currentChart)
+  // getHistory() {
+
+  //   let tempFcn = () => {
+  //   // loop through each chart in deployedCharts array
+  //   return this.state.deployedCharts.forEach( (chart, i) => {
+  //     console.log('History ChartObj: ', chart)
+  //     // invoke getHelmHistory
+  //     getHelmHistory(chart.name)
+  //     .then((result) => JSON.parse(result))
+  //     // .then(data => chart.history = data) // push results into history property on each deployedChart obj or new array
+  //     // .then(data => chart.history = data)
+  //     .then(data => this.setState({deployedCharts[i].history: data }))
+  //   })
+  // }
+  // let newCharts = tempFcn()
+  // console.log('history Array:', newCharts)
+
+    // tempFcn().then( x => console.log('TempArr?', x))
+      
+      // setState with deployedChart or set the new array as the value
+      // console.log('Previous Charts: ', this.state.deployedCharts)
+      
+      // console.log('Did we populate the history property? ', tempArr)
+      // this.setState({deployedCharts: tempArr })
+    
+  // }
+      
+  getHistory() {
+    for (let i = 0; i < this.state.deployedCharts.length; i++) {
+      getHelmHistory(this.state.deployedCharts[i])
+        .then((result) => JSON.parse(result))
+        .then((versions) => {
+          let newDeployedArray = this.state.deployedCharts;
+          newDeployedArray[i].history = versions;
+        })
+    }
+    
+    getHelmHistory(currentChart) 
       .then((result) => JSON.parse(result))
       .then((versions) => {
         for (let i = 0; i < this.state.deployedCharts.length; i++) {
@@ -79,7 +117,8 @@ class MainContainer extends Component {
           })
         }
       })
-  }
+    }
+  
   
   // runs every time setState() is invoked
   componentDidUpdate() {
@@ -106,6 +145,8 @@ class MainContainer extends Component {
       //   this.checkDeployedLocalCharts(result);
       // });
     }
+
+    this.getHistory();
   }
 
   // run upon successful rendering of the component
@@ -113,6 +154,7 @@ class MainContainer extends Component {
     // get list of currently deployed helm charts
     console.log("Main component successfully mounted");
     this.getHelmCharts();
+    this.getHistory();
 
     // ipcRenderer.invoke("getPath", "userData").then((result) => {
     //   this.setState({ userDataDir: result, userChartDir: result + "\\charts" });
