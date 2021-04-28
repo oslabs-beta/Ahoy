@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import fs from "fs";
-const { ipcRenderer } = window.require("electron");
-import FSHelper from "../helpers/FileSystemHelper";
-import LocalChartContainer from "./LocalChartContainer";
-import InstalledChartContainer from "./InstalledChartContainer";
-import InstalledChartList from "../components/InstalledChartList";
-import getDeployedHelmCharts from "../components/getDeployedHelmCharts";
+import React, { Component } from 'react';
+const path = require('path');
+const { ipcRenderer } = window.require('electron');
+import FSHelper from '../helpers/FileSystemHelper';
+import LocalChartContainer from './LocalChartContainer';
+import InstalledChartContainer from './InstalledChartContainer';
+import InstalledChartList from '../components/InstalledChartList';
+import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ class MainContainer extends Component {
       // STDOUT data object(s) here?
     };
 
-    ipcRenderer.invoke("getPath", "userData").then((result) => {
-      this.setState({ userDataDir: result, userChartDir: result + "\\charts" });
+    ipcRenderer.invoke('getPath', 'userData').then(result => {
+      this.setState({ userDataDir: result, userChartDir: path.join(result, 'charts') });
     });
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
@@ -59,6 +59,8 @@ class MainContainer extends Component {
     console.log("Main component Updated");
     // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
+
+    // Use a helper to setState a list of local charts
     if (this.state.userDataDir && this.state.localCharts.length === 0) {
       //console.log(`MainContainer: componentDidMount: this.state.userDataDir is truthy`);
       FSHelper.getLocalCharts(this.state.userChartDir).then((result) => {

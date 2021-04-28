@@ -11,7 +11,7 @@ const LocalChart = (props) => {
   // install helm chart. providing k8s secrets not yet attempted
   const installHelmChart = async () => {
     
-    const helmChart = props.name;
+    const helmChart = props.chart.name;
     const directory = props.dirPath;
     console.log(`installing helm chart ${helmChart} at ${directory}`);
     const {stdout, stderr} = await exec(`helm install ${helmChart} ${directory}` );
@@ -20,7 +20,7 @@ const LocalChart = (props) => {
 
   let button;
   const disabled = false;
-  if (disabled === true) {
+  if (disabled) {
     button = <Button disabled compact onClick={() => installHelmChart()}>Install</Button>;
   }
   else {
@@ -29,7 +29,7 @@ const LocalChart = (props) => {
   // build the local chart component
   return (
     <Table.Row>
-      <Table.Cell>{props.name}</Table.Cell>
+      <Table.Cell>{props.chart.name}</Table.Cell>
       {/* <Table.Cell><Button compact onClick={() => installHelmChart()}>Install</Button></Table.Cell> */}
       <Table.Cell>{button}</Table.Cell>
     </Table.Row>

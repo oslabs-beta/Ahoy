@@ -1,26 +1,25 @@
 import React from 'react';
 import LocalChart from '../components/LocalChart';
 import { Table } from 'semantic-ui-react';
+const path = require('path');
 
 const LocalChartList = (props) => {
   console.log('LocalChartList:', props);
 
   // build out the directory to push into LocalChart
   // console.log('userChartDir:', props.userChartDir);
-  
   // console.log('LocalCharts:', props.localCharts);
 
   const lcharts = [];
   props.localCharts.forEach((item, i) => {
-    // console.log('LocalChartDir FullPath: ', props.userChartDir+'\\'+item);
-    const dirPath = props.userChartDir + '\\' + item;
-    lcharts.push(<LocalChart
-                    name={item}
-                    id={i}
-                    key={i}
-                    dirPath={dirPath}
-                    getDeployedCharts={props.getDeployedCharts}
-                  />)
+  const dirPath = path.join(props.userChartDir, item.name);
+  lcharts.push(<LocalChart
+                  chart={item}
+                  id={i}
+                  key={i}
+                  dirPath={dirPath}
+                  getDeployedCharts={props.getDeployedCharts}
+                />)
   })
   return (
     <Table>

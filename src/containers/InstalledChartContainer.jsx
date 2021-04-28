@@ -24,5 +24,4 @@ class InstalledChartContainer extends Component {
   }
 }
 
-
 export default InstalledChartContainer;
