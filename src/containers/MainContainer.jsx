@@ -52,6 +52,24 @@ class MainContainer extends Component {
         });
       });
   }
+
+  getHistory(currentChart) {
+    getHelmHistory(currentChart)
+      .then((result) => JSON.parse(result))
+      .then((versions) => {
+        for (let i = 0; i < this.state.deployedCharts.length; i++) {
+          let newDeployedArray = this.state.deployedCharts.map((chart) => {
+            if (chart.name === currentChart) {
+              chart.history = versions;
+            }
+          });
+          console.log('new deployed charts: ', newDeployedArray)
+          this.setState({
+            deployedCharts: newDeployedArray
+          })
+        }
+      })
+  }
   
   // runs every time setState() is invoked
   componentDidUpdate() {
