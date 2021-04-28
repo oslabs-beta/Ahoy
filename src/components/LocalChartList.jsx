@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 const path = require('path');
 
 const LocalChartList = (props) => {
-  console.log('LocalChartList:', props);
+  // console.log('LocalChartList:', props);
 
   // build out the directory to push into LocalChart
   // console.log('userChartDir:', props.userChartDir);

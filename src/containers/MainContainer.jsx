@@ -73,6 +73,7 @@ class MainContainer extends Component {
           let newDeployedArray = this.state.deployedCharts.map((chart) => {
             chart.history = chart.name === currentChart ? versions : [];
           });
+          console.log('new deployed charts: ', newDeployedArray)
           this.setState({
             deployedCharts: newDeployedArray
           })
