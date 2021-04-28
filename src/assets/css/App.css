@@ -1,3 +1,41 @@
 /* Main CSS file */
 
-@import '_example/_example.css';
+.dropdown-list {
+  font-size: 12pt;
+  word-spacing: 12px;
+  word-wrap: normal;
+}
+
+.button-right{
+  margin:10px 0;
+}
+
+.ui.table {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+td.installed-chart-cell{
+  padding:0 !important;
+}
+
+.ui.table.borderless{
+  margin: 0;
+  border:none;
+  border-width: 0;
+}
+
+.ui.table.borderless tbody tr.history td{
+  border-top: 1px solid #cfcfcf;
+  /*border-bottom: 1px solid #cfcfcf; */
+}
+
+tr.history td{
+  /* border-top: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf; */
+  /* border: 1px solid #cfcfcf; */
+  border-left: 10px solid #cfcfcf;
+  background-color:rgb(249, 250, 251);
+}
