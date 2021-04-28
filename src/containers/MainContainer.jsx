@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fs from 'fs';
+const path = require('path');
 const { ipcRenderer } = window.require('electron');
 import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
@@ -21,28 +21,28 @@ class MainContainer extends Component {
     };
 
     ipcRenderer.invoke('getPath', 'userData').then(result => {
-      this.setState({ userDataDir: result, userChartDir: result + '\\charts' });
+      this.setState({ userDataDir: result, userChartDir: path.join(result, 'charts') });
     });
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
   }
 
   componentDidUpdate() {
-    // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
+
+    // Use a helper to setState a list of local charts
     if (this.state.userDataDir && this.state.localCharts.length === 0) {
       //console.log(`MainContainer: componentDidMount: this.state.userDataDir is truthy`);
       FSHelper.getLocalCharts(this.state.userChartDir)
         .then((result) => {
           //console.log(`MainContainer: componentDidMount: next log is files.`);
-          //console.table(result);
           this.setState({
             localCharts: result, 
-            //localChartsLoopCount: this.state.localChartsLoopCount += 1
           });
         });
     }
   }
+
 
   getHelmCharts() {
     getDeployedHelmCharts()
