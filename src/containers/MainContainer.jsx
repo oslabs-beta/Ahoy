@@ -27,7 +27,35 @@ class MainContainer extends Component {
     this.getHelmCharts = this.getHelmCharts.bind(this);
   }
 
+  checkDeployedLocalCharts(result) {
+    console.log('in checkDeployedLocalCharts');
+    let booleansArray = [];
+    result.forEach((chart) => {
+      let boolean = false;
+      for (let i = 0; i < this.state.deployedCharts.length; i++) {
+        console.log(`Deployed chart name is ${this.state.deployedCharts[i].name}`);
+        console.log(`Local chart name is ${chart}`);
+        if (this.state.deployedCharts[i].name === chart) boolean = true;
+      }
+      booleansArray.push(boolean);
+    })
+    this.setState({ islocalChartDeployed: booleansArray });
+  }
+
+
+  getHelmCharts() {
+    getDeployedHelmCharts()
+      .then((result) => JSON.parse(result))
+      .then((charts) => {
+        this.setState({
+          deployedCharts: charts,
+        });
+      });
+  }
+  
+  // runs every time setState() is invoked
   componentDidUpdate() {
+    console.log(`userDataDir is ${this.state.userDataDir}`);
     console.log("Main component Updated");
     // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
@@ -40,33 +68,25 @@ class MainContainer extends Component {
           localCharts: result,
           //localChartsLoopCount: this.state.localChartsLoopCount += 1
         });
-        // Declare booleansArray and assign to empty array
-        // Loop through result array
-        // If deployedCharts contains the name of the chart
-        // Push true into booleansArray
-        // Otherwise push false into booleansArray
-        // Set state property isLocalChartDeployed to booleansArray
-      });
-      // set all the installed state of each chart in the
+        return result;
+      })
+      // .then((result) => {
+      //   console.log('MY .then IS WORKING');
+      //   console.log('deployed charts is ', this.state.deployedCharts);
+      //   this.checkDeployedLocalCharts(result);
+      // });
     }
   }
 
-  getHelmCharts() {
-    getDeployedHelmCharts()
-      .then((result) => JSON.parse(result))
-      .then((charts) => {
-        this.setState({
-          deployedCharts: charts,
-        });
-      });
-  }
-
-  // toggleInstallStr() {}
-
+  // run upon successful rendering of the component
   componentDidMount() {
     // get list of currently deployed helm charts
     console.log("Main component successfully mounted");
     this.getHelmCharts();
+
+    // ipcRenderer.invoke("getPath", "userData").then((result) => {
+    //   this.setState({ userDataDir: result, userChartDir: result + "\\charts" });
+    // });
   }
 
   render(props) {
