@@ -5,7 +5,8 @@ import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
 import InstalledChartContainer from './InstalledChartContainer';
 import InstalledChartList from '../components/InstalledChartList';
-import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
+import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
+// import getHelmHistory from '../helpers/getHelmHistory';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -47,15 +48,41 @@ class MainContainer extends Component {
     getDeployedHelmCharts()
       .then((result) => JSON.parse(result))
       .then((charts) => {
+        // console.log(`Deployed charts array looks like this: ${charts}`);
         this.setState({
-          deployedCharts: charts,
+          deployedCharts: charts
         });
       });
+  }
+
+
+  // deployedCharts: [{ name: 'kube-prometheus-stack', current: charts[0], revision: [revision1, revision2, revision3, etc]}
+
+  // [{“revision”:1,“updated”:“2021-04-27T21:23:29.859747-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.1”,“app_version”:“5.7.0”,“description”:“Install complete”},
+  // {“revision”:2,“updated”:“2021-04-27T21:30:36.948924-07:00",“status”:“superseded”,“chart”:“wordpress-10.10.3",“app_version”:“5.7.1",“description”:“Upgrade complete”},
+  // {“revision”:3,“updated”:“2021-04-27T21:52:02.555729-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.8”,“app_version”:“5.7.1”,“description”:“Upgrade complete”},
+  // {“revision”:4,“updated”:“2021-04-27T21:59:23.424204-07:00",“status”:“deployed”,“chart”:“wordpress-10.10.8",“app_version”:“5.7.1",“description”:“Upgrade complete”}]
+
+
+  // gets the current chart's history and populates the chart's history
+  getHistory(currentChart) {
+    getHelmHistory(currentChart)
+      .then((result) => JSON.parse(result))
+      .then((versions) => {
+        for (let i = 0; i < this.state.deployedCharts.length; i++) {
+          let newDeployedArray = this.state.deployedCharts.map((chart) => {
+            chart.history = chart.name === currentChart ? versions : [];
+          });
+          this.setState({
+            deployedCharts: newDeployedArray
+          })
+        }
+      })
   }
   
   // runs every time setState() is invoked
   componentDidUpdate() {
-    console.log(`userDataDir is ${this.state.userDataDir}`);
+    // console.log(`userDataDir is ${this.state.userDataDir}`);
     console.log("Main component Updated");
     // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
@@ -93,6 +120,7 @@ class MainContainer extends Component {
 
   render(props) {
     //cons ole.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
+
     return (
       <>
         <LocalChartContainer
