@@ -41,11 +41,22 @@ const InstalledChart = (props) => {
     props.getDeployedCharts();
   };
 
-  const DropdownExampleSimple = () => (
-    <Menu compact>
-      <Dropdown text='Dropdown' options={options} simple item />
-    </Menu>
-  )
+  const showHistory = async() => {
+    // run helm history
+    // render the table cells
+
+      // <Table.Row className = 'history'>
+      // <Table.Cell colspan = '2'>
+      //   Revision1
+      // </Table.Cell>
+      // </Table.Row>
+      // <Table.Row className = 'history'>
+      //   <Table.Cell colspan = '2'>
+      //     Revision2
+      //   </Table.Cell>
+      // </Table.Row>
+
+  };
 
   // build the installed chart component
   return (
@@ -60,7 +71,7 @@ const InstalledChart = (props) => {
             <Table.Cell>
               <Button
                     className="button-right"
-                    onClick={DropdownExampleSimple}
+                    onClick={() => showHistory()}
               >History
               </Button>
               <Button
@@ -70,16 +81,7 @@ const InstalledChart = (props) => {
               </Button>
             </Table.Cell>
             </Table.Row>
-            <Table.Row className = 'history'>
-              <Table.Cell colspan = '2'>
-                Revision1
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row className = 'history'>
-              <Table.Cell colspan = '2'>
-                Revision2
-              </Table.Cell>
-            </Table.Row>
+              <History />
           </Table.Body>
         </Table>
       </Table.Cell>
