@@ -8,6 +8,7 @@ import InstalledChartList from "../components/InstalledChartList";
 import getDeployedHelmCharts from "../helpers/getDeployedHelmCharts";
 import getHelmHistory from "../helpers/getHelmHistory";
 import { Button } from "semantic-ui-react";
+import launchDashBoard from "../helpers/launchMiniKubeDashBoard";
 // import getHelmHistory from '../helpers/getHelmHistory';
 
 class MainContainer extends Component {
@@ -32,6 +33,14 @@ class MainContainer extends Component {
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
     this.getHistory = this.getHistory.bind(this);
+    this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
+  }
+
+
+  launchMiniKubeDashBoard() {
+    console.log("Launching Minikube Dashboard...");
+    launchDashBoard().then(x => console.log('Dashboard Launched:', x))
+    return 
   }
 
   checkDeployedLocalCharts(result) {
@@ -135,6 +144,10 @@ class MainContainer extends Component {
 
     return (
       <>
+        <Button onClick={() => this.launchMiniKubeDashBoard()}>
+          Launch Dashboard
+        </Button>
+
         <LocalChartContainer
           userChartDir={this.state.userChartDir}
           localCharts={this.state.localCharts}

@@ -9,7 +9,7 @@ const exec = util.promisify(require("child_process").exec);
 console.log("InstalledChart.jsx loaded");
 
 const InstalledChart = (props) => {
-  console.log(`Line 11: props at ${props.chartItem.name} InstalledChart: ${JSON.stringify(props)}`);
+  // console.log("props at InstalledChart: ", props);
 
   const chart = props.chartItem;
 

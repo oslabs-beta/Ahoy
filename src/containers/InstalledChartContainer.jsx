@@ -11,7 +11,7 @@ class InstalledChartContainer extends Component {
 
   render(props) {
 
-    console.log('Props at InstalledChartContainer: ', this.props)
+    // console.log('Props at InstalledChartContainer: ', this.props)
 
     return(
       <div>
