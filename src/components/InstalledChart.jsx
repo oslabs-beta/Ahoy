@@ -43,72 +43,66 @@ const InstalledChart = (props) => {
 
   const DropdownExampleSimple = () => (
     <Menu compact>
-      <Dropdown text='Dropdown' options={options} simple item />
+      <Dropdown text="Dropdown" options={options} simple item />
     </Menu>
-  )
+  );
 
   // build the installed chart component
   return (
     <Table.Row>
-      <Table.Cell className = 'installed-chart-cell'>
-        <Table className = 'borderless'>
+      <Table.Cell className="installed-chart-cell">
+        <Table className="borderless">
           <Table.Body>
             <Table.Row>
-            <Table.Cell>
-          {chartDetails}
-            </Table.Cell>
-            <Table.Cell>
-              <Button
-                    className="button-right"
-                    onClick={DropdownExampleSimple}
-              >History
-              </Button>
-              <Button
-                    className="button-right"
-                    onClick={() => uninstallHelmChart()}
-              >Uninstall
-              </Button>
-            </Table.Cell>
-            </Table.Row>
-            <Table.Row className = 'history'>
-              <Table.Cell colspan = '2'>
-                Revision1
+              <Table.Cell>{chartDetails}</Table.Cell>
+              <Table.Cell>
+                <Button
+                  className="button-right"
+                  onClick={DropdownExampleSimple}
+                >
+                  History
+                </Button>
+                <Button
+                  className="button-right"
+                  onClick={() => uninstallHelmChart()}
+                >
+                  Uninstall
+                </Button>
               </Table.Cell>
             </Table.Row>
-            <Table.Row className = 'history'>
-              <Table.Cell colspan = '2'>
-                Revision2
-              </Table.Cell>
+            <Table.Row className="history">
+              <Table.Cell colspan="2">Revision1</Table.Cell>
+            </Table.Row>
+            <Table.Row className="history">
+              <Table.Cell colspan="2">Revision2</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
       </Table.Cell>
     </Table.Row>
 
-        // {/* <Menu className="dropdown-list">
-        //   <Menu.Menu position="right">
+    // {/* <Menu className="dropdown-list">
+    //   <Menu.Menu position="right">
 
-             
-           
-        //     <Dropdown
-        //       item
-        //       simple
-        //       text="Rollback"
-        //       direction="right"
-        //       options={optionToRollBack}
-        //     />
-        //   </Menu.Menu>
-        // </Menu> */}
-        // {/* {chartDetails}
-        // <Menu.Menu position = 'right'>
-        //   <Dropdown
-        //     placeholder = 'action'
-        //     fluid
-        //     selection
-        //     className = "dropdown-list"
-        //     options={OptionToRollBack}
-        //   />
-        // </Menu.Menu> */}
+    //     <Dropdown
+    //       item
+    //       simple
+    //       text="Rollback"
+    //       direction="right"
+    //       options={optionToRollBack}
+    //     />
+    //   </Menu.Menu>
+    // </Menu> */}
+    // {/* {chartDetails}
+    // <Menu.Menu position = 'right'>
+    //   <Dropdown
+    //     placeholder = 'action'
+    //     fluid
+    //     selection
+    //     className = "dropdown-list"
+    //     options={OptionToRollBack}
+    //   />
+    // </Menu.Menu> */}
 
     // plain semantic (not react.semantic-ui) way of writing the dropdown list out
     // <div className = 'chart-item-box ui fluid selection dropdown'>

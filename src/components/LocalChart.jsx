@@ -6,7 +6,7 @@ const exec = util.promisify(require('child_process').exec);
 
 // build the local chart component
 const LocalChart = (props) => {
-  console.log('props in LocalChart: ', props)
+  // console.log('props in LocalChart: ', props)
 
   // install helm chart. providing k8s secrets not yet attempted
   const installHelmChart = async () => {
