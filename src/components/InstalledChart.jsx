@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Table, Dropdown, Menu } from "semantic-ui-react";
+import Version from './Version';
 // import { Table } from 'semantic-ui-react';
 // import {Dropdown} from 'semantic-ui-react';
 const util = require("util");
@@ -8,7 +9,7 @@ const exec = util.promisify(require("child_process").exec);
 console.log("InstalledChart.jsx loaded");
 
 const InstalledChart = (props) => {
-  console.log("props at InstalledChart: ", props);
+  console.log(`Line 11: props at ${props.chartItem.name} InstalledChart: ${JSON.stringify(props)}`);
 
   const chart = props.chartItem;
 
@@ -32,8 +33,8 @@ const InstalledChart = (props) => {
 
   // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
-    console.log("uninstalling helm chart: ", props.chartItem.name);
-    const helmChart = props.chartItem.name;
+    console.log("uninstalling helm chart: ", chart.name);
+    const helmChart = chart.name;
     const { stdout, stderr } = await exec(`helm uninstall ${helmChart}`);
 
     console.log("component successfully uninstalled");
@@ -41,22 +42,19 @@ const InstalledChart = (props) => {
     props.getDeployedCharts();
   };
 
-  const showHistory = async() => {
-    // run helm history
-    // render the table cells
+  console.log(`Installed Chart History on ${chart.name}: ${JSON.stringify(chart.history)}`);
 
-      // <Table.Row className = 'history'>
-      // <Table.Cell colspan = '2'>
-      //   Revision1
-      // </Table.Cell>
-      // </Table.Row>
-      // <Table.Row className = 'history'>
-      //   <Table.Cell colspan = '2'>
-      //     Revision2
-      //   </Table.Cell>
-      // </Table.Row>
-
+  const showHistory = (chartName) => {
+    // Declare empty array
+    const historyArray = []
+    // for loop looking at chart.history
+    for (let i = 0; i < chart.history.length; i++){
+      // For each element, push <Version name={chart.name}/> into the array
+      historyArray.push(<Version name={chart.name}/>);
+    }
   };
+
+
 
   // build the installed chart component
   return (
@@ -69,11 +67,14 @@ const InstalledChart = (props) => {
           {chartDetails}
             </Table.Cell>
             <Table.Cell>
-              <Button
+              {/* <Button
                     className="button-right"
-                    onClick={() => showHistory()}
+                    onClick={async () => {
+                      await props.getHistory(chart.name);
+                      showHistory(chart.name);
+                    }
               >History
-              </Button>
+              </Button> */}
               <Button
                     className="button-right"
                     onClick={() => uninstallHelmChart()}
@@ -81,7 +82,7 @@ const InstalledChart = (props) => {
               </Button>
             </Table.Cell>
             </Table.Row>
-              <History />
+              {/* {historyArray} */}
           </Table.Body>
         </Table>
       </Table.Cell>

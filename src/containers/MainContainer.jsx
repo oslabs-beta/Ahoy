@@ -143,10 +143,12 @@ class MainContainer extends Component {
         <InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
           getDeployedCharts={this.getHelmCharts}
+          getHistory={this.getHistory}
         />
-        <Button onClick={() => this.getHistory("wordpress")}>
+        {/* this is for the testing */}
+        {/* <Button onClick={() => this.getHistory("yoko-wordpress")}>
           Get Helm History
-        </Button>
+        </Button> */}
         {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );

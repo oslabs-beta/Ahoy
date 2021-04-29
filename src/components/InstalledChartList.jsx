@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "semantic-ui-react";
+import { Item, Table } from "semantic-ui-react";
 import InstalledChart from "../components/InstalledChart";
 
 console.log("InstalledChartList.jsx loaded");
@@ -24,6 +24,7 @@ const InstalledChartList = (props) => {
         key={`chart-${i}`}
         chartItem={props.deployedCharts[i]}
         getDeployedCharts={props.getDeployedCharts}
+        getHistory={props.getHistory}
       />
     );
   }
