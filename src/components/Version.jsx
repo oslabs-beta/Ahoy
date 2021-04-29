@@ -3,11 +3,13 @@ import { Table } from "semantic-ui-react";
 
 function Version (props){
   return(
-      <Table.Row>
-      <Table.Cell colspan = '2'>
+      <div>
+      {/* <Table.Row>
+       <Table.Cell colspan = '2'> */}
         {props.name}
-      </Table.Cell>
-      </Table.Row>
+      {/* </Table.Cell>
+      </Table.Row> */}
+      </div>
   )
 }
 

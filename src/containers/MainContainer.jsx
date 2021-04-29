@@ -10,6 +10,7 @@ import getHelmHistory from "../helpers/getHelmHistory";
 import { Button } from "semantic-ui-react";
 import launchDashBoard from "../helpers/launchMiniKubeDashBoard";
 // import getHelmHistory from '../helpers/getHelmHistory';
+import Version from '../components/Version';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -71,6 +72,36 @@ class MainContainer extends Component {
       });
   }
 
+  // Jin & Joe's original version
+  // getHistory(currentChart) {
+  //   getHelmHistory(currentChart)
+  //     .then((result) => JSON.parse(result))
+  //     .then((versions) => {
+  //       console.log("deployedcharts", this.state.deployedCharts);
+  //       const newDeployedArray = this.state.deployedCharts.map((chart) => {
+  //         // console.log("chart: ", chart);
+  //         // console.log("chart name: ", chart.name);
+  //         if (chart.name === currentChart) {
+  //           console.log("entered here");
+  //           chart.history = versions;
+  //         }
+  //         return chart; /// <-- this was the problem
+  //       });
+  //       // // })
+  //       // console.log("versions: ", versions);
+  //       // console.log("deployedcharts2", this.state.deployedCharts);
+  //       // console.log("newDeployedArray: ", newDeployedArray);
+  //       return newDeployedArray;
+  //     })
+  //     .then((newDeployedArray) => {
+  //       console.log("new deployed charts: ", newDeployedArray);
+  //       this.setState({
+  //         deployedCharts: newDeployedArray,
+  //       });
+  //     });
+  // }
+
+
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
@@ -80,15 +111,15 @@ class MainContainer extends Component {
           // console.log("chart: ", chart);
           // console.log("chart name: ", chart.name);
           if (chart.name === currentChart) {
-            console.log("entered here");
-            chart.history = versions;
+            console.log("history get get here");
+            // chart.history = versions;
+            // let temp = JSON.parse(versions)
+            // chart.history = `<tr><td>${temp}</td></tr>`;
+            chart.history = <Version name = {versions} />
+            // console.log('chart.history :' , chart.history)
           }
           return chart; /// <-- this was the problem
         });
-        // // })
-        // console.log("versions: ", versions);
-        // console.log("deployedcharts2", this.state.deployedCharts);
-        // console.log("newDeployedArray: ", newDeployedArray);
         return newDeployedArray;
       })
       .then((newDeployedArray) => {
@@ -96,8 +127,14 @@ class MainContainer extends Component {
         this.setState({
           deployedCharts: newDeployedArray,
         });
-      });
+        return this.state.deployedCharts;
+      })
+      // .then((AppData) => {
+      //   console.log('now that history has value. lets render that cells');
+      //   console.log('what I get :' ,AppData)
+      // })
   }
+
 
   // runs every time setState() is invoked
   componentDidUpdate() {
