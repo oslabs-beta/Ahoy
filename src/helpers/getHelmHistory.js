@@ -4,6 +4,7 @@ const exec = util.promisify(require("child_process").exec);
 
 // fetches Helm chart release history
 const getHelmHistory = async (releaseName) => {
+  console.log('relase name: ', releaseName)
   try {
     let command = `helm history ${releaseName} -o json`;
     const { stdout, stderr } = await exec(command);

@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-const path = require('path');
-const { ipcRenderer } = window.require('electron');
-import FSHelper from '../helpers/FileSystemHelper';
-import LocalChartContainer from './LocalChartContainer';
-import InstalledChartContainer from './InstalledChartContainer';
-import InstalledChartList from '../components/InstalledChartList';
-import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
+import React, { Component } from "react";
+const path = require("path");
+const { ipcRenderer } = window.require("electron");
+import FSHelper from "../helpers/FileSystemHelper";
+import LocalChartContainer from "./LocalChartContainer";
+import InstalledChartContainer from "./InstalledChartContainer";
+import InstalledChartList from "../components/InstalledChartList";
+import getDeployedHelmCharts from "../helpers/getDeployedHelmCharts";
+import getHelmHistory from "../helpers/getHelmHistory";
+import { Button } from "semantic-ui-react";
 // import getHelmHistory from '../helpers/getHelmHistory';
 
 class MainContainer extends Component {
@@ -21,28 +23,33 @@ class MainContainer extends Component {
       // STDOUT data object(s) here?
     };
 
-    ipcRenderer.invoke('getPath', 'userData').then(result => {
-      this.setState({ userDataDir: result, userChartDir: path.join(result, 'charts') });
+    ipcRenderer.invoke("getPath", "userData").then((result) => {
+      this.setState({
+        userDataDir: result,
+        userChartDir: path.join(result, "charts"),
+      });
     });
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
+    this.getHistory = this.getHistory.bind(this);
   }
 
   checkDeployedLocalCharts(result) {
-    console.log('in checkDeployedLocalCharts');
+    console.log("in checkDeployedLocalCharts");
     let booleansArray = [];
     result.forEach((chart) => {
       let boolean = false;
       for (let i = 0; i < this.state.deployedCharts.length; i++) {
-        console.log(`Deployed chart name is ${this.state.deployedCharts[i].name}`);
+        console.log(
+          `Deployed chart name is ${this.state.deployedCharts[i].name}`
+        );
         console.log(`Local chart name is ${chart}`);
         if (this.state.deployedCharts[i].name === chart) boolean = true;
       }
       booleansArray.push(boolean);
-    })
+    });
     this.setState({ islocalChartDeployed: booleansArray });
   }
-
 
   getHelmCharts() {
     getDeployedHelmCharts()
@@ -50,37 +57,39 @@ class MainContainer extends Component {
       .then((charts) => {
         // console.log(`Deployed charts array looks like this: ${charts}`);
         this.setState({
-          deployedCharts: charts
+          deployedCharts: charts,
         });
       });
   }
 
-
-  // deployedCharts: [{ name: 'kube-prometheus-stack', current: charts[0], revision: [revision1, revision2, revision3, etc]}
-
-  // [{“revision”:1,“updated”:“2021-04-27T21:23:29.859747-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.1”,“app_version”:“5.7.0”,“description”:“Install complete”},
-  // {“revision”:2,“updated”:“2021-04-27T21:30:36.948924-07:00",“status”:“superseded”,“chart”:“wordpress-10.10.3",“app_version”:“5.7.1",“description”:“Upgrade complete”},
-  // {“revision”:3,“updated”:“2021-04-27T21:52:02.555729-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.8”,“app_version”:“5.7.1”,“description”:“Upgrade complete”},
-  // {“revision”:4,“updated”:“2021-04-27T21:59:23.424204-07:00",“status”:“deployed”,“chart”:“wordpress-10.10.8",“app_version”:“5.7.1",“description”:“Upgrade complete”}]
-
-
-  // gets the current chart's history and populates the chart's history
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
       .then((versions) => {
-        for (let i = 0; i < this.state.deployedCharts.length; i++) {
-          let newDeployedArray = this.state.deployedCharts.map((chart) => {
-            chart.history = chart.name === currentChart ? versions : [];
-          });
-          console.log('new deployed charts: ', newDeployedArray)
-          this.setState({
-            deployedCharts: newDeployedArray
-          })
-        }
+        console.log("deployedcharts", this.state.deployedCharts);
+        const newDeployedArray = this.state.deployedCharts.map((chart) => {
+          // console.log("chart: ", chart);
+          // console.log("chart name: ", chart.name);
+          if (chart.name === currentChart) {
+            console.log("entered here");
+            chart.history = versions;
+          }
+          return chart; /// <-- this was the problem
+        });
+        // // })
+        // console.log("versions: ", versions);
+        // console.log("deployedcharts2", this.state.deployedCharts);
+        // console.log("newDeployedArray: ", newDeployedArray);
+        return newDeployedArray;
       })
+      .then((newDeployedArray) => {
+        console.log("new deployed charts: ", newDeployedArray);
+        this.setState({
+          deployedCharts: newDeployedArray,
+        });
+      });
   }
-  
+
   // runs every time setState() is invoked
   componentDidUpdate() {
     // console.log(`userDataDir is ${this.state.userDataDir}`);
@@ -99,13 +108,15 @@ class MainContainer extends Component {
           //localChartsLoopCount: this.state.localChartsLoopCount += 1
         });
         return result;
-      })
+      });
       // .then((result) => {
       //   console.log('MY .then IS WORKING');
       //   console.log('deployed charts is ', this.state.deployedCharts);
       //   this.checkDeployedLocalCharts(result);
       // });
     }
+
+    // this.getHistory('wordpress');
   }
 
   // run upon successful rendering of the component
@@ -133,6 +144,9 @@ class MainContainer extends Component {
           deployedCharts={this.state.deployedCharts}
           getDeployedCharts={this.getHelmCharts}
         />
+        <Button onClick={() => this.getHistory("wordpress")}>
+          Get Helm History
+        </Button>
         {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
