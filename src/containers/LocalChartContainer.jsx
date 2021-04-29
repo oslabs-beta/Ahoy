@@ -11,7 +11,7 @@ class LocalChartContainer extends Component {
   }
 
   render(props) {
-    console.log("Props at LocalChartContainer: ", this.props);
+    // console.log("Props at LocalChartContainer: ", this.props);
 
     // userChartDir:
     //"/Users/joebigelow/Library/Application Support/ahoy/charts” <- mac

@@ -12,11 +12,11 @@ const InstalledChartList = (props) => {
 
   // Receive an output JS object of command 'helm list -o' as props
   // console.log(`InstalledList: props = ${props}`);
-  console.log("charts at InstalledChartList: ", props.deployedCharts);
+  // console.log("charts at InstalledChartList: ", props.deployedCharts);
   // indivisual item will be rendered by the child component Installed Chart by passing the element (object)
   let listData = [];
 
-  console.log("props at InstalledChartList: ", props);
+  // console.log("props at InstalledChartList: ", props);
 
   for (let i = 0; i < props.deployedCharts.length; i++) {
     listData.push(
