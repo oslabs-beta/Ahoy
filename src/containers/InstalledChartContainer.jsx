@@ -19,6 +19,7 @@ class InstalledChartContainer extends Component {
           deployedCharts={this.props.deployedCharts}
           getDeployedCharts={this.props.getDeployedCharts}
           getHistory={this.props.getHistory}
+          currentChartHistory = {this.props.currentChartHistory}
         />
       </div>        
     );
