@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-const path = require('path');
-const { ipcRenderer } = window.require('electron');
-import FSHelper from '../helpers/FileSystemHelper';
-import LocalChartContainer from './LocalChartContainer';
-import InstalledChartContainer from './InstalledChartContainer';
-import InstalledChartList from '../components/InstalledChartList';
-import getDeployedHelmCharts from '../components/getDeployedHelmCharts';
+import React, { Component } from "react";
+const path = require("path");
+const { ipcRenderer } = window.require("electron");
+import FSHelper from "../helpers/FileSystemHelper";
+import LocalChartContainer from "./LocalChartContainer";
+import InstalledChartContainer from "./InstalledChartContainer";
+import InstalledChartList from "../components/InstalledChartList";
+import getDeployedHelmCharts from "../helpers/getDeployedHelmCharts";
+import getHelmHistory from "../helpers/getHelmHistory";
+import { Button } from "semantic-ui-react";
+// import getHelmHistory from '../helpers/getHelmHistory';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -20,42 +23,76 @@ class MainContainer extends Component {
       // STDOUT data object(s) here?
     };
 
-    ipcRenderer.invoke('getPath', 'userData').then(result => {
-      this.setState({ userDataDir: result, userChartDir: path.join(result, 'charts') });
+    ipcRenderer.invoke("getPath", "userData").then((result) => {
+      this.setState({
+        userDataDir: result,
+        userChartDir: path.join(result, "charts"),
+      });
     });
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
+    this.getHistory = this.getHistory.bind(this);
   }
 
   checkDeployedLocalCharts(result) {
-    console.log('in checkDeployedLocalCharts');
+    console.log("in checkDeployedLocalCharts");
     let booleansArray = [];
     result.forEach((chart) => {
       let boolean = false;
       for (let i = 0; i < this.state.deployedCharts.length; i++) {
-        console.log(`Deployed chart name is ${this.state.deployedCharts[i].name}`);
+        console.log(
+          `Deployed chart name is ${this.state.deployedCharts[i].name}`
+        );
         console.log(`Local chart name is ${chart}`);
         if (this.state.deployedCharts[i].name === chart) boolean = true;
       }
       booleansArray.push(boolean);
-    })
+    });
     this.setState({ islocalChartDeployed: booleansArray });
   }
-
 
   getHelmCharts() {
     getDeployedHelmCharts()
       .then((result) => JSON.parse(result))
       .then((charts) => {
+        // console.log(`Deployed charts array looks like this: ${charts}`);
         this.setState({
           deployedCharts: charts,
         });
       });
   }
-  
+
+  getHistory(currentChart) {
+    getHelmHistory(currentChart)
+      .then((result) => JSON.parse(result))
+      .then((versions) => {
+        console.log("deployedcharts", this.state.deployedCharts);
+        const newDeployedArray = this.state.deployedCharts.map((chart) => {
+          // console.log("chart: ", chart);
+          // console.log("chart name: ", chart.name);
+          if (chart.name === currentChart) {
+            console.log("entered here");
+            chart.history = versions;
+          }
+          return chart; /// <-- this was the problem
+        });
+        // // })
+        // console.log("versions: ", versions);
+        // console.log("deployedcharts2", this.state.deployedCharts);
+        // console.log("newDeployedArray: ", newDeployedArray);
+        return newDeployedArray;
+      })
+      .then((newDeployedArray) => {
+        console.log("new deployed charts: ", newDeployedArray);
+        this.setState({
+          deployedCharts: newDeployedArray,
+        });
+      });
+  }
+
   // runs every time setState() is invoked
   componentDidUpdate() {
-    console.log(`userDataDir is ${this.state.userDataDir}`);
+    // console.log(`userDataDir is ${this.state.userDataDir}`);
     console.log("Main component Updated");
     // This use a helper to setState a list of local charts.
     //console.log(`MainContainer: componentDidMount: hello world`);
@@ -71,13 +108,15 @@ class MainContainer extends Component {
           //localChartsLoopCount: this.state.localChartsLoopCount += 1
         });
         return result;
-      })
+      });
       // .then((result) => {
       //   console.log('MY .then IS WORKING');
       //   console.log('deployed charts is ', this.state.deployedCharts);
       //   this.checkDeployedLocalCharts(result);
       // });
     }
+
+    // this.getHistory('wordpress');
   }
 
   // run upon successful rendering of the component
@@ -93,6 +132,7 @@ class MainContainer extends Component {
 
   render(props) {
     //cons ole.log('MainContainer: this.state.userChartDir = ' + this.state.userChartDir);
+
     return (
       <>
         <LocalChartContainer
@@ -104,6 +144,9 @@ class MainContainer extends Component {
           deployedCharts={this.state.deployedCharts}
           getDeployedCharts={this.getHelmCharts}
         />
+        <Button onClick={() => this.getHistory("wordpress")}>
+          Get Helm History
+        </Button>
         {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
