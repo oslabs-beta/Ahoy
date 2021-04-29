@@ -62,66 +62,6 @@ class MainContainer extends Component {
       });
   }
 
-  // deployedCharts: [{ name: 'kube-prometheus-stack', current: charts[0], revision: [revision1, revision2, revision3, etc]}
-
-  // [{“revision”:1,“updated”:“2021-04-27T21:23:29.859747-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.1”,“app_version”:“5.7.0”,“description”:“Install complete”},
-  // {“revision”:2,“updated”:“2021-04-27T21:30:36.948924-07:00",“status”:“superseded”,“chart”:“wordpress-10.10.3",“app_version”:“5.7.1",“description”:“Upgrade complete”},
-  // {“revision”:3,“updated”:“2021-04-27T21:52:02.555729-07:00”,“status”:“superseded”,“chart”:“wordpress-10.10.8”,“app_version”:“5.7.1”,“description”:“Upgrade complete”},
-  // {“revision”:4,“updated”:“2021-04-27T21:59:23.424204-07:00",“status”:“deployed”,“chart”:“wordpress-10.10.8",“app_version”:“5.7.1",“description”:“Upgrade complete”}]
-
-  // gets the current chart's history and populates the chart's history
-  // getHistory() {
-
-  //   let tempFcn = () => {
-  //   // loop through each chart in deployedCharts array
-  //   return this.state.deployedCharts.forEach( (chart, i) => {
-  //     console.log('History ChartObj: ', chart)
-  //     // invoke getHelmHistory
-  //     getHelmHistory(chart.name)
-  //     .then((result) => JSON.parse(result))
-  //     // .then(data => chart.history = data) // push results into history property on each deployedChart obj or new array
-  //     // .then(data => chart.history = data)
-  //     .then(data => this.setState({deployedCharts[i].history: data }))
-  //   })
-  // }
-  // let newCharts = tempFcn()
-  // console.log('history Array:', newCharts)
-
-  // tempFcn().then( x => console.log('TempArr?', x))
-
-  // setState with deployedChart or set the new array as the value
-  // console.log('Previous Charts: ', this.state.deployedCharts)
-
-  // console.log('Did we populate the history property? ', tempArr)
-  // this.setState({deployedCharts: tempArr })
-
-  // }
-
-  // getHistory() {
-  //   for (let i = 0; i < this.state.deployedCharts.length; i++) {
-  //     getHelmHistory(this.state.deployedCharts[i])
-  //       .then((result) => JSON.parse(result))
-  //       .then((versions) => {
-  //         let newDeployedArray = this.state.deployedCharts;
-  //         newDeployedArray[i].history = versions;
-  //       })
-  //   }
-
-  //   getHelmHistory(currentChart)
-  //     .then((result) => JSON.parse(result))
-  //     .then((versions) => {
-  //       for (let i = 0; i < this.state.deployedCharts.length; i++) {
-  //         let newDeployedArray = this.state.deployedCharts.map((chart) => {
-  //           chart.history = chart.name === currentChart ? versions : [];
-  //         });
-  //         console.log('new deployed charts: ', newDeployedArray)
-  //         this.setState({
-  //           deployedCharts: newDeployedArray
-  //         })
-  //       }
-  //     })
-  //   }
-
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
