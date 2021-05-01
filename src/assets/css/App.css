@@ -1,4 +1,11 @@
 /* Main CSS file */
+body {
+  padding: 30px;
+}
+
+.outer-container {
+  padding-top: 30px;
+}
 
 .dropdown-list {
   font-size: 12pt;
@@ -7,7 +14,7 @@
 }
 
 .button-right{
-  margin:10px 0;
+  float: right;
 }
 
 .ui.table {

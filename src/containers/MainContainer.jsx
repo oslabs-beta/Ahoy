@@ -10,6 +10,7 @@ import getHelmHistory from "../helpers/getHelmHistory";
 import { Button } from "semantic-ui-react";
 import launchDashBoard from "../helpers/launchMiniKubeDashBoard";
 // import getHelmHistory from '../helpers/getHelmHistory';
+import Version from '../components/Version';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class MainContainer extends Component {
       islocalChartDeployed: [],
       deployedCharts: [],
       localChartsLoopCount: 0,
+      currentChartHistory:[],
       // STDOUT data object(s) here?
     };
 
@@ -71,10 +73,17 @@ class MainContainer extends Component {
       });
   }
 
+  // Jin & Joe's original version
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
       .then((versions) => {
+        // can we also set state currentChartHistory here, so we can render that state as is-in InstalledChart.jsx line 111?
+        // console.log("versions", versions);
+        this.setState({
+          currentChartHistory: versions,
+        });
+        console.log("MainContainer.jsx line 86: currentChartHistory ", this.state.currentChartHistory )
         console.log("deployedcharts", this.state.deployedCharts);
         const newDeployedArray = this.state.deployedCharts.map((chart) => {
           // console.log("chart: ", chart);
@@ -98,6 +107,41 @@ class MainContainer extends Component {
         });
       });
   }
+
+
+  // getHistory(currentChart) {
+  //   getHelmHistory(currentChart)
+  //     .then((result) => JSON.parse(result))
+  //     .then((versions) => {
+  //       console.log("deployedcharts", this.state.deployedCharts);
+  //       const newDeployedArray = this.state.deployedCharts.map((chart) => {
+  //         // console.log("chart: ", chart);
+  //         // console.log("chart name: ", chart.name);
+  //         if (chart.name === currentChart) {
+  //           console.log("history get get here");
+  //           // chart.history = versions;
+  //           // let temp = JSON.parse(versions)
+  //           // chart.history = `<tr><td>${temp}</td></tr>`;
+  //           chart.history = <Version name = {versions} />
+  //           // console.log('chart.history :' , chart.history)
+  //         }
+  //         return chart; /// <-- this was the problem
+  //       });
+  //       return newDeployedArray;
+  //     })
+  //     .then((newDeployedArray) => {
+  //       console.log("new deployed charts: ", newDeployedArray);
+  //       this.setState({
+  //         deployedCharts: newDeployedArray,
+  //       });
+  //       return this.state.deployedCharts;
+  //     })
+  //     // .then((AppData) => {
+  //     //   console.log('now that history has value. lets render that cells');
+  //     //   console.log('what I get :' ,AppData)
+  //     // })
+  // }
+
 
   // runs every time setState() is invoked
   componentDidUpdate() {
@@ -155,10 +199,15 @@ class MainContainer extends Component {
         />
         <InstalledChartContainer
           deployedCharts={this.state.deployedCharts}
+          currentChartHistory = {this.state.currentChartHistory}
           getDeployedCharts={this.getHelmCharts}
+          getHistory={this.getHistory}
         />
-        
-
+        {/* this is for the testing */}
+        {/* <Button onClick={() => this.getHistory("yoko-wordpress")}>
+          Get Helm History
+        </Button> */}
+        {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
   }

@@ -14,10 +14,12 @@ class InstalledChartContainer extends Component {
     // console.log('Props at InstalledChartContainer: ', this.props)
 
     return(
-      <div>
+      <div className = 'outer-container'>
         <InstalledChartList 
           deployedCharts={this.props.deployedCharts}
           getDeployedCharts={this.props.getDeployedCharts}
+          getHistory={this.props.getHistory}
+          currentChartHistory = {this.props.currentChartHistory}
         />
       </div>        
     );
