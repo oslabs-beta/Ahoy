@@ -21,10 +21,10 @@ const LocalChart = (props) => {
   let button;
   const disabled = false;
   if (disabled) {
-    button = <Button disabled compact onClick={() => installHelmChart()}>Install</Button>;
+    button = <Button disabled className='button-right' size='tiny' compact onClick={() => installHelmChart()}>Install</Button>;
   }
   else {
-    button = <Button compact onClick={() => installHelmChart()}>Install</Button>;
+    button = <Button className='button-right' size='tiny' compact onClick={() => installHelmChart()}>Install</Button>;
   }
   // build the local chart component
   return (

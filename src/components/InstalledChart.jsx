@@ -2,6 +2,7 @@ import React from "react";
 import {useState, useEffect} from "react";
 import { Button, Table, Dropdown, Menu } from "semantic-ui-react";
 import Version from './Version';
+import moment from 'moment';
 // import { Table } from 'semantic-ui-react';
 // import {Dropdown} from 'semantic-ui-react';
 const util = require("util");
@@ -20,7 +21,7 @@ const InstalledChart = (props) => {
 
   for (let key in chart) {
     chartDetails.push(chart[key] + " ");
-    // console.log('chartDetails line 22 ' , chartDetails)
+    console.log('chartDetails line 24 ' , chartDetails)
   }
 
   const [historyClicked, setHistoryClicked] = useState(false);
@@ -101,12 +102,16 @@ const InstalledChart = (props) => {
               <Button
                     className="button-right"
                     onClick={ () =>{setHistoryClicked(true)} }
+                    size='tiny' 
+                    compact
                     >History
               </Button>
               
               <Button
                     className="button-right"
                     onClick={() => uninstallHelmChart()}
+                    size='tiny' 
+                    compact 
               >Uninstall
               </Button>
             </Table.Cell>
