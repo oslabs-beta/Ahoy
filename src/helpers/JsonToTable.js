@@ -40,7 +40,7 @@ const historyArray = [
     updated: '2021-04-22T17:20:18.424967-07:00',
     status: 'superseded',
     chart: 'wordpress-10.10.1',
-    app_version: '5.7.0',
+    appVersion: '5.7.0',
     description: 'Install complete'
   },
   {
@@ -48,7 +48,7 @@ const historyArray = [
     updated: '2021-04-22T19:29:13.963988-07:00',
     status: 'superseded',
     chart: 'wordpress-10.10.3',
-    app_version: '5.7.1',
+    appVersion: '5.7.1',
     description: 'Upgrade complete'
   },
   {
@@ -56,7 +56,7 @@ const historyArray = [
     updated: '2021-04-22T19:39:58.325477-07:00',
     status: 'superseded',
     chart: 'wordpress-10.10.7',
-    app_version: '5.7.1',
+    appVersion: '5.7.1',
     description: 'Upgrade complete'
   },
   {
@@ -64,7 +64,7 @@ const historyArray = [
     updated: '2021-04-22T19:40:50.430858-07:00',
     status: 'superseded',
     chart: 'wordpress-10.10.8',
-    app_version: '5.7.1',
+    appVersion: '5.7.1',
     description: 'Upgrade complete'
   },
   {
@@ -72,7 +72,7 @@ const historyArray = [
     updated: '2021-04-22T19:43:23.186163-07:00',
     status: 'superseded',
     chart: 'wordpress-10.10.7',
-    app_version: '5.7.1',
+    appVersion: '5.7.1',
     description: 'Rollback to 3'
   },
   {
@@ -80,7 +80,7 @@ const historyArray = [
     updated: '2021-04-22T19:44:30.018909-07:00',
     status: 'deployed',
     chart: 'wordpress-10.10.3',
-    app_version: '5.7.1',
+    appVersion: '5.7.1',
     description: 'Rollback to 2'
   }
 ]

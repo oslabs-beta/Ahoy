@@ -18,5 +18,11 @@ module.exports = {
     'react',
   ],
   rules: {
+    'linebreak-style': ['error', 'unix'],
+    indent: ['warn', 2],
+    'react/prop-types': 'off',
+    quotes: ['warn', 'single'],
+    semi: ['warn', 'always'],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
 };
