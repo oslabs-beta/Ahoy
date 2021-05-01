@@ -11,16 +11,17 @@ const LocalChartList = (props) => {
   // console.log('LocalCharts:', props.localCharts);
 
   const lcharts = [];
-  props.localCharts.forEach((item, i) => {
-  const dirPath = path.join(props.userChartDir, item.name);
-  lcharts.push(<LocalChart
-                  chart={item}
-                  id={i}
-                  key={i}
-                  dirPath={dirPath}
-                  getDeployedCharts={props.getDeployedCharts}
-                />)
-  })
+  const { localCharts } = props;
+  localCharts.forEach((item, i) => {
+    const dirPath = path.join(props.userChartDir, item.name);
+    lcharts.push(<LocalChart
+      chart={item}
+      id={i}
+      key={i}
+      dirPath={dirPath}
+      getDeployedCharts={props.getDeployedCharts}
+    />);
+  });
   return (
     <Table>
       <Table.Header>
@@ -30,7 +31,7 @@ const LocalChartList = (props) => {
       </Table.Header>
       <Table.Body>{lcharts}</Table.Body>
     </Table>
-  )
+  );
 };
 
 export default LocalChartList;
