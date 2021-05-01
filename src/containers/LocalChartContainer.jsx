@@ -18,7 +18,7 @@ class LocalChartContainer extends Component {
     // "C:\Users\Jin\AppData\Roaming\ahoy/charts" <- windows
 
     return (
-      <div>
+      <div className = 'outer-container'>
         <LocalChartList
           localCharts={this.props.localCharts}
           userChartDir={this.props.userChartDir}

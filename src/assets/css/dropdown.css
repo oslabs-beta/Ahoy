@@ -1,0 +1,20 @@
+.dropdown-list {
+  font-size: 12pt;
+  word-spacing: 12px;
+  word-wrap: normal;
+}
+
+.button-right{
+  margin:10px 0;
+}
+
+.borderless{
+  background-color: coral;
+  border:none;
+  border-width: 0;
+}
+
+/* .ui .table{
+  border:none;
+  border-width: 0;
+} */
