@@ -1,6 +1,6 @@
-import React from "react";
-import { Item, Table } from "semantic-ui-react";
-import InstalledChart from "../components/InstalledChart";
+import React from 'react';
+import { Item, Table } from 'semantic-ui-react';
+import InstalledChart from './InstalledChart';
 
 // console.log("InstalledChartList.jsx loaded");
 
@@ -13,20 +13,20 @@ const InstalledChartList = (props) => {
   // Receive an output JS object of command 'helm list -o' as props
   // console.log(`InstalledList: props = ${props}`);
   // console.log("charts at InstalledChartList: ", props.deployedCharts);
-  // indivisual item will be rendered by the child component Installed Chart by passing the element (object)
-  let listData = [];
-
+  // individual item will be rendered by the
+  // child component Installed Chart by passing the element (object)
+  const listData = [];
   // console.log("props at InstalledChartList: ", props);
 
   for (let i = 0; i < props.deployedCharts.length; i++) {
     listData.push(
       <InstalledChart
         key={`chart-${i}`}
-        chartItem={props.deployedCharts[i]}
+        chart={props.deployedCharts[i]}
         getDeployedCharts={props.getDeployedCharts}
         getHistory={props.getHistory}
-        currentChartHistory = {props.currentChartHistory}
-      />
+        currentChartHistory={props.currentChartHistory}
+      />,
     );
   }
   return (
