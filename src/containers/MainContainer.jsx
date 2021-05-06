@@ -32,6 +32,7 @@ class MainContainer extends Component {
 
     this.getHelmCharts = this.getHelmCharts.bind(this);
     this.getHistory = this.getHistory.bind(this);
+    this.toggleHistory = this.toggleHistory.bind(this);
     this.doHelmChartRollBack = this.doHelmChartRollBack.bind(this);
     // this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
   }
@@ -56,6 +57,21 @@ class MainContainer extends Component {
     }
   }
 
+  getHelmCharts() {
+    getDeployedHelmCharts()
+      .then((result) => JSON.parse(result))
+      .then((charts) => {
+        const deployedCharts = charts;
+        for (let i = 0; i < deployedCharts.length; i++) {
+          deployedCharts[i].history = [];
+          deployedCharts[i].historyClicked = false;
+        }
+        this.setState({
+          deployedCharts,
+        });
+      });
+  }
+
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
@@ -73,25 +89,33 @@ class MainContainer extends Component {
       });
   }
 
-  getHelmCharts() {
-    getDeployedHelmCharts()
-      .then((result) => JSON.parse(result))
-      .then((charts) => {
-        const deployedCharts = charts;
-        for (let i = 0; i < deployedCharts.length; i++) {
+  toggleHistory(chartName) {
+    const { deployedCharts } = this.state;
+    // const removedHistoryCharts = this.state.deployedCharts;
+    for (let i = 0; i < deployedCharts.length; i++) {
+      if (deployedCharts[i].name === chartName) {
+        if (deployedCharts[i].historyClicked === true) {
+          deployedCharts[i].historyClicked = false;
           deployedCharts[i].history = [];
+          this.setState({
+            deployedCharts,
+          });
+        } else {
+          deployedCharts[i].historyClicked = true;
+          this.setState({
+            deployedCharts,
+          });
+          this.getHistory(chartName);
         }
-        this.setState({
-          deployedCharts,
-        });
-      });
+      }
+    }
   }
 
   doHelmChartRollBack(release, version) {
     doHelmRollBack(release, version)
       .then((result) => console.log(result))
       .then(this.getHelmCharts())
-      .then('Successfully rolled back!')
+      .then('Successfully rolled back!');
   }
 
   // checkDeployedLocalCharts(result) {
@@ -128,7 +152,7 @@ class MainContainer extends Component {
         <InstalledChartContainer
           deployedCharts={deployedCharts}
           getDeployedCharts={this.getHelmCharts}
-          getHistory={this.getHistory}
+          toggleHistory={this.toggleHistory}
           doHelmChartRollBack={this.doHelmChartRollBack}
         />
         {/* this is for the testing */}

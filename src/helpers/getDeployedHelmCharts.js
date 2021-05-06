@@ -1,5 +1,3 @@
-import React from 'react';
-
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -9,7 +7,6 @@ const getDeployedHelmCharts = async () => {
     const { stdout } = await exec('helm list -o json');
     return stdout;
   } catch (stderr) {
-    console.error('stderr:', stderr);
     return stderr;
   }
 };

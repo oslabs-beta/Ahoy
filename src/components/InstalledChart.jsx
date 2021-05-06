@@ -1,19 +1,19 @@
 import React from 'react';
 
-import {
-  Button, Table,
-} from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import Version from './Version';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const InstalledChart = (props) => {
-  const { chart, history, getHistory, doHelmChartRollBack } = props;
   const {
-    appVersion, chartName, name, namespace, revision, updated,
+    chart, history, toggleHistory, doHelmChartRollBack,
+  } = props;
+  const {
+    app_version, chartName, name, namespace, revision, updated,
   } = chart;
-  const chartDetails = [name, namespace, revision, appVersion, chartName, updated].join(' ');
+  const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
 
   // const [historyClicked, setHistoryClicked] = useState(false);
 
@@ -52,11 +52,7 @@ const InstalledChart = (props) => {
               <Table.Cell>
                 <Button
                   className="button-right"
-                  onClick={() => {
-                    getHistory(chart.name);
-                    // if (historyClicked === false) setHistoryClicked(true);
-                    // else setHistoryClicked(false);
-                  }}
+                  onClick={() => toggleHistory(name)}
                   size="tiny"
                   compact
                 >
