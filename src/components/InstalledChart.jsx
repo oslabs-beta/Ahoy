@@ -1,15 +1,15 @@
 import React from 'react';
 
-import {
-  Button, Table,
-} from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import Version from './Version';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const InstalledChart = (props) => {
-  const { chart, history, toggleHistory } = props;
+  const {
+    chart, history, toggleHistory, doHelmChartRollBack,
+  } = props;
   const {
     app_version, chartName, name, namespace, revision, updated,
   } = chart;
@@ -32,7 +32,10 @@ const InstalledChart = (props) => {
   const versionsArray = [];
   for (let i = 0; i < history.length; i++) {
     versionsArray.push(<Version
+      key={`key-${i}`}
       details={history[i]}
+      release={name}
+      doHelmChartRollBack={doHelmChartRollBack}
     />);
   }
 

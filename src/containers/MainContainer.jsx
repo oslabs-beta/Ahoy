@@ -5,6 +5,7 @@ import LocalChartContainer from './LocalChartContainer';
 import InstalledChartContainer from './InstalledChartContainer';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
 import getHelmHistory from '../helpers/getHelmHistory';
+import doHelmRollBack from '../helpers/doHelmRollBack';
 
 const path = require('path');
 
@@ -32,6 +33,7 @@ class MainContainer extends Component {
     this.getHelmCharts = this.getHelmCharts.bind(this);
     this.getHistory = this.getHistory.bind(this);
     this.toggleHistory = this.toggleHistory.bind(this);
+    this.doHelmChartRollBack = this.doHelmChartRollBack.bind(this);
     // this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
   }
 
@@ -109,6 +111,13 @@ class MainContainer extends Component {
     }
   }
 
+  doHelmChartRollBack(release, version) {
+    doHelmRollBack(release, version)
+      .then((result) => console.log(result))
+      .then(this.getHelmCharts())
+      .then('Successfully rolled back!');
+  }
+
   // checkDeployedLocalCharts(result) {
   //   const { deployedCharts } = this.state;
   //   const booleansArray = [];
@@ -144,6 +153,7 @@ class MainContainer extends Component {
           deployedCharts={deployedCharts}
           getDeployedCharts={this.getHelmCharts}
           toggleHistory={this.toggleHistory}
+          doHelmChartRollBack={this.doHelmChartRollBack}
         />
         {/* this is for the testing */}
         {/* <Button onClick={() => this.getHistory("yoko-wordpress")}>
