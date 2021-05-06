@@ -6,7 +6,7 @@ import InstalledChart from './InstalledChart';
 
 const InstalledChartList = (props) => {
   const listData = [];
-  const { deployedCharts, getDeployedCharts, getHistory } = props;
+  const { deployedCharts, getDeployedCharts, getHistory, doHelmChartRollBack} = props;
   for (let i = 0; i < deployedCharts.length; i++) {
     const { history } = deployedCharts[i];
     listData.push(
@@ -15,6 +15,7 @@ const InstalledChartList = (props) => {
         chart={deployedCharts[i]}
         getDeployedCharts={getDeployedCharts}
         getHistory={getHistory}
+        doHelmChartRollBack={doHelmChartRollBack}
         history={history}
       />,
     );
