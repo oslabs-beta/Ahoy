@@ -9,7 +9,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const InstalledChart = (props) => {
-  const { chart, history } = props;
+  const { chart, history, getHistory, doHelmChartRollBack } = props;
   const {
     appVersion, chartName, name, namespace, revision, updated,
   } = chart;
@@ -32,7 +32,10 @@ const InstalledChart = (props) => {
   const versionsArray = [];
   for (let i = 0; i < history.length; i++) {
     versionsArray.push(<Version
+      key={`key-${i}`}
       details={history[i]}
+      release={name}
+      doHelmChartRollBack={doHelmChartRollBack}
     />);
   }
 
@@ -50,7 +53,7 @@ const InstalledChart = (props) => {
                 <Button
                   className="button-right"
                   onClick={() => {
-                    props.getHistory(chart.name);
+                    getHistory(chart.name);
                     // if (historyClicked === false) setHistoryClicked(true);
                     // else setHistoryClicked(false);
                   }}
