@@ -26,7 +26,8 @@ const LocalChartList = (props) => {
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell colSpan='2'>Available Charts</Table.HeaderCell>
+          <Table.HeaderCell colSpan='1'>Available Charts</Table.HeaderCell>
+          <Table.HeaderCell colSpan='2'>Install Name</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>{lcharts}</Table.Body>
