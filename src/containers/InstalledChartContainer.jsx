@@ -3,14 +3,14 @@ import InstalledChartList from '../components/InstalledChartList';
 
 const InstalledChartContainer = (props) => {
   const {
-    deployedCharts, getDeployedCharts, getHistory, currentChartHistory,
+    deployedCharts, getDeployedCharts, toggleHistory, currentChartHistory,
   } = props;
   return (
     <div className="outer-container">
       <InstalledChartList
         deployedCharts={deployedCharts}
         getDeployedCharts={getDeployedCharts}
-        getHistory={getHistory}
+        toggleHistory={toggleHistory}
         currentChartHistory={currentChartHistory}
       />
     </div>

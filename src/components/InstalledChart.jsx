@@ -9,11 +9,11 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const InstalledChart = (props) => {
-  const { chart, history } = props;
+  const { chart, history, toggleHistory } = props;
   const {
-    appVersion, chartName, name, namespace, revision, updated,
+    app_version, chartName, name, namespace, revision, updated,
   } = chart;
-  const chartDetails = [name, namespace, revision, appVersion, chartName, updated].join(' ');
+  const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
 
   // const [historyClicked, setHistoryClicked] = useState(false);
 
@@ -49,11 +49,7 @@ const InstalledChart = (props) => {
               <Table.Cell>
                 <Button
                   className="button-right"
-                  onClick={() => {
-                    props.getHistory(chart.name);
-                    // if (historyClicked === false) setHistoryClicked(true);
-                    // else setHistoryClicked(false);
-                  }}
+                  onClick={() => toggleHistory(name)}
                   size="tiny"
                   compact
                 >
