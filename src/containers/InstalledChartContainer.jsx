@@ -3,7 +3,7 @@ import InstalledChartList from '../components/InstalledChartList';
 
 const InstalledChartContainer = (props) => {
   const {
-    deployedCharts, getDeployedCharts, getHistory, currentChartHistory,
+    deployedCharts, getDeployedCharts, getHistory, doHelmChartRollBack, currentChartHistory,
   } = props;
   return (
     <div className="outer-container">
@@ -11,6 +11,7 @@ const InstalledChartContainer = (props) => {
         deployedCharts={deployedCharts}
         getDeployedCharts={getDeployedCharts}
         getHistory={getHistory}
+        doHelmChartRollBack={doHelmChartRollBack}
         currentChartHistory={currentChartHistory}
       />
     </div>
