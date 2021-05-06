@@ -12,7 +12,9 @@ function Version(props) {
       <Table.Cell>
         <List>
           <List.Item>
-            Version: {app_version}
+            Version:
+            {' '}
+            {app_version}
             <List.List>
               <List.Item icon="chart line" content={`Chart: ${chart}`} />
               <List.Item icon="sticky note outline" content={`Description: ${description}`} />
@@ -31,7 +33,7 @@ function Version(props) {
           compact
           // onClick={() => doHelmRollBack()}
         >
-          ERASE YOUR MISTAKE
+          ROLLBACK
         </Button>
       </Table.Cell>
     </Table.Row>
