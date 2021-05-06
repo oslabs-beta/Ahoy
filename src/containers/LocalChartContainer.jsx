@@ -18,7 +18,7 @@ class LocalChartContainer extends Component {
 
   render() {
     const {
-      localCharts, userChartDir, getDeployedCharts,
+      localCharts, userChartDir, getDeployedCharts, showAlert
     } = this.props;
 
     return (
@@ -28,6 +28,7 @@ class LocalChartContainer extends Component {
           userChartDir={userChartDir}
           getDeployedCharts={getDeployedCharts}
           handleOpenChartClick={this.handleOpenChartClick}
+          showAlert={showAlert}
         />
       </div>
     );

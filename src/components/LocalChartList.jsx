@@ -5,7 +5,7 @@ import LocalChart from './LocalChart';
 const path = require('path');
 
 const LocalChartList = (props) => {
-  const { localCharts, handleOpenChartClick, getDeployedCharts } = props;
+  const { localCharts, handleOpenChartClick, getDeployedCharts, showAlert } = props;
   const lcharts = [];
   localCharts.forEach((item, i) => {
     const dirPath = path.join(props.userChartDir, item.name);
@@ -16,6 +16,7 @@ const LocalChartList = (props) => {
       dirPath={dirPath}
       getDeployedCharts={getDeployedCharts}
       handleOpenChartClick={handleOpenChartClick}
+      showAlert={showAlert}
     />);
   });
   return (
