@@ -11,15 +11,22 @@ const LocalChart = (props) => {
   // console.log('props in LocalChart: ', props)
   // install helm chart. providing k8s secrets not yet attempted
   let chartInstName = ''; // chart name to install. default value is
+  const chartLabel = [];
   const installHelmChart = async () => {
     // const helmChart = props.chart.name;
     console.log('chartInstName:', chartInstName);
     const helmChart = sanitizeInput(chartInstName);
     console.log('helmChart:', helmChart);
-    // const directory = props.dirPath;
-    // console.log(`installing helm chart ${helmChart} at ${directory}`);
+    if (helmChart === 'invalid input') {
+      // do stuff
+      chartLabel.push(<Label pointing="left">Invalid input</Label>);
+      console.log('invalid input dayo');
+    } else {
+      const directory = props.dirPath;
+      console.log(`installing helm chart ${helmChart} at ${directory}`);
     // const { stdout, stderr } = await exec(`helm install ${helmChart} '${directory}'`);
     // props.getDeployedCharts();
+    }
   };
 
   function setName(e) {
@@ -37,8 +44,8 @@ const LocalChart = (props) => {
     if (regex.test(name)) {
       return name;
     }
-    console.log('invalid input');
-    Label.value = 'invalid input';
+    // Label.value = 'invalid input';
+    return 'invalid input';
   }
 
   let button;
@@ -58,7 +65,7 @@ const LocalChart = (props) => {
           placeholder={props.chart.name}
           onChange={setName}
         />
-        <Label pointing="left">Please enter the name</Label>
+        {chartLabel}
       </Table.Cell>
       <Table.Cell>{button}</Table.Cell>
     </Table.Row>
