@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Table, Button, Form, Input, Label,
+  Table, Button, Message, Input, Label,
 } from 'semantic-ui-react';
 
 const util = require('util');
@@ -65,7 +65,8 @@ const LocalChart = (props) => {
           placeholder={props.chart.name}
           onChange={setName}
         />
-        {chartLabel}
+        {/*chartLabel*/}
+        <Message hidden><Label pointing="left">Invalid input</Label></Message>
       </Table.Cell>
       <Table.Cell>{button}</Table.Cell>
     </Table.Row>
