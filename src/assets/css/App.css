@@ -18,6 +18,13 @@ body {
 .button-right{
   float: right;
 }
+.float-right {
+  float: right;
+}
+.button-cell {
+  float: right;
+  border: 1px solid red;
+}
 
 .ui.table {
   border-top-right-radius: 0;
