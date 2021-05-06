@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button, Table, Header, Modal, Icon,
+  Button, Table, Header, Modal, Icon, Accordion, List,
 } from 'semantic-ui-react';
 import Version from './Version';
 // import ConfirmationModal from './ConfirmationModal';
@@ -15,7 +15,27 @@ const InstalledChart = (props) => {
   const {
     app_version, chartName, name, namespace, revision, updated,
   } = chart;
-  const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
+
+  // const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
+  const chartDetails = [
+    {
+      key: 'detailKey',
+      title: name,
+      content: {
+        content: (
+          <div className="installed-chart-detail">
+            <List className="installed-chart-detail">
+              <List.Item content={`Namespace: ${namespace}`} />
+              <List.Item content={`Revision: ${revision}`} />
+              <List.Item content={`Current App Version: ${app_version}`} />
+              <List.Item content={`Last Updated: ${updated}`} />
+            </List>
+          </div>
+
+        ),
+      },
+    },
+  ];
 
   // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
@@ -44,7 +64,12 @@ const InstalledChart = (props) => {
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                {chartDetails}
+                {/* <Header size="small">
+                  {name}
+                </Header> */}
+
+                <Accordion panels={chartDetails} />
+
               </Table.Cell>
               <Table.Cell>
                 <Button
