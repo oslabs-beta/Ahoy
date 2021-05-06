@@ -11,6 +11,11 @@
     "url": "https://github.com/oslabs-beta/Ahoy-.git"
   },
   "homepage": "",
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": ["html"]
+  },
   "bugs": {
     "url": "https://github.com/oslabs-beta/Ahoy-/issues"
   },
@@ -30,7 +35,8 @@
     "postpackage": "electron-packager ./ --out=./builds",
     "package-mac": "electron-packager . Ahoy --overwrite --platform=darwin --arch=x64 --icon=src/assets/icons/mac/ahoyIcon.icns --prune=true --out=./builds",
     "package-win": "electron-packager . Ahoy --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/win/ahoyIcon.ico --prune=true --out=./builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ahoy\"",
-    "package-linux": "electron-packager . Ahoy --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/icons/png/ahoyIcon.png --prune=true --out=./builds"
+    "package-linux": "electron-packager . Ahoy --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/icons/png/ahoyIcon.png --prune=true --out=./builds",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.13.15",
@@ -60,6 +66,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
     "mini-css-extract-plugin": "^1.3.9",
     "postcss-import": "^14.0.0",
     "postcss-loader": "^5.1.0",
