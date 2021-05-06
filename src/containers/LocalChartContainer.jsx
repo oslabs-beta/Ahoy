@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-const util = require("util");
-import fs from "fs";
-import LocalChartList from "../components/LocalChartList";
+import React, { Component } from 'react';
+import LocalChartList from '../components/LocalChartList';
 
 class LocalChartContainer extends Component {
   constructor(props) {
     super(props);
+    this.handleChartOpenpathClick = this.handleChartOpenpathClick.bind(this);
+    this.openpath = this.openpath.bind(this);
+  }
 
-    // STDOUT data object(s) here?
+  handleChartOpenpathClick(e) {
+    console.log(e);
+  }
+
+  openpath(props) {
+
   }
 
   render(props) {
-    // console.log("Props at LocalChartContainer: ", this.props);
-
-    // userChartDir:
-    //"/Users/joebigelow/Library/Application Support/ahoy/charts” <- mac
-    // "C:\Users\Jin\AppData\Roaming\ahoy/charts" <- windows
-
     return (
-      <div className = 'outer-container'>
+      <div className='outer-container'>
         <LocalChartList
           localCharts={this.props.localCharts}
           userChartDir={this.props.userChartDir}

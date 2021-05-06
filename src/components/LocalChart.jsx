@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Table, Button, Form, Input, Label,
+  Table, Button, Icon, Input, Label,
 } from 'semantic-ui-react';
 
 const util = require('util');
@@ -41,12 +41,16 @@ const LocalChart = (props) => {
     Label.value = 'invalid input';
   }
 
-  let button;
+  // Prepare the Open chart button
+  let openChartButton = <Button icon="folder open icon" size="tiny" compact></Button>
+  
+  // Prepare the Install button
+  let installButton;
   const disabled = false;
   if (disabled) {
-    button = <Button disabled className="button-right" size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
+    installButton = <Button disabled size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
   } else {
-    button = <Button className="button-right" size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
+    installButton = <Button size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
   }
   // build the local chart component
   return (
@@ -60,7 +64,7 @@ const LocalChart = (props) => {
         />
         <Label pointing="left">Please enter the name</Label>
       </Table.Cell>
-      <Table.Cell>{button}</Table.Cell>
+      <Table.Cell><div className="float-right">{installButton} {openChartButton}</div></Table.Cell>
     </Table.Row>
   );
 };
