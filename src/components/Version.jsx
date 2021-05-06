@@ -1,8 +1,9 @@
 import React from 'react';
-import { Table, Button, List } from 'semantic-ui-react';
+import {
+  Table, Button, List, Icon,
+} from 'semantic-ui-react';
 
 function Version(props) {
-
   // destructure properties
   const {
     app_version, chart, description, revision, status, updated,
@@ -15,9 +16,17 @@ function Version(props) {
       <Table.Cell>
         <List>
           <List.Item>
-            <strong>Version:</strong>
-            {' '}
-            {app_version}
+            <div>
+              <strong>Version:</strong>
+              {app_version}
+              {status === 'deployed' ? <i> current</i>
+                : <Icon 
+                    name="undo" 
+                    link size="small" 
+                    color="orange"
+                    onClick={() => doHelmChartRollBack(release, revision)} 
+                />}
+            </div>
             <List.List>
               <List.Item icon="chart line" content={`Chart: ${chart}`} />
               <List.Item icon="sticky note outline" content={`Description: ${description}`} />
@@ -27,17 +36,6 @@ function Version(props) {
             </List.List>
           </List.Item>
         </List>
-
-      </Table.Cell>
-      <Table.Cell>
-        <Button
-          className="button-right"
-          size="tiny"
-          compact
-          onClick={() => doHelmChartRollBack(release, revision)}
-        >
-          ROLLBACK
-        </Button>
       </Table.Cell>
     </Table.Row>
   );
