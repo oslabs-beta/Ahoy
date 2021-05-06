@@ -1,50 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
   Button, Table,
 } from 'semantic-ui-react';
 import Version from './Version';
-// import { Table } from 'semantic-ui-react';
-// import {Dropdown} from 'semantic-ui-react';
+
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
-// console.log("InstalledChart.jsx loaded");
-
 const InstalledChart = (props) => {
-  // console.log("props at InstalledChart: ", props);
-
-  const { chart } = props;
-  const { currentChartHistory } = props;
-
-  // for (let key in chart) {
-  //   chartDetails.push(chart[key] + " ");
-  // }
-
+  const { chart, history } = props;
   const {
     appVersion, chartName, name, namespace, revision, updated,
   } = chart;
   const chartDetails = [name, namespace, revision, appVersion, chartName, updated].join(' ');
 
-  const [historyClicked, setHistoryClicked] = useState(false);
+  // const [historyClicked, setHistoryClicked] = useState(false);
 
-  useEffect(() => async () => {
-    await props.getHistory(chart.name);
-  },
-  [historyClicked]);
+  // useEffect(() => async () => {
+  //   await props.getHistory(chart.name);
+  // },
+  // [historyClicked]);
 
   // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
     const helmChart = chart.name;
-    const { stdout, stderr } = await exec(`helm uninstall ${helmChart}`);
+    await exec(`helm uninstall ${helmChart}`);
     props.getDeployedCharts();
   };
 
   const versionsArray = [];
-  for (let i = 0; i < currentChartHistory.length; i++) {
+  for (let i = 0; i < history.length; i++) {
     versionsArray.push(<Version
-      revision={currentChartHistory[i].revision}
-      name={currentChartHistory[i].chart}
+      revision={history[i].revision}
+      name={history[i].chart}
+      key={Math.random()}
     />);
   }
 
@@ -61,7 +51,11 @@ const InstalledChart = (props) => {
               <Table.Cell>
                 <Button
                   className="button-right"
-                  onClick={() => { setHistoryClicked(true); }}
+                  onClick={() => {
+                    props.getHistory(chart.name);
+                    // if (historyClicked === false) setHistoryClicked(true);
+                    // else setHistoryClicked(false);
+                  }}
                   size="tiny"
                   compact
                 >
