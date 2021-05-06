@@ -32,9 +32,7 @@ const InstalledChart = (props) => {
   const versionsArray = [];
   for (let i = 0; i < history.length; i++) {
     versionsArray.push(<Version
-      revision={history[i].revision}
-      name={history[i].chart}
-      key={Math.random()}
+      details={history[i]}
     />);
   }
 
