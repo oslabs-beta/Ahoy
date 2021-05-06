@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
+import path from 'path';
 import LocalChartList from '../components/LocalChartList';
+
+const { shell } = require('electron');
 
 class LocalChartContainer extends Component {
   constructor(props) {
     super(props);
-    this.handleChartOpenpathClick = this.handleChartOpenpathClick.bind(this);
-    this.openpath = this.openpath.bind(this);
+    this.handleOpenChartClick = this.handleOpenChartClick.bind(this);
   }
 
-  handleChartOpenpathClick(e) {
-    console.log(e);
+  handleOpenChartClick(chartName) {
+    const { userChartDir } = this.props;
+    const pathToOpen = path.join(userChartDir, chartName);
+    shell.openPath(pathToOpen);
   }
 
-  openpath(props) {
+  render() {
+    const {
+      localCharts, userChartDir, getDeployedCharts,
+    } = this.props;
 
-  }
-
-  render(props) {
     return (
-      <div className='outer-container'>
+      <div className="outer-container">
         <LocalChartList
-          localCharts={this.props.localCharts}
-          userChartDir={this.props.userChartDir}
-          getDeployedCharts={this.props.getDeployedCharts}
+          localCharts={localCharts}
+          userChartDir={userChartDir}
+          getDeployedCharts={getDeployedCharts}
+          handleOpenChartClick={this.handleOpenChartClick}
         />
       </div>
     );
