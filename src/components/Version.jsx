@@ -20,12 +20,15 @@ function Version(props) {
               <strong>Version:</strong>
               {app_version}
               {status === 'deployed' ? <i> current</i>
-                : <Icon 
-                    name="undo" 
-                    link size="small" 
+                : (
+                  <Icon
+                    name="undo"
+                    link
+                    size="small"
                     color="orange"
-                    onClick={() => doHelmChartRollBack(release, revision)} 
-                />}
+                    onClick={() => doHelmChartRollBack(release, revision)}
+                  />
+                )}
             </div>
             <List.List>
               <List.Item icon="chart line" content={`Chart: ${chart}`} />

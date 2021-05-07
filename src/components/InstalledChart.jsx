@@ -1,7 +1,9 @@
 import React from 'react';
-
-import { Button, Table } from 'semantic-ui-react';
+import {
+  Button, Table, Header, Modal, Icon, Accordion, List,
+} from 'semantic-ui-react';
 import Version from './Version';
+// import ConfirmationModal from './ConfirmationModal';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
@@ -13,14 +15,27 @@ const InstalledChart = (props) => {
   const {
     app_version, chartName, name, namespace, revision, updated,
   } = chart;
-  const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
 
-  // const [historyClicked, setHistoryClicked] = useState(false);
+  // const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
+  const chartDetails = [
+    {
+      key: 'detailKey',
+      title: name,
+      content: {
+        content: (
+          <div className="installed-chart-detail">
+            <List className="installed-chart-detail">
+              <List.Item content={`Namespace: ${namespace}`} />
+              <List.Item content={`Revision: ${revision}`} />
+              <List.Item content={`Current App Version: ${app_version}`} />
+              <List.Item content={`Last Updated: ${updated}`} />
+            </List>
+          </div>
 
-  // useEffect(() => async () => {
-  //   await props.getHistory(chart.name);
-  // },
-  // [historyClicked]);
+        ),
+      },
+    },
+  ];
 
   // uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
@@ -39,6 +54,8 @@ const InstalledChart = (props) => {
     />);
   }
 
+  // React hook for uninstall confirmation modal
+  const [open, setOpen] = React.useState(false);
   // build the installed chart component
   return (
     <Table.Row>
@@ -47,7 +64,12 @@ const InstalledChart = (props) => {
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                {chartDetails}
+                {/* <Header size="small">
+                  {name}
+                </Header> */}
+
+                <Accordion panels={chartDetails} />
+
               </Table.Cell>
               <Table.Cell>
                 <Button
@@ -58,14 +80,54 @@ const InstalledChart = (props) => {
                 >
                   History
                 </Button>
-                <Button
+                {/* <Button
                   className="button-right"
                   onClick={() => uninstallHelmChart()}
                   size="tiny"
                   compact
                 >
                   Uninstall
-                </Button>
+                </Button> */}
+
+                <Modal
+                  closeIcon
+                  open={open}
+                  trigger={(
+                    <Button
+                      className="button-right"
+                      size="tiny"
+                      compact
+                    >
+                      Uninstall
+                    </Button>
+                  )}
+                  onClose={() => setOpen(false)}
+                  onOpen={() => setOpen(true)}
+                >
+                  <Header icon="archive" content="Uninstall Helm Chart?" />
+                  <Modal.Content>
+                    <p>
+                      {`Uninstall ${name}? This will spin down all associated k8s clusters.`}
+                    </p>
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button color="red" onClick={() => setOpen(false)}>
+                      <Icon name="remove" />
+                      No
+                    </Button>
+                    <Button
+                      color="green"
+                      onClick={() => {
+                        uninstallHelmChart();
+                        setOpen(false);
+                      }}
+                    >
+                      <Icon name="checkmark" />
+                      Yes
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+
               </Table.Cell>
             </Table.Row>
             {versionsArray}
