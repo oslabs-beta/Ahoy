@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button, Table, Header, Modal, Icon, Accordion, List,
+  Button, Table, Header, Modal, Icon, Accordion, List, Popup,
 } from 'semantic-ui-react';
 import Version from './Version';
 // import ConfirmationModal from './ConfirmationModal';
@@ -23,15 +23,14 @@ const InstalledChart = (props) => {
       title: name,
       content: {
         content: (
-          <div className="installed-chart-detail">
-            <List className="installed-chart-detail">
+          <div>
+            <List>
               <List.Item content={`Namespace: ${namespace}`} />
               <List.Item content={`Revision: ${revision}`} />
               <List.Item content={`Current App Version: ${app_version}`} />
               <List.Item content={`Last Updated: ${updated}`} />
             </List>
           </div>
-
         ),
       },
     },
@@ -59,7 +58,7 @@ const InstalledChart = (props) => {
   // build the installed chart component
   return (
     <Table.Row>
-      <Table.Cell className="installed-chart-cell">
+      <Table.Cell>
         <Table className="borderless">
           <Table.Body>
             <Table.Row>
@@ -89,7 +88,7 @@ const InstalledChart = (props) => {
                   Uninstall
                 </Button> */}
 
-                <Modal
+                {/* <Modal
                   closeIcon
                   open={open}
                   trigger={(
@@ -126,7 +125,31 @@ const InstalledChart = (props) => {
                       Yes
                     </Button>
                   </Modal.Actions>
-                </Modal>
+                </Modal> */}
+
+                <Popup
+                  trigger={(
+                    <Button
+                      className="button-right"
+                      size="tiny"
+                      compact
+                    >
+                      Uninstall
+                    </Button>
+                  )}
+
+                  content={(
+                    <Button
+                      color="red"
+                      content="srsly?"
+                      onClick={() => {
+                        uninstallHelmChart();
+                      }}
+                    />
+                  )}
+                  on="click"
+                  position="top right"
+                />
 
               </Table.Cell>
             </Table.Row>
