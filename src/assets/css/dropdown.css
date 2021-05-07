@@ -14,6 +14,10 @@
   border-width: 0;
 }
 
+.installed-chart-detail{
+  border: 2px solid black;
+}
+
 /* .ui .table{
   border:none;
   border-width: 0;

@@ -19,7 +19,6 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       deployedCharts: [],
-      showAlert: [],
       // islocalChartDeployed: [],
       // localChartsLoopCount: 0,
     };
@@ -148,7 +147,6 @@ class MainContainer extends Component {
           userChartDir={userChartDir}
           localCharts={localCharts}
           getDeployedCharts={this.getHelmCharts}
-          showAlert={showAlert}
         />
         <InstalledChartContainer
           deployedCharts={deployedCharts}
