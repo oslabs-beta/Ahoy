@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Table, Button, Input, Label,
 } from 'semantic-ui-react';
@@ -9,6 +9,8 @@ const exec = util.promisify(require('child_process').exec);
 
 const LocalChart = (props) => {
   const { chart, handleOpenChartClick, showAlert } = props;
+
+  const [alertInvalidInput, setAlertInvalidInput] = useState('');
 
   // install helm chart. providing k8s secrets not yet attempted
   let chartInstName = ''; // chart name to install. default value is
@@ -39,16 +41,17 @@ const LocalChart = (props) => {
     console.log('helmChart:', helmChart);
     // if the input is invalid, show the alert on the label
     if (helmChart === 'invalid input') {
-      // showAlert.push(<Label pointing="left">Invalid input</Label>);
-      showAlert.push(<MessageLabel content="Invalid Input" />);
+      setAlertInvalidInput(<Label pointing="left">Invalid input</Label>);
+      // showAlert.push(<MessageLabel content="Invalid Input" />);
       console.log(showAlert);
       console.log('invalid input boo');
     } else {
     // if the input is valid, install the chart
       const directory = props.dirPath;
       console.log(`installing helm chart ${helmChart} at ${directory}`);
-    // const { stdout, stderr } = await exec(`helm install ${helmChart} '${directory}'`);
-    // props.getDeployedCharts();
+      setAlertInvalidInput('');
+      const { stdout, stderr } = await exec(`helm install ${helmChart} '${directory}'`);
+      props.getDeployedCharts();
     }
   };
 
@@ -75,7 +78,7 @@ const LocalChart = (props) => {
           onChange={setName}
         />
         {showAlert}
-        {/* <Label>Sample Label</Label> */}
+        {alertInvalidInput}
       </Table.Cell>
       <Table.Cell>
         <div className="float-right">
