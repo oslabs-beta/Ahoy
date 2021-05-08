@@ -4,15 +4,13 @@ import {
 } from 'semantic-ui-react';
 
 function Version(props) {
-  // destructure properties
+  const { details, release, doHelmChartRollBack } = props;
   const {
     app_version, chart, description, revision, status, updated,
-  } = props.details;
-
-  const { release, doHelmChartRollBack } = props;
+  } = details;
 
   return (
-    <Table.Row className="installed-chart-detail">
+    <Table.Row className="installed-chart-detail" data-testid="VersionRow">
       <Table.Cell>
         <List>
           <List.Item>

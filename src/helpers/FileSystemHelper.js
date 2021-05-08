@@ -3,13 +3,6 @@ import fs from 'fs';
 
 const path = require('path');
 
-const verifyLocalChartDir = function (localChartPath) {
-  if (!fs.existsSync(localChartPath)) {
-    console.log(`Local chart dir does not exist. Creating it. ${localChartPath}`);
-    fs.mkdirSync(localChartPath);
-  }
-};
-
 const getLocalCharts = function (path) {
   return new Promise((resolve, reject) => {
     // Verify charts folder
@@ -29,6 +22,14 @@ const getLocalCharts = function (path) {
       }
     });
   });
+};
+
+const verifyLocalChartDir = function (localChartPath) {
+  // console.log(`getLocalCharts: verifyLocalChartDir: checking ${localChartPath}`);
+  if (!fs.existsSync(localChartPath)) {
+    console.log(`Local chart dir does not exist. Creating it. ${localChartPath}`);
+    fs.mkdirSync(localChartPath);
+  }
 };
 
 // This is work in progress.
