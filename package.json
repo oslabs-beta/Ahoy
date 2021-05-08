@@ -1,5 +1,6 @@
 {
   "name": "ahoy",
+  "productName": "Ahoy",
   "version": "0.0.1",
   "description": "a gui for helm.sh",
   "main": "main.js",
