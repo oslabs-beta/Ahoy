@@ -14,7 +14,9 @@
   "jest": {
     "verbose": true,
     "collectCoverage": true,
-    "coverageReporters": ["html"]
+    "coverageReporters": ["text"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "collectCoverageFrom": ["src/**/*.js", "!src/index.js"]
   },
   "bugs": {
     "url": "https://github.com/oslabs-beta/Ahoy-/issues"
@@ -46,7 +48,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3"
+    "semantic-ui-react": "^2.0.3",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -58,6 +61,9 @@
     "electron": "^12.0.0",
     "electron-devtools-installer": "^3.1.1",
     "electron-packager": "^15.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.25.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
