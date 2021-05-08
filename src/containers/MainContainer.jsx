@@ -94,19 +94,16 @@ class MainContainer extends Component {
     // const removedHistoryCharts = this.state.deployedCharts;
     for (let i = 0; i < deployedCharts.length; i++) {
       if (deployedCharts[i].name === chartName) {
-        if (deployedCharts[i].historyClicked === true) {
+        if (deployedCharts[i].historyClicked) {
           deployedCharts[i].historyClicked = false;
           deployedCharts[i].history = [];
-          this.setState({
-            deployedCharts,
-          });
         } else {
           deployedCharts[i].historyClicked = true;
-          this.setState({
-            deployedCharts,
-          });
           this.getHistory(chartName);
         }
+        this.setState({
+          deployedCharts,
+        });
       }
     }
   }
