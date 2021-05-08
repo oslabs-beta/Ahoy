@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Table, Button, Input, Label,
 } from 'semantic-ui-react';
@@ -9,18 +9,10 @@ const exec = util.promisify(require('child_process').exec);
 const LocalChart = (props) => {
   const { chart, handleOpenChartClick } = props;
 
+  const [alertInvalidInput, setAlertInvalidInput] = useState('');
+
   // install helm chart. providing k8s secrets not yet attempted
   let chartInstName = ''; // chart name to install. default value is
-  const installHelmChart = async () => {
-    // const helmChart = props.chart.name;
-    console.log('chartInstName:', chartInstName);
-    const helmChart = sanitizeInput(chartInstName);
-    console.log('helmChart:', helmChart);
-    const directory = props.dirPath;
-    console.log(`installing helm chart ${helmChart} at ${directory}`);
-    const { stdout, stderr } = await exec(`helm install ${helmChart} ${directory}`);
-    props.getDeployedCharts();
-  };
 
   function setName(e) {
     // console.log(e.target.value);
@@ -37,9 +29,30 @@ const LocalChart = (props) => {
     if (regex.test(name)) {
       return name;
     }
-    console.log('invalid input');
-    Label.value = 'invalid input';
+    // Label.value = 'invalid input';
+    return 'invalid input';
   }
+
+  const installHelmChart = async () => {
+    // const helmChart = props.chart.name;
+    // console.log('chartInstName:', chartInstName);
+    const helmChart = sanitizeInput(chartInstName);
+    // console.log('helmChart:', helmChart);
+    // if the input is invalid, show the alert on the label
+    if (helmChart === 'invalid input') {
+      setAlertInvalidInput(<Label pointing="left">Invalid input</Label>);
+      // showAlert.push(<MessageLabel content="Invalid Input" />);
+      // console.log(showAlert);
+      // console.log('invalid input boo');
+    } else {
+    // if the input is valid, install the chart
+      const directory = props.dirPath;
+      // console.log(`installing helm chart ${helmChart} at ${directory}`);
+      setAlertInvalidInput('');
+      const { stdout, stderr } = await exec(`helm install ${helmChart} '${directory}'`);
+      props.getDeployedCharts();
+    }
+  };
 
   // Prepare the Open Chart button
   const openChartButton = <Button icon="folder open" size="tiny" compact onClick={() => handleOpenChartClick(chart.name)} />;
@@ -63,7 +76,7 @@ const LocalChart = (props) => {
           placeholder={chart.name}
           onChange={setName}
         />
-        <Label pointing="left">Please enter the name</Label>
+        {alertInvalidInput}
       </Table.Cell>
       <Table.Cell>
         <div className="float-right">

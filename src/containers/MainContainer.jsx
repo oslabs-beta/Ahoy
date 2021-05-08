@@ -19,7 +19,6 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       deployedCharts: [],
-      showModal: false,
       // islocalChartDeployed: [],
       // localChartsLoopCount: 0,
     };
@@ -135,13 +134,12 @@ class MainContainer extends Component {
   // }
 
   render() {
-    const { userChartDir, localCharts, deployedCharts } = this.state;
+    const { userChartDir, localCharts, deployedCharts, showAlert } = this.state;
     return (
       <>
         <Button onClick={() => this.launchMiniKubeDashBoard()}>
           Launch Dashboard
         </Button>
-
         <LocalChartContainer
           userChartDir={userChartDir}
           localCharts={localCharts}
