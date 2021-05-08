@@ -25,10 +25,10 @@ const InstalledChart = (props) => {
         content: (
           <div>
             <List>
-              <List.Item content={`Namespace: ${namespace}`} />
-              <List.Item content={`Revision: ${revision}`} />
-              <List.Item content={`Current App Version: ${app_version}`} />
-              <List.Item content={`Last Updated: ${updated}`} />
+              <List.Item icon="clone" content={`Namespace: ${namespace}`} />
+              <List.Item icon="at" content={`Current App Version: ${app_version}`} />
+              <List.Item icon="sort numeric down" content={`Revision: ${revision}`} />
+              <List.Item icon="clock outline" content={`Last Updated: ${updated}`} />
             </List>
           </div>
         ),
@@ -45,16 +45,16 @@ const InstalledChart = (props) => {
 
   const versionsArray = [];
   for (let i = 0; i < history.length; i++) {
-    versionsArray.push(<Version
-      key={`key-${i}`}
-      details={history[i]}
-      release={name}
-      doHelmChartRollBack={doHelmChartRollBack}
-    />);
+    versionsArray.push(
+      <Version
+        key={`key-${i}`}
+        details={history[i]}
+        release={name}
+        doHelmChartRollBack={doHelmChartRollBack}
+      />,
+    );
   }
 
-  // React hook for uninstall confirmation modal
-  const [open, setOpen] = React.useState(false);
   // build the installed chart component
   return (
     <Table.Row>
@@ -63,12 +63,7 @@ const InstalledChart = (props) => {
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                {/* <Header size="small">
-                  {name}
-                </Header> */}
-
                 <Accordion panels={chartDetails} />
-
               </Table.Cell>
               <Table.Cell>
                 <Button
@@ -79,53 +74,6 @@ const InstalledChart = (props) => {
                 >
                   History
                 </Button>
-                {/* <Button
-                  className="button-right"
-                  onClick={() => uninstallHelmChart()}
-                  size="tiny"
-                  compact
-                >
-                  Uninstall
-                </Button> */}
-
-                {/* <Modal
-                  closeIcon
-                  open={open}
-                  trigger={(
-                    <Button
-                      className="button-right"
-                      size="tiny"
-                      compact
-                    >
-                      Uninstall
-                    </Button>
-                  )}
-                  onClose={() => setOpen(false)}
-                  onOpen={() => setOpen(true)}
-                >
-                  <Header icon="archive" content="Uninstall Helm Chart?" />
-                  <Modal.Content>
-                    <p>
-                      {`Uninstall ${name}? This will spin down all associated k8s clusters.`}
-                    </p>
-                  </Modal.Content>
-                  <Modal.Actions>
-                    <Button color="red" onClick={() => setOpen(false)}>
-                      <Icon name="remove" />
-                      No
-                    </Button>
-                    <Button
-                      color="green"
-                      onClick={() => {
-                        uninstallHelmChart();
-                        setOpen(false);
-                      }}
-                    >
-                      <Icon name="checkmark" />
-                      Yes
-                    </Button>
-                  </Modal.Actions>
-                </Modal> */}
 
                 <Popup
                   trigger={(
@@ -141,7 +89,7 @@ const InstalledChart = (props) => {
                   content={(
                     <Button
                       color="red"
-                      content="srsly?"
+                      content="Confirm Uninstall"
                       onClick={() => {
                         uninstallHelmChart();
                       }}
@@ -150,10 +98,10 @@ const InstalledChart = (props) => {
                   on="click"
                   position="top right"
                 />
-
               </Table.Cell>
             </Table.Row>
             {versionsArray}
+            
           </Table.Body>
         </Table>
       </Table.Cell>
