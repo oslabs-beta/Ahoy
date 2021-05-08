@@ -11,11 +11,24 @@ import Version from '../src/components/Version';
 configure({ adapter: new Adapter() });
 
 describe('React unit tests', () => {
+  // let container = null;
+
+  // beforeEach(() => {
+  //   container = document.createElement('div');
+  //   document.body.appendChild(container);
+  // })
+
+  // afterEach(() => {
+  //   unmountComponentAtNode(container);
+  //   container.remove();
+  //   container = null;
+  // })
+
   describe('Version', () => {
     /* What do I want to test?
 
-    - Renders a table row
-    - Renders a single cell in the row
+    ✓ Renders a table row
+    ✓ Renders a single cell in the row
     - Renders a list
     - Renders rollback icon button that runs the doHelmChartRollback function
     - Renders a list of 5 items
@@ -24,8 +37,6 @@ describe('React unit tests', () => {
     */
 
     let wrapper;
-
-    const mockFunc = jest.fn(() => 5 + 5);
 
     const props = {
       details: {
@@ -40,13 +51,23 @@ describe('React unit tests', () => {
       doHelmChartRollBack: jest.fn(),
     };
 
+    const { details, release, doHelmChartRollBack } = props;
+
     beforeAll(() => {
-      wrapper = shallow(<Version {...props} />);
+      wrapper = shallow(<Version
+        key={1}
+        details={details}
+        release={release}
+        doHelmChartRollBack={doHelmChartRollBack}
+      />);
     });
 
     it('Generates a Semantic UI Table Row', () => {
-      const newTableRow = document.querySelector('[data-testid="VersionRow"]');
-      expect(wrapper.find(newTableRow)).to.have.lengthOf(1);
+      expect(wrapper.find('[data-testid="VersionRow"]')).toHaveLength(1);
+    });
+
+    it('Generates a single cell in the table', () => {
+      expect(wrapper.find('[data-testid="tableCell"]')).toHaveLength(1);
     });
   });
 });

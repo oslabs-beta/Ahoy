@@ -11,7 +11,7 @@ function Version(props) {
 
   return (
     <Table.Row className="installed-chart-detail" data-testid="VersionRow">
-      <Table.Cell>
+      <Table.Cell data-testid="tableCell">
         <List>
           <List.Item>
             <div className="installed-chart-detail">
