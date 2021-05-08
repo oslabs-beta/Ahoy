@@ -7,6 +7,7 @@ body {
 
 .outer-container {
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .dropdown-list {
@@ -27,7 +28,9 @@ body {
 }
 
 .installed-chart-detail{
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  background-color:#e0e4e786;
+  padding: 10px !important;
 }
 
 
@@ -46,10 +49,13 @@ td.installed-chart-cell{
   margin: 0;
   border:none;
   border-width: 0;
+  /* background-color:rgb(245, 240, 235) */
 }
 
-.ui.table.borderless tbody tr.history td{
-  border-top: 1px solid #cfcfcf;
+
+.ui.table.borderless tr td{
+  border-top: none;
+  /* border-top: 1px solid #cfcfcf; */
   /*border-bottom: 1px solid #cfcfcf; */
 }
 
