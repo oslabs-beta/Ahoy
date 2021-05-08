@@ -1,10 +1,11 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = path.resolve(__dirname, 'src')
+// Any directories you will be adding code/files into,
+//   need to be added to this array so webpack will pick them up
+const defaultInclude = path.resolve(__dirname, 'src');
 
 module.exports = {
   module: {
@@ -14,47 +15,47 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
         ],
         include: [
           defaultInclude,
-          /node_modules/
-        ]
+          /node_modules/,
+        ],
       },
       {
         test: /\.jsx?$/,
         use: [{ loader: 'babel-loader' }],
-        include: defaultInclude
+        include: defaultInclude,
       },
       {
         test: /\.(jpe?g|png|gif)$/,
         use: [{ loader: 'file-loader?name=img/[name]__[hash:base64:5].[ext]' }],
         include: [
           defaultInclude,
-          /node_modules/
-        ]
+          /node_modules/,
+        ],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         use: [{ loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }],
         include: [
           defaultInclude,
-          /node_modules/
-        ]
-      }
-    ]
+          /node_modules/,
+        ],
+      },
+    ],
   },
   target: 'electron-renderer',
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({ title: 'Ahoy!' }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: 'bundle.css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[id].css',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     // new MinifyPlugin()
   ],
@@ -62,12 +63,12 @@ module.exports = {
     colors: true,
     children: false,
     chunks: false,
-    modules: false
+    modules: false,
   },
   optimization: {
-    minimize: true
+    minimize: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-}
+};
