@@ -19,6 +19,7 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       deployedCharts: [],
+      showModal: false,
       // islocalChartDeployed: [],
       // localChartsLoopCount: 0,
     };

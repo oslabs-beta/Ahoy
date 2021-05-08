@@ -26,6 +26,11 @@ body {
   border: 1px solid red;
 }
 
+.installed-chart-detail{
+  border: 2px solid black;
+}
+
+
 .ui.table {
   border-top-right-radius: 0;
   border-top-left-radius: 0;

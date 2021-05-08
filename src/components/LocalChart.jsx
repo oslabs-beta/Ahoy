@@ -16,10 +16,10 @@ const LocalChart = (props) => {
     console.log('chartInstName:', chartInstName);
     const helmChart = sanitizeInput(chartInstName);
     console.log('helmChart:', helmChart);
-    // const directory = props.dirPath;
-    // console.log(`installing helm chart ${helmChart} at ${directory}`);
-    // const { stdout, stderr } = await exec(`helm install ${helmChart} '${directory}'`);
-    // props.getDeployedCharts();
+    const directory = props.dirPath;
+    console.log(`installing helm chart ${helmChart} at ${directory}`);
+    const { stdout, stderr } = await exec(`helm install ${helmChart} ${directory}`);
+    props.getDeployedCharts();
   };
 
   function setName(e) {
