@@ -17,7 +17,7 @@ describe('React unit tests', () => {
     ✓ Renders a table row
     ✓ Renders a single cell in the row
     ✓ Renders a list
-    - Renders rollback icon button that runs the doHelmChartRollback function
+    ✓ Renders rollback icon button that runs the doHelmChartRollback function
     - Renders a list of 5 items
     - Renders content in each of those items
 
@@ -53,8 +53,8 @@ describe('React unit tests', () => {
       expect(wrapper.find('[data-testid="tableCell"]')).toHaveLength(1);
     });
 
-    it('Generates two lists', () => {
-      expect(wrapper.find('[data-testid="list"]')).toHaveLength(2);
+    it('Generates a primary list', () => {
+      expect(wrapper.find('[data-testid="mainList"]')).toHaveLength(1);
     });
 
     describe('Rollback icon', () => {
@@ -65,6 +65,14 @@ describe('React unit tests', () => {
       it('Calls function when clicked', () => {
         wrapper.find('[name="undo"]').simulate('click');
         expect(doHelmChartRollBack).toHaveBeenCalled();
+      });
+    });
+
+    describe('Details list', () => {
+      it('Renders a list with 5 items', () => {
+        const subList = wrapper.find('[data-testid="subList"]');
+        expect(subList).toHaveLength(1);
+        expect(subList.children()).toHaveLength(5);
       });
     });
   });
