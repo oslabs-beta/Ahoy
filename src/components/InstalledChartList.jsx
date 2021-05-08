@@ -23,9 +23,9 @@ const InstalledChartList = (props) => {
     );
   }
   return (
-    <Table >
+    <Table>
       <Table.Header>
-        <Table.Row >
+        <Table.Row>
           <Table.HeaderCell colSpan="2">Installed Charts</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
