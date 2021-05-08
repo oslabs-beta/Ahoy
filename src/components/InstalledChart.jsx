@@ -67,6 +67,7 @@ const InstalledChart = (props) => {
               </Table.Cell>
               <Table.Cell>
                 <Button
+                  id="historyBtn"
                   className="button-right"
                   onClick={() => toggleHistory(name)}
                   size="tiny"
@@ -78,6 +79,7 @@ const InstalledChart = (props) => {
                 <Popup
                   trigger={(
                     <Button
+                      id="uninstallBtn"
                       className="button-right"
                       size="tiny"
                       compact
@@ -88,6 +90,7 @@ const InstalledChart = (props) => {
 
                   content={(
                     <Button
+                      id="uninstallBtnConfirm"
                       color="red"
                       content="Confirm Uninstall"
                       onClick={() => {
