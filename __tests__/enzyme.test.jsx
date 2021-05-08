@@ -69,5 +69,9 @@ describe('React unit tests', () => {
     it('Generates a single cell in the table', () => {
       expect(wrapper.find('[data-testid="tableCell"]')).toHaveLength(1);
     });
+
+    it('Generates two lists', () => {
+      expect(wrapper.find('[data-testid="list"]')).toHaveLength(2);
+    });
   });
 });

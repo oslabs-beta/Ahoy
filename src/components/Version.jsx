@@ -12,7 +12,7 @@ function Version(props) {
   return (
     <Table.Row className="installed-chart-detail" data-testid="VersionRow">
       <Table.Cell data-testid="tableCell">
-        <List>
+        <List data-testid="list">
           <List.Item>
             <div className="installed-chart-detail">
               <strong>Version:</strong>
@@ -27,7 +27,7 @@ function Version(props) {
                     onClick={() => doHelmChartRollBack(release, revision)}
                   />
                 )}
-              <List.List>
+              <List.List data-testid="list">
                 <List.Item icon="chart line" content={`Chart: ${chart}`} />
                 <List.Item icon="sticky note outline" content={`Description: ${description}`} />
                 <List.Item icon="sort numeric down" content={`Revision: ${revision}`} />
