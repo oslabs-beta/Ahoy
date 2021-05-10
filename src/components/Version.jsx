@@ -4,19 +4,17 @@ import {
 } from 'semantic-ui-react';
 
 function Version(props) {
-  // destructure properties
+  const { details, release, doHelmChartRollBack } = props;
   const {
     app_version, chart, description, revision, status, updated,
-  } = props.details;
-
-  const { release, doHelmChartRollBack } = props;
+  } = details;
 
   return (
-    <Table.Row>
-      <Table.Cell colSpan="2" className="installed-chart-detail">
-        <List>
+    <Table.Row className="installed-chart-detail" data-testid="VersionRow">
+      <Table.Cell data-testid="tableCell" colSpan="2" className="installed-chart-detail">
+        <List data-testid="mainList">
           <List.Item>
-            <List.List>
+            <List.List data-testid="subList">
               <List.Item>
                 <div>
                   <strong>Version:</strong>
@@ -31,7 +29,6 @@ function Version(props) {
                         onClick={() => doHelmChartRollBack(release, revision)}
                       />
                     )}
-
                 </div>
               </List.Item>
               <List.Item icon="chart line" content={`Chart: ${chart}`} />
