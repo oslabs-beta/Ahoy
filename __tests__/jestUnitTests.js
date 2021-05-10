@@ -7,6 +7,10 @@ describe('Helper Unit Tests', () => {
     const testPath = path.join(__dirname, Math.random().toString(36).substring(2));
     const testSubfolder1 = path.join(testPath, '1');
     const testSubfolder2 = path.join(testPath, '2');
+    const testGetLocal = [
+      { name: '1', version: 'yaml.version.placeholder'},
+      { name: '2', version: 'yaml.version.placeholder'},
+    ];
 
     beforeAll(() => fs.mkdirSync(testPath));
     beforeAll(() => fs.mkdirSync(testSubfolder1));
@@ -16,13 +20,17 @@ describe('Helper Unit Tests', () => {
     afterAll(() => fs.rmdirSync(testSubfolder1));
     afterAll(() => fs.rmdirSync(testSubfolder2));
 
-    it('verifyLocalChartDir() should not return undefined', () => {
+    // Test verifyLocalChartDir
+    xit('verifyLocalChartDir() should not return undefined', () => {
       expect(verifyLocalChartDir(testPath)).not.toBeUndefined();
     });
 
-    // Test that verifyLocalChartDir returns true OR the same path as passed in
+    // TODO: Test that verifyLocalChartDir returns true OR the same path as passed in
 
     // Test that getLocalCharts returns an array
+    test('getLocalCharts returns an array', () => getLocalCharts(testPath).then((data) => {
+      expect(data).toEqual(testGetLocal);
+    }));
   });
 
 });
