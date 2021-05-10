@@ -53,8 +53,8 @@
     "@babel/runtime": "^7.13.17",
     "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "yaml": "^1.10.2"
@@ -91,5 +91,9 @@
     "webpack": "^5.24.4",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
   }
 }

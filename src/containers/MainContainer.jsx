@@ -5,6 +5,7 @@ import InstalledChartContainer from './InstalledChartContainer';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
 import getHelmHistory from '../helpers/getHelmHistory';
 import doHelmRollBack from '../helpers/doHelmRollBack';
+import launchDashBoard from '../helpers/launchMiniKubeDashBoard'
 
 const path = require('path');
 const { getLocalCharts } = require('../helpers/FileSystemHelper');
@@ -34,7 +35,7 @@ class MainContainer extends Component {
     this.getHistory = this.getHistory.bind(this);
     this.toggleHistory = this.toggleHistory.bind(this);
     this.doHelmChartRollBack = this.doHelmChartRollBack.bind(this);
-    // this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
+    this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
   }
 
   // run upon successful rendering of the component
@@ -128,16 +129,21 @@ class MainContainer extends Component {
   //   this.setState({ islocalChartDeployed: booleansArray });
   // }
 
-  // launchMiniKubeDashBoard() {
-  //   console.log('Launching Minikube Dashboard...');
-  //   launchDashBoard().then((x) => console.log('Dashboard Launched:', x));
-  // }
+  launchMiniKubeDashBoard() {
+    console.log('Launching Minikube Dashboard...');
+    launchDashBoard().then((x) => console.log('Dashboard Launched:', x));
+  }
 
   render() {
-    const { userChartDir, localCharts, deployedCharts, showAlert } = this.state;
+    const {
+      userChartDir, localCharts, deployedCharts, showAlert,
+    } = this.state;
     return (
       <>
-        <Button onClick={() => this.launchMiniKubeDashBoard()}>
+        <Button 
+          id="launchDashBoard"
+          onClick={() => this.launchMiniKubeDashBoard()}
+        >
           Launch Dashboard
         </Button>
         <LocalChartContainer

@@ -46,16 +46,10 @@ const LocalChart = (props) => {
   };
 
   // Prepare the Open Chart button
-  const openChartButton = <Button icon="folder open" size="tiny" compact onClick={() => handleOpenChartClick(chart.name)} />;
+  const openChartButton = <Button id="openChartBtn" icon="folder open" size="tiny" compact onClick={() => handleOpenChartClick(chart.name)} />;
 
   // Prepare the Install button
-  let installButton;
-  const disabled = false;
-  if (disabled) {
-    installButton = <Button disabled size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
-  } else {
-    installButton = <Button size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
-  }
+  const installButton = <Button id="installBtn" size="tiny" compact onClick={() => installHelmChart()}>Install</Button>;
 
   // build the local chart component
   return (

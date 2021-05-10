@@ -3,7 +3,6 @@ import {
   Button, Table, Header, Modal, Icon, Accordion, List, Popup,
 } from 'semantic-ui-react';
 import Version from './Version';
-// import ConfirmationModal from './ConfirmationModal';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
@@ -23,7 +22,7 @@ const InstalledChart = (props) => {
       title: name,
       content: {
         content: (
-          <div>
+          <div className="accordian-chart-details">
             <List>
               <List.Item icon="clone" content={`Namespace: ${namespace}`} />
               <List.Item icon="at" content={`Current App Version: ${app_version}`} />
@@ -58,7 +57,7 @@ const InstalledChart = (props) => {
   // build the installed chart component
   return (
     <Table.Row>
-      <Table.Cell>
+      <Table.Cell className="installed-chart-cell">
         <Table className="borderless">
           <Table.Body>
             <Table.Row>
@@ -67,6 +66,7 @@ const InstalledChart = (props) => {
               </Table.Cell>
               <Table.Cell>
                 <Button
+                  id="historyBtn"
                   className="button-right"
                   onClick={() => toggleHistory(name)}
                   size="tiny"
@@ -78,6 +78,8 @@ const InstalledChart = (props) => {
                 <Popup
                   trigger={(
                     <Button
+                      name='uninstall'
+                      id="uninstallBtn"
                       className="button-right"
                       size="tiny"
                       compact
@@ -88,6 +90,7 @@ const InstalledChart = (props) => {
 
                   content={(
                     <Button
+                      id="uninstallBtnConfirm"
                       color="red"
                       content="Confirm Uninstall"
                       onClick={() => {
@@ -95,6 +98,7 @@ const InstalledChart = (props) => {
                       }}
                     />
                   )}
+                  id='confirm'
                   on="click"
                   position="top right"
                 />
