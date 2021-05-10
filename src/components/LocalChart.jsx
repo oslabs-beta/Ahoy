@@ -6,11 +6,12 @@ import {
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+let chartInstName = ''; // chart name to install. default value is
 
 const LocalChart = (props) => {
   const { chart, handleOpenChartClick } = props;
   const [alertInvalidInput, setAlertInvalidInput] = useState('');
-  let chartInstName = ''; // chart name to install. default value is
+
   // install helm chart. providing k8s secrets not yet attempted
   function setName(e) {
     chartInstName = e.target.value;
@@ -35,11 +36,12 @@ const LocalChart = (props) => {
     const helmChart = sanitizeInput(chartInstName);
     // if the input is invalid, show the alert on the label
     if (helmChart === 'invalid input') {
-      setAlertInvalidInput(<Label pointing="left" color='red'>Invalid input</Label>);
+      setAlertInvalidInput(<Label pointing="left" color="red">Invalid input</Label>);
     } else {
     // if the input is valid, install the chart
       const directory = props.dirPath;
       setAlertInvalidInput('');
+      // eslint-disable-next-line no-unused-vars
       const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
       props.getDeployedCharts();
     }
@@ -55,7 +57,7 @@ const LocalChart = (props) => {
   return (
     <Table.Row>
       <Table.Cell>{chart.name}</Table.Cell>
-      <Table.Cell>
+      <Table.Cell colSpan="2">
         <Input
           focus
           placeholder={chart.name}
