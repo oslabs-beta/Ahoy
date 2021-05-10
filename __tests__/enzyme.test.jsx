@@ -58,10 +58,10 @@ describe('React unit tests', () => {
     });
 
     describe('Details list', () => {
-      it('Renders a list with 5 items', () => {
+      it('Renders a list with 6 items', () => {
         const subList = wrapper.find('[data-testid="subList"]');
         expect(subList).toHaveLength(1);
-        expect(subList.children()).toHaveLength(5);
+        expect(subList.children()).toHaveLength(6);
       });
     });
   });
