@@ -2,8 +2,6 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import InstalledChart from './InstalledChart';
 
-// console.log("InstalledChartList.jsx loaded");
-
 const InstalledChartList = (props) => {
   const listData = [];
   const {
@@ -23,7 +21,7 @@ const InstalledChartList = (props) => {
     );
   }
   return (
-    <Table>
+    <Table id="installed-charts">
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell colSpan="2">Installed Charts</Table.HeaderCell>
