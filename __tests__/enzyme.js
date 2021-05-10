@@ -7,8 +7,10 @@ import InstalledChart from '../src/components/InstalledChart';
 configure({ adapter: new Adapter() });
 
 describe('All enzyme tests', () => {
+  let wrapper;
+
   describe('Local Chart Button Tests', () => {
-    let wrapper;
+    // let wrapper;
     const props = {
       chart: {},
       id: 'id',
@@ -24,16 +26,8 @@ describe('All enzyme tests', () => {
     });
 
     describe('Install Button', () => {
-      it('Should execute passed in function when clicked', () => {
-        wrapper.find('#installBtn').simulate('click');
-        expect(props.installHelmChart).toHaveBeenCalled();
-      });
-      xit('Should display a string value', () => {
-        expect(typeof wrapper.find('#targetNode').props().children).toBe('string');
-      });
-
-      xit('Should display the correct text', () => {
-        expect(wrapper.find('#targetNode').props().children).toBe('Set Target Node');
+      it('Should render an install button', () => {
+        expect(wrapper.find('#installBtn')).toHaveLength(1);
       });
     });
     describe('Open Folder Button', () => {
@@ -41,18 +35,11 @@ describe('All enzyme tests', () => {
         wrapper.find('#openChartBtn').simulate('click');
         expect(props.handleOpenChartClick).toHaveBeenCalled();
       });
-      xit('Should display a string value', () => {
-        expect(typeof wrapper.find('#wallNode').props().children).toBe('string');
-      });
-
-      xit('Should display the correct text', () => {
-        expect(wrapper.find('#wallNode').props().children).toBe('Add Walls');
-      });
     });
   });
 
   describe('Installed Chart Button Tests', () => {
-    let wrapper;
+    // let wrapper;
     const props = {
       key: {},
       id: 'id',
@@ -68,29 +55,15 @@ describe('All enzyme tests', () => {
     });
 
     describe('Uninstall Button', () => {
-      it('Should execute passed in function when clicked', () => {
-        wrapper.find('#uninstallBtn').simulate('click');
-        expect(props.toggleHistory).toHaveBeenCalled();
-      });
-      xit('Should display a string value', () => {
-        expect(typeof wrapper.find('#targetNode').props().children).toBe('string');
-      });
-
-      xit('Should display the correct text', () => {
-        expect(wrapper.find('#targetNode').props().children).toBe('Set Target Node');
+      it('Renders a popup when pressed', () => {
+        wrapper.find('Popup').simulate('click');
+        expect(wrapper.find('#confirm').exists()).toEqual(true);
       });
     });
     describe('History Button', () => {
       it('Should execute passed in function when clicked', () => {
         wrapper.find('#historyBtn').simulate('click');
         expect(props.toggleHistory).toHaveBeenCalled();
-      });
-      xit('Should display a string value', () => {
-        expect(typeof wrapper.find('#wallNode').props().children).toBe('string');
-      });
-
-      xit('Should display the correct text', () => {
-        expect(wrapper.find('#wallNode').props().children).toBe('Add Walls');
       });
     });
   });

@@ -3,7 +3,6 @@ import {
   Button, Table, Header, Modal, Icon, Accordion, List, Popup,
 } from 'semantic-ui-react';
 import Version from './Version';
-// import ConfirmationModal from './ConfirmationModal';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
@@ -79,6 +78,7 @@ const InstalledChart = (props) => {
                 <Popup
                   trigger={(
                     <Button
+                      name='uninstall'
                       id="uninstallBtn"
                       className="button-right"
                       size="tiny"
@@ -98,6 +98,7 @@ const InstalledChart = (props) => {
                       }}
                     />
                   )}
+                  id='confirm'
                   on="click"
                   position="top right"
                 />
