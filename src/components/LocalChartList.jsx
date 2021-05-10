@@ -20,7 +20,7 @@ const LocalChartList = (props) => {
     />);
   });
   return (
-    <Table>
+    <Table fixed singleLine>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell colSpan="1">Available Charts</Table.HeaderCell>
