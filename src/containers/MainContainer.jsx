@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
-import FSHelper from '../helpers/FileSystemHelper';
 import LocalChartContainer from './LocalChartContainer';
 import InstalledChartContainer from './InstalledChartContainer';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
@@ -8,6 +7,7 @@ import getHelmHistory from '../helpers/getHelmHistory';
 import doHelmRollBack from '../helpers/doHelmRollBack';
 
 const path = require('path');
+const { getLocalCharts } = require('../helpers/FileSystemHelper');
 
 const { ipcRenderer } = window.require('electron');
 
@@ -48,7 +48,7 @@ class MainContainer extends Component {
     const { userDataDir, userChartDir, localCharts } = this.state;
     // Use a helper to setState a list of local charts
     if (userDataDir && localCharts.length === 0) {
-      FSHelper.getLocalCharts(userChartDir).then((result) => {
+      getLocalCharts(userChartDir).then((result) => {
         this.setState({
           localCharts: result,
         });
