@@ -134,7 +134,9 @@ class MainContainer extends Component {
   // }
 
   render() {
-    const { userChartDir, localCharts, deployedCharts, showAlert } = this.state;
+    const {
+      userChartDir, localCharts, deployedCharts, showAlert,
+    } = this.state;
     return (
       <>
         <Button onClick={() => this.launchMiniKubeDashBoard()}>
