@@ -19,7 +19,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': ['error', 'unix'],
     indent: ['warn', 2],
     'react/prop-types': 'off',
     quotes: ['warn', 'single'],
