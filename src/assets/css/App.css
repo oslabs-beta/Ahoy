@@ -1,6 +1,5 @@
 /* Main CSS file */
 
-
 body {
   padding: 30px;
 }
@@ -19,20 +18,28 @@ body {
 .button-right{
   float: right;
 }
+
 .float-right {
   float: right;
 }
+
 .button-cell {
   float: right;
   border: 1px solid red;
 }
 
-.installed-chart-detail{
-  /* border: 2px solid black; */
-  background-color:#e0e4e786;
-  padding: 10px !important;
+.installed-chart-cell {
+  padding: 0px !important;
 }
 
+.installed-chart-detail{
+  background-color:#e0e4e786;
+  padding: .78571429em .78571429em .78571429em 3.14285716em !important;
+}
+
+.accordian-chart-details {
+  padding: .78571429em .78571429em .78571429em 1.57142858em !important;
+}
 
 .ui.table {
   border-top-right-radius: 0;
@@ -41,28 +48,17 @@ body {
   border-bottom-left-radius: 0;
 }
 
-td.installed-chart-cell{
-  padding:0 !important;
-}
-
 .ui.table.borderless{
   margin: 0;
   border:none;
   border-width: 0;
-  /* background-color:rgb(245, 240, 235) */
 }
-
 
 .ui.table.borderless tr td{
   border-top: none;
-  /* border-top: 1px solid #cfcfcf; */
-  /*border-bottom: 1px solid #cfcfcf; */
 }
 
 tr.history td{
-  /* border-top: 1px solid #cfcfcf;
-  border-bottom: 1px solid #cfcfcf; */
-  /* border: 1px solid #cfcfcf; */
   border-left: 10px solid #cfcfcf;
   background-color:rgb(249, 250, 251);
 }

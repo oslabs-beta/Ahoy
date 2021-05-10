@@ -23,7 +23,7 @@ const InstalledChart = (props) => {
       title: name,
       content: {
         content: (
-          <div>
+          <div className="accordian-chart-details">
             <List>
               <List.Item icon="clone" content={`Namespace: ${namespace}`} />
               <List.Item icon="at" content={`Current App Version: ${app_version}`} />
@@ -58,7 +58,7 @@ const InstalledChart = (props) => {
   // build the installed chart component
   return (
     <Table.Row>
-      <Table.Cell>
+      <Table.Cell className="installed-chart-cell">
         <Table className="borderless">
           <Table.Body>
             <Table.Row>
