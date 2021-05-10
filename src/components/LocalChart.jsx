@@ -6,19 +6,16 @@ import {
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+let chartInstName = ''; // chart name to install. default value is
+
 const LocalChart = (props) => {
   const { chart, handleOpenChartClick } = props;
-
   const [alertInvalidInput, setAlertInvalidInput] = useState('');
 
   // install helm chart. providing k8s secrets not yet attempted
-  let chartInstName = ''; // chart name to install. default value is
-
   function setName(e) {
-    // console.log(e.target.value);
     chartInstName = e.target.value;
   }
-
   function sanitizeInput(text) {
   // if field is empty, set props.chart.name
     const name = text.trim();
@@ -34,21 +31,17 @@ const LocalChart = (props) => {
   }
 
   const installHelmChart = async () => {
-    // const helmChart = props.chart.name;
-    // console.log('chartInstName:', chartInstName);
+    // eslint-disable-next-line no-console
+    console.log('chartInstName', chartInstName);
     const helmChart = sanitizeInput(chartInstName);
-    // console.log('helmChart:', helmChart);
     // if the input is invalid, show the alert on the label
     if (helmChart === 'invalid input') {
-      setAlertInvalidInput(<Label pointing="left">Invalid input</Label>);
-      // showAlert.push(<MessageLabel content="Invalid Input" />);
-      // console.log(showAlert);
-      // console.log('invalid input boo');
+      setAlertInvalidInput(<Label pointing="left" color="red">Invalid input</Label>);
     } else {
     // if the input is valid, install the chart
       const directory = props.dirPath;
-      // console.log(`installing helm chart ${helmChart} at ${directory}`);
       setAlertInvalidInput('');
+      // eslint-disable-next-line no-unused-vars
       const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
       props.getDeployedCharts();
     }
@@ -64,11 +57,12 @@ const LocalChart = (props) => {
   return (
     <Table.Row>
       <Table.Cell>{chart.name}</Table.Cell>
-      <Table.Cell>
+      <Table.Cell colSpan="2">
         <Input
           focus
           placeholder={chart.name}
-          onChange={setName}
+          onBlur={setName}
+          size="mini"
         />
         {alertInvalidInput}
       </Table.Cell>
