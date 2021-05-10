@@ -10,12 +10,14 @@ const LocalChart = (props) => {
   const { chart, handleOpenChartClick } = props;
 
   const [alertInvalidInput, setAlertInvalidInput] = useState('');
+  const [inputError, setAlertInvalidInnput] = useState('');
 
   // install helm chart. providing k8s secrets not yet attempted
   let chartInstName = ''; // chart name to install. default value is
 
   function setName(e) {
     // console.log(e.target.value);
+
     chartInstName = e.target.value;
   }
 
@@ -75,6 +77,8 @@ const LocalChart = (props) => {
           focus
           placeholder={chart.name}
           onChange={setName}
+          size="mini"
+          color="red"
         />
         {alertInvalidInput}
       </Table.Cell>
