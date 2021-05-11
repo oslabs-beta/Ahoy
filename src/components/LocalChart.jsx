@@ -15,18 +15,21 @@ const LocalChart = (props) => {
   // install helm chart. providing k8s secrets not yet attempted
   function setName(e) {
     chartInstName = e.target.value;
+    setAlertInvalidInput('');
   }
   function sanitizeInput(text) {
-  // if field is empty, set props.chart.name
+    // if field is empty, set props.chart.name
     const name = text.trim();
     if (text === '') {
       return props.chart.name;
     }
-    const regex = /^\w+$/;
+    // Check if only lowercase alphabets, numbers or dash should are used for Install Name
+    const regex = /^[a-z0-9-]+$/;
+    // If no invalid characters, return name
     if (regex.test(name)) {
       return name;
     }
-    // Label.value = 'invalid input';
+    // If invalid characters are included, return error message
     return 'invalid input';
   }
 
@@ -42,6 +45,7 @@ const LocalChart = (props) => {
       const directory = props.dirPath;
       setAlertInvalidInput('');
       // eslint-disable-next-line no-unused-vars
+      console.log(`helm install ${helmChart} "${directory}"`);
       const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
       props.getDeployedCharts();
     }
