@@ -6,7 +6,6 @@
   "main": "main.js",
   "author": "TEAM JYJY",
   "license": "MIT",
-  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/oslabs-beta/Ahoy-.git"
@@ -67,6 +66,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.1.1",
     "electron": "^12.0.0",
+    "electron-builder": "^22.11.3",
     "electron-devtools-installer": "^3.1.1",
     "electron-packager": "^15.2.0",
     "enzyme": "^3.11.0",
