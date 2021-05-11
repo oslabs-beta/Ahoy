@@ -1,18 +1,18 @@
 import yaml from 'yaml';
 import fs from 'fs';
 
+// Check for directory existance and creates one if not found
 const verifyLocalChartDir = (localChartPath) => {
   if (!fs.existsSync(localChartPath)) {
-    // console.log(`Local chart dir does not exist. Creating it. ${localChartPath}`);
+    console.log(`Local chart dir does not exist. Creating it. ${localChartPath}`);
     return fs.mkdirSync(localChartPath);
   }
   return true;
 };
 
+// Return an array of verified local charts from a directory
 const getLocalCharts = (path) => new Promise((resolve, reject) => {
-  // Verify charts folder
   verifyLocalChartDir(path);
-  // read local charts folder, push to an array and return
   const resultArray = [];
   fs.readdir(path, (err, result) => {
     if (err) {
@@ -28,7 +28,7 @@ const getLocalCharts = (path) => new Promise((resolve, reject) => {
   });
 });
 
-// This is work in progress... to read a Chart.yaml and parse contents.
+// This is work in progress... to read a Chart.yaml and parse contents. [May-2021]
 const getChartYAML = (path, chartName) => new Promise((resolve, reject) => {
   const file = fs.readFileSync(`${path}/${chartName}/Chart.yaml`, 'utf8');
   resolve(yaml.parse(file));

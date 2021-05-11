@@ -62,3 +62,7 @@ tr.history td{
   border-left: 10px solid #cfcfcf;
   background-color:rgb(249, 250, 251);
 }
+
+#launchDashBoard {
+  float: right;
+}

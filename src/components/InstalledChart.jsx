@@ -7,6 +7,7 @@ import Version from './Version';
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+/** Installed Chart Component */
 const InstalledChart = (props) => {
   const {
     chart, history, toggleHistory, doHelmChartRollBack,
@@ -15,7 +16,7 @@ const InstalledChart = (props) => {
     app_version, chartName, name, namespace, revision, updated,
   } = chart;
 
-  // const chartDetails = [name, namespace, revision, app_version, chartName, updated].join(' ');
+  // Build detail dropdown
   const chartDetails = [
     {
       key: 'detailKey',
@@ -35,13 +36,14 @@ const InstalledChart = (props) => {
     },
   ];
 
-  // uninstall the helm chart. saving STDOUT into object not yet implemented
+  // Uninstall the helm chart. saving STDOUT into object not yet implemented
   const uninstallHelmChart = async () => {
     const helmChart = chart.name;
     await exec(`helm uninstall ${helmChart}`);
     props.getDeployedCharts();
   };
 
+  // Builds history component array
   const versionsArray = [];
   for (let i = 0; i < history.length; i++) {
     versionsArray.push(
@@ -54,7 +56,9 @@ const InstalledChart = (props) => {
     );
   }
 
-  // build the installed chart component
+  // Render the installed chart component
+  // Component features a dropdown detail and two buttons: the uninstall button and history button
+  // The uninstall button is a Popup component that renders a confirmation button
   return (
     <Table.Row>
       <Table.Cell className="installed-chart-cell">
@@ -74,11 +78,10 @@ const InstalledChart = (props) => {
                 >
                   History
                 </Button>
-
                 <Popup
                   trigger={(
                     <Button
-                      name='uninstall'
+                      name="uninstall"
                       id="uninstallBtn"
                       className="button-right"
                       size="tiny"
@@ -87,7 +90,6 @@ const InstalledChart = (props) => {
                       Uninstall
                     </Button>
                   )}
-
                   content={(
                     <Button
                       id="uninstallBtnConfirm"
@@ -98,14 +100,13 @@ const InstalledChart = (props) => {
                       }}
                     />
                   )}
-                  id='confirm'
+                  id="confirm"
                   on="click"
                   position="top right"
                 />
               </Table.Cell>
             </Table.Row>
             {versionsArray}
-            
           </Table.Body>
         </Table>
       </Table.Cell>

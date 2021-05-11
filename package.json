@@ -41,7 +41,6 @@
     "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
     "package": "npm run build",
-    "postpackage": "electron-packager ./ --out=./builds",
     "package-mac": "electron-packager . Ahoy --overwrite --platform=darwin --arch=x64 --icon=src/assets/icons/mac/ahoyIcon.icns --prune=true --out=./builds",
     "package-win": "electron-packager . Ahoy --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/win/ahoyIcon.ico --prune=true --out=./builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ahoy\"",
     "package-linux": "electron-packager . Ahoy --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/icons/png/ahoyIcon.png --prune=true --out=./builds",
