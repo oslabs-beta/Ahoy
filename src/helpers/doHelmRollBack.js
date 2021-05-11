@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+// Roll back installed helm chart to previous release
 const doHelmRollBack = async (release, revision) => {
   console.log(`Rolling Back ${release} to version ${revision}`);
   try {

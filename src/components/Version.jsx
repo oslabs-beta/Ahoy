@@ -3,6 +3,7 @@ import {
   Table, Button, List, Icon,
 } from 'semantic-ui-react';
 
+/** Chart Version History Component */
 function Version(props) {
   const { details, release, doHelmChartRollBack } = props;
   const {

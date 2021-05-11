@@ -39,7 +39,7 @@ describe('All enzyme tests', () => {
   });
 
   describe('Installed Chart Button Tests', () => {
-    // let wrapper;
+    let wrapper2;
     const props = {
       key: {},
       id: 'id',
@@ -54,7 +54,7 @@ describe('All enzyme tests', () => {
       wrapper = shallow(<InstalledChart {...props} />);
     });
 
-    describe('Uninstall Button', () => {
+    describe('Uninstall Popup Button', () => {
       it('Renders a popup when pressed', () => {
         wrapper.find('Popup').simulate('click');
         expect(wrapper.find('#confirm').exists()).toEqual(true);

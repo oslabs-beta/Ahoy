@@ -3,22 +3,23 @@ import { Table } from 'semantic-ui-react';
 import LocalChart from './LocalChart';
 
 const path = require('path');
-
+/** Local Chart List */
 const LocalChartList = (props) => {
   const { localCharts, handleOpenChartClick, getDeployedCharts } = props;
   const lcharts = [];
+  // Build the available chart component array
   localCharts.forEach((item, i) => {
     const dirPath = path.join(props.userChartDir, item.name);
     lcharts.push(<LocalChart
       chart={item}
       id={i}
-      // eslint-disable-next-line react/no-array-index-key
       key={i}
       dirPath={dirPath}
       getDeployedCharts={getDeployedCharts}
       handleOpenChartClick={handleOpenChartClick}
     />);
   });
+  // Render LocalChartList component
   return (
     <Table fixed singleLine stackable>
       <Table.Header>
