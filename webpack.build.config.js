@@ -66,15 +66,9 @@ module.exports = {
     modules: false,
   },
   optimization: {
-<<<<<<< HEAD
     minimize: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
 };
-=======
-    minimize: true
-  }
-}
->>>>>>> main
