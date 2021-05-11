@@ -53,8 +53,3 @@ ehthumbs.db
 # Windows shortcuts #
 #####################
 *.lnk
-
-# VScode settings #
-#####################
-*.vscode
-.vscode/settings.json
