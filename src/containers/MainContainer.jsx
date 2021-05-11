@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
 import LocalChartContainer from './LocalChartContainer';
 import InstalledChartContainer from './InstalledChartContainer';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
 import getHelmHistory from '../helpers/getHelmHistory';
 import doHelmRollBack from '../helpers/doHelmRollBack';
-import launchDashBoard from '../helpers/launchMiniKubeDashBoard';
 
 const path = require('path');
 const { getLocalCharts } = require('../helpers/FileSystemHelper');
@@ -34,7 +32,6 @@ class MainContainer extends Component {
     this.getHistory = this.getHistory.bind(this);
     this.toggleHistory = this.toggleHistory.bind(this);
     this.doHelmChartRollBack = this.doHelmChartRollBack.bind(this);
-    this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
   }
 
   // Get list of running Helm Charts upon app start. Helm charts are independent of the app status
@@ -115,24 +112,12 @@ class MainContainer extends Component {
       .then('Successfully rolled back!');
   }
 
-  // launches minikube dashboard in a browser window
-  launchMiniKubeDashBoard() {
-    console.log('Launching Minikube Dashboard...');
-    launchDashBoard().then((x) => console.log('Dashboard Launched:', x));
-  }
-
   render() {
     const {
-      userChartDir, localCharts, deployedCharts, showAlert,
+      userChartDir, localCharts, deployedCharts,
     } = this.state;
     return (
       <>
-        <Button 
-          id="launchDashBoard"
-          onClick={() => this.launchMiniKubeDashBoard()}
-        >
-          Launch Dashboard
-        </Button>
         <LocalChartContainer
           userChartDir={userChartDir}
           localCharts={localCharts}
