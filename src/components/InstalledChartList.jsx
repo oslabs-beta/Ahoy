@@ -2,11 +2,13 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import InstalledChart from './InstalledChart';
 
+/** Installed Chart List Component */
 const InstalledChartList = (props) => {
   const listData = [];
   const {
     deployedCharts, getDeployedCharts, toggleHistory, doHelmChartRollBack,
   } = props;
+  // Build the installed chart component array
   for (let i = 0; i < deployedCharts.length; i++) {
     const { history } = deployedCharts[i];
     listData.push(
@@ -20,6 +22,7 @@ const InstalledChartList = (props) => {
       />,
     );
   }
+  // Render the local chart list component
   return (
     <Table id="installed-charts">
       <Table.Header>

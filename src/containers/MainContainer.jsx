@@ -5,13 +5,14 @@ import InstalledChartContainer from './InstalledChartContainer';
 import getDeployedHelmCharts from '../helpers/getDeployedHelmCharts';
 import getHelmHistory from '../helpers/getHelmHistory';
 import doHelmRollBack from '../helpers/doHelmRollBack';
-import launchDashBoard from '../helpers/launchMiniKubeDashBoard'
+import launchDashBoard from '../helpers/launchMiniKubeDashBoard';
 
 const path = require('path');
 const { getLocalCharts } = require('../helpers/FileSystemHelper');
 
 const { ipcRenderer } = window.require('electron');
 
+// state is all contained at the MainContainer level and prop drilled down to various components
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +21,6 @@ class MainContainer extends Component {
       userChartDir: null,
       localCharts: [],
       deployedCharts: [],
-      // islocalChartDeployed: [],
-      // localChartsLoopCount: 0,
     };
 
     ipcRenderer.invoke('getPath', 'userData').then((result) => {
@@ -38,16 +37,13 @@ class MainContainer extends Component {
     this.launchMiniKubeDashBoard = this.launchMiniKubeDashBoard.bind(this);
   }
 
-  // run upon successful rendering of the component
+  // Get list of running Helm Charts upon app start. Helm charts are independent of the app status
   componentDidMount() {
-    // get list of currently deployed helm charts
     this.getHelmCharts();
   }
 
-  // runs every time setState() is invoked
   componentDidUpdate() {
     const { userDataDir, userChartDir, localCharts } = this.state;
-    // Use a helper to setState a list of local charts
     if (userDataDir && localCharts.length === 0) {
       getLocalCharts(userChartDir).then((result) => {
         this.setState({
@@ -58,6 +54,7 @@ class MainContainer extends Component {
     }
   }
 
+  // build the installed helm chart list and initialize history to each chart object
   getHelmCharts() {
     getDeployedHelmCharts()
       .then((result) => JSON.parse(result))
@@ -73,6 +70,7 @@ class MainContainer extends Component {
       });
   }
 
+  // populates history object for each installed helm chart
   getHistory(currentChart) {
     getHelmHistory(currentChart)
       .then((result) => JSON.parse(result))
@@ -90,9 +88,9 @@ class MainContainer extends Component {
       });
   }
 
+  // toggles the show history button
   toggleHistory(chartName) {
     const { deployedCharts } = this.state;
-    // const removedHistoryCharts = this.state.deployedCharts;
     for (let i = 0; i < deployedCharts.length; i++) {
       if (deployedCharts[i].name === chartName) {
         if (deployedCharts[i].historyClicked) {
@@ -109,6 +107,7 @@ class MainContainer extends Component {
     }
   }
 
+  // rolls back to previous release.
   doHelmChartRollBack(release, version) {
     doHelmRollBack(release, version)
       .then((result) => console.log(result))
@@ -116,19 +115,7 @@ class MainContainer extends Component {
       .then('Successfully rolled back!');
   }
 
-  // checkDeployedLocalCharts(result) {
-  //   const { deployedCharts } = this.state;
-  //   const booleansArray = [];
-  //   result.forEach((chart) => {
-  //     let boolean = false;
-  //     for (let i = 0; i < deployedCharts.length; i++) {
-  //       if (deployedCharts[i].name === chart) boolean = true;
-  //     }
-  //     booleansArray.push(boolean);
-  //   });
-  //   this.setState({ islocalChartDeployed: booleansArray });
-  // }
-
+  // launches minikube dashboard in a browser window
   launchMiniKubeDashBoard() {
     console.log('Launching Minikube Dashboard...');
     launchDashBoard().then((x) => console.log('Dashboard Launched:', x));
@@ -157,11 +144,6 @@ class MainContainer extends Component {
           toggleHistory={this.toggleHistory}
           doHelmChartRollBack={this.doHelmChartRollBack}
         />
-        {/* this is for the testing */}
-        {/* <Button onClick={() => this.getHistory("yoko-wordpress")}>
-          Get Helm History
-        </Button> */}
-        {/* <InstalledChartList deployedCharts={this.state.deployedCharts}/> */}
       </>
     );
   }

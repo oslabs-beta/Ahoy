@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  Table, Button, List, Icon,
+  Table, List, Icon,
 } from 'semantic-ui-react';
 
+/** Chart Version History Component */
 function Version(props) {
   const { details, release, doHelmChartRollBack } = props;
   const {
