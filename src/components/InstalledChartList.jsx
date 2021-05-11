@@ -1,12 +1,12 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 import InstalledChart from './InstalledChart';
 
 /** Installed Chart List Component */
 const InstalledChartList = (props) => {
   const listData = [];
   const {
-    deployedCharts, getDeployedCharts, toggleHistory, doHelmChartRollBack,
+    deployedCharts, getDeployedCharts, toggleHistory, doHelmChartRollBack, launchMiniKubeDashBoard,
   } = props;
   // Build the installed chart component array
   for (let i = 0; i < deployedCharts.length; i++) {
@@ -27,7 +27,19 @@ const InstalledChartList = (props) => {
     <Table id="installed-charts">
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell colSpan="2">Installed Charts</Table.HeaderCell>
+          <Table.HeaderCell colSpan="2">
+            Installed Charts
+            <Button
+              compact
+              size="tiny"
+              id="launchDashBoard"
+              onClick={() => launchMiniKubeDashBoard()}
+            >
+              <Icon name="dashboard" />
+              {' '}
+              Launch Dashboard
+            </Button>
+          </Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>{listData}</Table.Body>
