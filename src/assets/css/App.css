@@ -1,3 +1,64 @@
 /* Main CSS file */
 
-@import '_example/_example.css';
+body {
+  padding: 30px;
+}
+
+.outer-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.dropdown-list {
+  font-size: 12pt;
+  word-spacing: 12px;
+  word-wrap: normal;
+}
+
+.button-right{
+  float: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.button-cell {
+  float: right;
+  border: 1px solid red;
+}
+
+.installed-chart-cell {
+  padding: 0px !important;
+}
+
+.installed-chart-detail{
+  background-color:#e0e4e786;
+  padding: .78571429em .78571429em .78571429em 3.14285716em !important;
+}
+
+.accordian-chart-details {
+  padding: .78571429em .78571429em .78571429em 1.57142858em !important;
+}
+
+.ui.table {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ui.table.borderless{
+  margin: 0;
+  border:none;
+  border-width: 0;
+}
+
+.ui.table.borderless tr td{
+  border-top: none;
+}
+
+tr.history td{
+  border-left: 10px solid #cfcfcf;
+  background-color:rgb(249, 250, 251);
+}
