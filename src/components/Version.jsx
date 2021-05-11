@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Table, Button, List, Icon,
+  Table, List, Icon,
 } from 'semantic-ui-react';
 
 function Version(props) {
