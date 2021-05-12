@@ -1,10 +1,22 @@
 ## An easy-to-use GUI for Kubernetes Helm
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="https://user-images.githubusercontent.com/65692508/115466796-68a29400-a1e5-11eb-8ceb-4d0e04d2450e.png" alt="Logo" width="200" height="200">
+  </a>
+</p>
 
-Introduction
+## Ahoy!
+
+Ahoy! is a gui tool for DevOps engineers which distills the many functions of Helm into a user-friendly interface.
+A GUI visually aids all engineers (even those that love CLI) and better organizes the various configuration files.
+The ability to quickly revert to a previous version will give the DevOps engineer peace of mind.
 
 ## Demo
 
 ### Helm Install
+
 
 ### Edit
 
@@ -14,9 +26,11 @@ Introduction
 
 ### Rollback
 
+
+
 ## GitHub Repo
 
-[GitHub](https://github.com/oslabs-beta/Ahoy)
+[Ahoy on GitHub](https://github.com/oslabs-beta/Ahoy)
 
 
 ## Team
@@ -28,6 +42,4 @@ Tobey Forsman - [LinkedIn](https://www.linkedin.com/in/tobeyforsman/) - [GitHub]
 Yoko Kawamoto - [LinkedIn](https://www.linkedin.com/in/yoko-kawamoto-95623047/) - [GitHub](https://github.com/libero-yoko)
 
 Jin Oh - [LinkedIn](https://www.linkedin.com/in/jintoh613/) - [GitHub](https://github.com/ohjintech)
-
-Project Link: [https://github.com/oslabs-beta/Ahoy](https://github.com/oslabs-beta/Ahoy)
 
