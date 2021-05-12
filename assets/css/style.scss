@@ -38,7 +38,7 @@ h2 .project-tagline {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 280px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -52,4 +52,8 @@ h2 .project-tagline {
 /* Add some padding inside the card container */
 .container {
   padding: 2px 16px;
+}
+
+.container h4 {
+  margin-bottom: 0.5rem;
 }
