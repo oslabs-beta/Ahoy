@@ -45,7 +45,8 @@ const LocalChart = (props) => {
     // if the input is valid, install the chart
       const directory = props.dirPath;
       setAlertInvalidInput('');
-      const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
+      // const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
+      await exec(`helm install ${helmChart} "${directory}"`);
       props.getDeployedCharts();
     }
   };
