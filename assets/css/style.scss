@@ -4,6 +4,17 @@
 @import "{{ site.theme }}";
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+.page-header {
+    color: #fff;
+    text-align: center;
+    background-color: #159957;
+    background-image:　
+    /* background-image: linear-gradient(
+120deg
+, #155799, #159957); */
+}
+
+
 h1 {
   font-family: 'Lobster', cursive;
 }
