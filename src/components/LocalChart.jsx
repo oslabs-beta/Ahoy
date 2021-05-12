@@ -15,24 +15,28 @@ const LocalChart = (props) => {
   // Custom helm chart name from user input.
   function setName(e) {
     chartInstName = e.target.value;
+    setAlertInvalidInput('');
   }
 
   // Sanitize chart name. If field is empty, use props.chart.name as default
   function sanitizeInput(text) {
+    // if field is empty, set props.chart.name
     const name = text.trim();
     if (text === '') {
       return props.chart.name;
     }
-    const regex = /^\w+$/;
+    // Check if only lowercase alphabets, numbers or dash should are used for Install Name
+    const regex = /^[a-z0-9-]+$/;
+    // If no invalid characters, return name
     if (regex.test(name)) {
       return name;
     }
+    // If invalid characters are included, return error message
     return 'invalid input';
   }
 
   // Install/Deploy the helm chart using user input name
   const installHelmChart = async () => {
-    console.log('chartInstName', chartInstName);
     const helmChart = sanitizeInput(chartInstName);
     // if the input is invalid, show the alert on the label
     if (helmChart === 'invalid input') {
@@ -41,7 +45,8 @@ const LocalChart = (props) => {
     // if the input is valid, install the chart
       const directory = props.dirPath;
       setAlertInvalidInput('');
-      const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
+      // const { stdout, stderr } = await exec(`helm install ${helmChart} "${directory}"`);
+      await exec(`helm install ${helmChart} "${directory}"`);
       props.getDeployedCharts();
     }
   };

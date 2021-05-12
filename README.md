@@ -18,7 +18,11 @@
     ·
     <a href="https://github.com/oslabs-beta/Ahoy/issues">Request Feature</a>
   </p>
+  <p align="center">
+    <img src="./ahyo-demo.gif" alt="Screenshot" width="480">
+  </p>
 </p>
+
 
 
 <!-- TABLE OF CONTENTS -->
