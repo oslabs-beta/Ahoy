@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/oslabs-beta/Ahoy">
-    <img src="assets/images/ahoy-logo.png" alt="Logo" width="200"">
+    <img src="assets/images/ahoy-logo.png" alt="Logo" width="200">
   </a>
 </p>
 
