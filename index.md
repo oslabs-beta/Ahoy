@@ -46,9 +46,9 @@ Jin Oh - [LinkedIn](https://www.linkedin.com/in/jintoh613/) - [GitHub](https://g
 
 
 <div class="flex-container">
-   <div class="flex-items"><img class="profile" src = "./assets/images/joe.jpg" alt="joe" /> Joe Bigelow -</div>
-   <div class="flex-items"><img class="profile" src = "./assets/images/tobey.jpg" alt="tobey" />Tobey Forsman -  </div>
-   <div class="flex-items"><img class="profile" src = "./assets/images/jin.jpg" alt="jin" />Jin Oh -</div>
-   <div class="flex-items"><img class="profile" src = "./assets/images/yoko.jpg" alt="yoko" />Yoko Kawamoto - </div>
+   <div class="flex-items"><img class="profile" src = "https://github.com/oslabs-beta/Ahoy/blob/gh-pages/assets/images/joe.jpg" alt="joe" /> Joe Bigelow -</div>
+   <div class="flex-items"><img class="profile" src = "https://github.com/oslabs-beta/Ahoy/blob/gh-pages/assets/images/tobey.jpg" alt="tobey" />Tobey Forsman -  </div>
+   <div class="flex-items"><img class="profile" src = "https://github.com/oslabs-beta/Ahoy/blob/gh-pages/assets/images/jin.jpg" alt="jin" />Jin Oh -</div>
+   <div class="flex-items"><img class="profile" src = "https://github.com/oslabs-beta/Ahoy/blob/gh-pages/assets/images/yoko.jpg" alt="yoko" />Yoko Kawamoto - </div>
 </div>
 
