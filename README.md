@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="">
+  <a href="https://github.com/oslabs-beta/Ahoy">
     <img src="https://user-images.githubusercontent.com/65692508/115466796-68a29400-a1e5-11eb-8ceb-4d0e04d2450e.png" alt="Logo" width="80" height="80">
   </a>
 
