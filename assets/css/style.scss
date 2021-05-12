@@ -35,6 +35,7 @@ h2 .project-tagline {
 }
 
 .flex-items {
+  border-radius: 7px;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
@@ -53,7 +54,6 @@ h2 .project-tagline {
   margin: 10px;
   text-align: center;
   font-family: arial;
-  border-radius: 10px;
 }
 
 /* On mouse-over, add a deeper shadow */
