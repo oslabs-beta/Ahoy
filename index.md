@@ -35,11 +35,11 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 
 ## Team
 
-Joe Bigelow - [LinkedIn](https://www.linkedin.com/in/joe-bigelow-591a2170/) - [GitHub](https://github.com/lilbigs2001)
+Joe Bigelow - [LinkedIn](https://www.linkedin.com/in/joe-bigelow/) - [GitHub](https://github.com/lilbigs2001)
 
 Tobey Forsman - [LinkedIn](https://www.linkedin.com/in/tobeyforsman/) - [GitHub](https://github.com/yebot)
 
-Yoko Kawamoto - [LinkedIn](https://www.linkedin.com/in/yoko-kawamoto-95623047/) - [GitHub](https://github.com/libero-yoko)
+Yoko Kawamoto - [LinkedIn](https://www.linkedin.com/in/yoko-kawamoto/) - [GitHub](https://github.com/libero-yoko)
 
 Jin Oh - [LinkedIn](https://www.linkedin.com/in/jintoh613/) - [GitHub](https://github.com/ohjintech)
 
