@@ -14,18 +14,11 @@ A GUI visually aids all engineers (even those that love CLI) and better organize
 The ability to quickly revert to a previous version will give the DevOps engineer peace of mind.
 
 ## Demo
-
-### Helm Install
-
-
-### Edit
-
-### Helm Uninstall
-
-### View History
-
-### Rollback
-
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="https://github.com/oslabs-beta/Ahoy/blob/ddc7d80c5414e27f516e381b4005ccba0e14f000/assets/images/ahyo-all.gif" alt="Demo" width="800">
+  </a>
+</p>
 
 
 ## GitHub Repo
