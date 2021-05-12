@@ -44,11 +44,34 @@ Yoko Kawamoto - [LinkedIn](https://www.linkedin.com/in/yoko-kawamoto/) - [GitHub
 Jin Oh - [LinkedIn](https://www.linkedin.com/in/jintoh613/) - [GitHub](https://github.com/ohjintech)
 
 
-
 <div class="flex-container">
-   <div class="flex-items"><img class="profile" src = "./assets/images/joe.jpg" alt="joe" /> Joe Bigelow -</div>
-   <div class="flex-items"><img class="profile" src = "./assets/images/tobey.jpg" alt="tobey" />Tobey Forsman -  </div>
-   <div class="flex-items"><img class="profile" src = "./assets/images/jin.jpg" alt="jin" />Jin Oh -</div>
-   <div class="flex-items"><img class="profile" src = "https://github.com/oslabs-beta/Ahoy/blob/8f66c8fef93158cc026c4bbf8e7c2f392bab3b88/assets/images/yoko.jpg" alt="yoko" />Yoko Kawamoto - </div>
+   <div class="flex-items card">
+       <img class="profile" src = "./assets/images/joe.jpg" alt="joe" style="width:100%">
+        <div class="container">
+          <h4><b>Joe Bigelow</b></h4>
+          <p>Software Engineer</p>
+        </div>
+  </div>
+   <div class="flex-items card">
+       <img class="profile" src = "./assets/images/tobey.jpg" alt="joe" style="width:100%">
+        <div class="container">
+          <h4><b>Tobey Forsman</b></h4>
+          <p>Software Engineer</p>
+        </div>
+  </div>
+   <div class="flex-items card">
+       <img class="profile" src = "./assets/images/jin.jpg" alt="joe" style="width:100%">
+        <div class="container">
+          <h4><b>Jin Oh</b></h4>
+          <p>Software Engineer</p>
+        </div>
+  </div>
+   <div class="flex-items card">
+       <img class="profile" src = "./assets/images/yoko.jpg" alt="joe" style="width:100%">
+        <div class="container">
+          <h4><b>Yoko Kawamoto</b></h4>
+          <p>Software Engineer</p>
+        </div>
+  </div>
 </div>
 
