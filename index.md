@@ -1,4 +1,4 @@
-## An easy-to-use GUI for Kubernetes Helm
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
