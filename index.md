@@ -34,43 +34,41 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 
 
 ## Team
-
-Joe Bigelow - [LinkedIn](https://www.linkedin.com/in/joe-bigelow/) - [GitHub](https://github.com/lilbigs2001)
-
-Tobey Forsman - [LinkedIn](https://www.linkedin.com/in/tobeyforsman/) - [GitHub](https://github.com/yebot)
-
-Yoko Kawamoto - [LinkedIn](https://www.linkedin.com/in/yoko-kawamoto/) - [GitHub](https://github.com/libero-yoko)
-
-Jin Oh - [LinkedIn](https://www.linkedin.com/in/jintoh613/) - [GitHub](https://github.com/ohjintech)
-
-
 <div class="flex-container">
    <div class="flex-items card">
        <img class="profile" src = "./assets/images/joe.jpg" alt="joe" style="width:100%">
         <div class="container">
           <h4><b>Joe Bigelow</b></h4>
-          <p>Software Engineer</p>
+          <span>Software Engineer<br>
+            <a href="https://www.linkedin.com/in/joe-bigelow/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/lilbigs2001" target ="_blank">GitHub</a>
+          </span>
         </div>
   </div>
    <div class="flex-items card">
        <img class="profile" src = "./assets/images/tobey.jpg" alt="joe" style="width:100%">
         <div class="container">
           <h4><b>Tobey Forsman</b></h4>
-          <p>Software Engineer</p>
+          <span>Software Engineer<br>
+            <a href="https://www.linkedin.com/in/tobeyforsman/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/yebot" target ="_blank">GitHub</a>
+          </span>
         </div>
   </div>
    <div class="flex-items card">
        <img class="profile" src = "./assets/images/jin.jpg" alt="joe" style="width:100%">
         <div class="container">
           <h4><b>Jin Oh</b></h4>
-          <p>Software Engineer</p>
+          <span>Software Engineer<br>
+            <a href="https://www.linkedin.com/in/yoko-kawamoto/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/ohjintech" target ="_blank">GitHub</a>
+          </span>
         </div>
   </div>
    <div class="flex-items card">
        <img class="profile" src = "./assets/images/yoko.jpg" alt="joe" style="width:100%">
         <div class="container">
           <h4><b>Yoko Kawamoto</b></h4>
-          <p>Software Engineer</p>
+          <span>Software Engineer<br>
+            <a href="https://www.linkedin.com/in/jintoh613/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/libero-yoko" target ="_blank">GitHub</a>
+          </span>
         </div>
   </div>
 </div>
