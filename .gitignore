@@ -9,6 +9,13 @@ release-builds/
 dist/
 node_modules/
 *.compiled.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # Folder config file #
 ######################

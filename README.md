@@ -157,6 +157,24 @@ version.BuildInfo{Version:"v3.5.4", GitCommit:"1b5edb69df3d3a08df77c9902dc17af86
    ```sh
    npm install
    ```
+3. Build
+    ```
+    npm run package
+    # then...
+    npm run package-mac
+    npm run package-windows
+    npm run package-linux
+    ```
+## Usage
+
+### Setup Environment
+
+1. Launch the Docker Daemon
+2. Start a MiniKube Kubernetes Cluster `minikube start`
+3. Download charts (see below for location)
+4. Launch Ahoy!
+
+### Local Helm Chart Storage Paths
 
 
 
