@@ -51,9 +51,6 @@ The ability to quickly revert to a previous version will give the DevOps enginee
   </a>
 </p>
 
-### Uninstall
-<p align="center">
-</p>
 
 ### Loaunch Minikube Dashboard
 <p align="center">
