@@ -52,7 +52,7 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 </p>
 
 
-### Loaunch Minikube Dashboard
+### Launch Minikube Dashboard
 <p align="center">
   <a href="https://github.com/oslabs-beta/Ahoy">
     <img src="./assets/images/ss-minikube.png" alt="Minikube" width="800">
@@ -74,7 +74,7 @@ The ability to quickly revert to a previous version will give the DevOps enginee
         <div class="container">
           <h4><b>Joe Bigelow</b></h4>
           <span>
-            <a href="https://www.linkedin.com/in/joe-bigelow/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/lilbigs2001" target ="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/joe-bigelow/" target ="_blank">LinkedIn</a> | <a href="https://github.com/lilbigs2001" target ="_blank">GitHub</a>
           </span>
         </div>
   </div>
@@ -83,7 +83,7 @@ The ability to quickly revert to a previous version will give the DevOps enginee
         <div class="container">
           <h4><b>Tobey Forsman</b></h4>
           <span>
-            <a href="https://www.linkedin.com/in/tobeyforsman/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/yebot" target ="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/tobeyforsman/" target ="_blank">LinkedIn</a> | <a href="https://github.com/yebot" target ="_blank">GitHub</a>
           </span>
         </div>
   </div>
@@ -92,7 +92,7 @@ The ability to quickly revert to a previous version will give the DevOps enginee
         <div class="container">
           <h4><b>Jin Oh</b></h4>
           <span>
-            <a href="https://www.linkedin.com/in/yoko-kawamoto/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/ohjintech" target ="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/yoko-kawamoto/" target ="_blank">LinkedIn</a> | <a href="https://github.com/ohjintech" target ="_blank">GitHub</a>
           </span>
         </div>
   </div>
@@ -101,9 +101,13 @@ The ability to quickly revert to a previous version will give the DevOps enginee
         <div class="container">
           <h4><b>Yoko Kawamoto</b></h4>
           <span>
-            <a href="https://www.linkedin.com/in/jintoh613/" target ="_blank"> LinkedIn </a> | <a href="https://github.com/libero-yoko" target ="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/jintoh613/" target ="_blank">LinkedIn</a> | <a href="https://github.com/libero-yoko" target ="_blank">GitHub</a>
           </span>
         </div>
   </div>
 </div>
 
+---
+[LinkedIn](https://www.linkedin.com/company/ahoy-for-helm) | [Github](https://github.com/oslabs-beta/Ahoy) | [OS Labs](https://opensourcelabs.io/)
+
+Medium Article (coming soon)
