@@ -51,7 +51,7 @@ Download the [latest release](https://github.com/oslabs-beta/Ahoy/releases) or c
 ### Setup Environment
 
 1. Launch the Docker Daemon
-2. Start a MiniKube Kubernetes Cluster `minicube start`
+2. Start a MiniKube Kubernetes Cluster `minikube start`
 3. Download charts (see below for location)
 4. Launch Ahoy!
 

@@ -6,7 +6,6 @@
   "main": "main.js",
   "author": "TEAM JYJY",
   "license": "MIT",
-  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/oslabs-beta/Ahoy.git"
@@ -52,7 +51,7 @@
     "@babel/runtime": "^7.13.17",
     "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
-    "react": "16.x",
+    "react": "^17.0.2",
     "react-dom": "16.x",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
@@ -90,9 +89,5 @@
     "webpack": "^5.24.4",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
   }
 }
