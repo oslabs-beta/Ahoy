@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oslabs-beta/Ahoy.git"
+    "url": "https://github.com/oslabs-beta/Ahoy-.git"
   },
   "homepage": "",
   "jest": {
@@ -26,7 +26,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/oslabs-beta/Ahoy/issues"
+    "url": "https://github.com/oslabs-beta/Ahoy-/issues"
   },
   "engines": {
     "node": ">=9.0.0",

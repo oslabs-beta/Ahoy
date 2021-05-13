@@ -1,2 +1,0 @@
-NAME        	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART            	APP VERSION
-my-wordpress	default  	6       	2021-04-22 19:44:30.018909 -0700 PDT	deployed	wordpress-10.10.3	5.7.1      

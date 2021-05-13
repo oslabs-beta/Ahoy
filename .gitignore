@@ -8,7 +8,6 @@ release-builds/
 .tmp/
 dist/
 node_modules/
-
 *.compiled.*
 .yarn/*
 !.yarn/patches
