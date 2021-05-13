@@ -13,6 +13,8 @@ Ahoy! is a gui tool for DevOps engineers which distills the many functions of He
 A GUI visually aids all engineers (even those that love CLI) and better organizes the various configuration files.
 The ability to quickly revert to a previous version will give the DevOps engineer peace of mind.
 
+* [React](https://reactjs.org/), [Electron](https://www.electronjs.org/), [Semantic UI](https://semantic-ui.com/)
+
 
 ## Demo
 
@@ -59,6 +61,12 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 </p>
 
 
+## Things You Need
+
+- [Helm](https://helm.sh)
+- [MiniKube](https://minikube.sigs.k8s.io/)
+- [Docker](https://www.docker.com)
+- Helm Charts. Bring your own or download from https://artifacthub.io.
 
 ## Team
 <div class="flex-container">
