@@ -22,6 +22,45 @@ The ability to quickly revert to a previous version will give the DevOps enginee
   </a>
 </p>
 
+## Features
+
+### Install Chart
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="./assets/images/ss-install-chart.png" alt="Install Chart" width="800">
+  </a>
+</p>
+
+
+### Edit Chart
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="./assets/images/ss-edit-chart.png" alt="Edit Chart" width="800">
+  </a>
+</p>
+
+
+### Show History, Rollback
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="./assets/images/ss-history.png" alt="Show History" width="800">
+  </a>
+</p>
+
+### Uninstall
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="./assets/images/ss-delete-chart.png" alt="Uninstall" width="800">
+  </a>
+</p>
+
+### Loaunch Minikube Dashboard
+<p align="center">
+  <a href="https://github.com/oslabs-beta/Ahoy">
+    <img src="./assets/images/ss-minikube.png" alt="Minikube" width="800">
+  </a>
+</p>
+
 
 
 ## Team
