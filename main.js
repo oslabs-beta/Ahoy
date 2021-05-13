@@ -10,10 +10,10 @@ ipcMain.handle('getPath', async (event, arg) => app.getPath(arg));
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 
 // Keep a reference for dev mode
-let dev = false
+let dev = false;
 
 if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
   dev = true;
@@ -40,7 +40,7 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  let indexPath
+  let indexPath;
 
   if (dev && process.argv.indexOf('--noDevServer') === -1) {
     indexPath = url.format({
@@ -57,11 +57,11 @@ function createWindow() {
     });
   }
 
-  mainWindow.loadURL(indexPath)
+  mainWindow.loadURL(indexPath);
 
-  // Don't show until we are ready and loaded
+  // Don't show until we are ready and loaded 
   mainWindow.once('ready-to-show', () => {
-    mainWindow.show()
+    mainWindow.show();
 
     // Open the DevTools automatically if developing
     if (dev) {

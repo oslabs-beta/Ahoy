@@ -3,6 +3,7 @@ import fs from 'fs';
 
 // Check for directory existance and creates one if not found
 const verifyLocalChartDir = (localChartPath) => {
+  console.log(`hlllllo ${localChartPath}`);
   if (!fs.existsSync(localChartPath)) {
     console.log(`Local chart dir does not exist. Creating it. ${localChartPath}`);
     return fs.mkdirSync(localChartPath);

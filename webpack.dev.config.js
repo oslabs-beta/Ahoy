@@ -12,7 +12,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' }],
-        include: defaultInclude
+        include: [
+          defaultInclude,
+          /node_modules/
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -22,12 +25,18 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif)$/,
         use: [{ loader: 'file-loader?name=img/[name]__[hash:base64:5].[ext]' }],
-        include: defaultInclude
+        include: [
+          defaultInclude,
+          /node_modules/
+        ]
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         use: [{ loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }],
-        include: defaultInclude
+        include: [
+          defaultInclude,
+          /node_modules/
+        ]
       }
     ]
   },
@@ -37,6 +46,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     })
+    
   ],
   devtool: 'cheap-source-map',
   devServer: {
@@ -55,5 +65,8 @@ module.exports = {
       .on('close', code => process.exit(0))
       .on('error', spawnError => console.error(spawnError))
     }
-  }
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 }
