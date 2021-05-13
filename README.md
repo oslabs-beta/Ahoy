@@ -12,7 +12,7 @@ Ahoy! is a GUI tool for DevOps engineers which distills the many functions of [H
 
 * [React](https://reactjs.org/), [Electron](https://www.electronjs.org/), [Semantic UI](https://semantic-ui.com/)
 
-![Ahoy! Demo](./README/ahoy-demo.gif)
+![Ahoy! Demo](./README/ahoy-demo-sm.gif)
 
 ## Getting Started
 
