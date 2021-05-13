@@ -52,8 +52,8 @@
     "@babel/runtime": "^7.13.17",
     "nodejs-helm": "^0.3.0",
     "postcss": "^8.2.8",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "16.x",
+    "react-dom": "16.x",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "yaml": "^1.10.2"

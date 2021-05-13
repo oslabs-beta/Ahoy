@@ -40,6 +40,8 @@ Download the [latest release](https://github.com/oslabs-beta/Ahoy/releases) or c
    ```
 3. Build
     ```
+    npm run package
+    # then...
     npm run package-mac
     npm run package-windows
     npm run package-linux
