@@ -22,7 +22,7 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 
 <p align="center">
   <a href="https://github.com/oslabs-beta/Ahoy">
-    <img src="./assets/images/ahyo-demo.gif" alt="Demo" width="600">
+    <img src="./assets/images/ahoy-demo.gif" alt="Demo" width="600">
   </a>
 </p>
 
