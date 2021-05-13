@@ -24,7 +24,7 @@ h2 {
 .flex-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
   align-content: stretch;
@@ -64,3 +64,18 @@ h2 {
 .container h4 {
   margin-bottom: 0.5rem;
 }
+
+/* @media screen and (max-width: 900px) {
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .profile  {
+      max-width: 300px;
+    }
+    .card {
+      max-width: 280px;
+    }
+
+}
+*/
