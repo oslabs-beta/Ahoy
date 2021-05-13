@@ -49,9 +49,6 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 
 ### Uninstall
 <p align="center">
-  <a href="https://github.com/oslabs-beta/Ahoy">
-    <img src="./assets/images/ss-delete-chart.png" alt="Uninstall" width="800">
-  </a>
 </p>
 
 ### Loaunch Minikube Dashboard
