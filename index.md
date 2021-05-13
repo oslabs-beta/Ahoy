@@ -108,6 +108,4 @@ The ability to quickly revert to a previous version will give the DevOps enginee
 </div>
 
 ---
-[LinkedIn](https://www.linkedin.com/company/ahoy-for-helm) | [Github](https://github.com/oslabs-beta/Ahoy) | [OS Labs](https://opensourcelabs.io/)
-
-Medium Article (coming soon)
+[LinkedIn](https://www.linkedin.com/company/ahoy-for-helm) | [Github](https://github.com/oslabs-beta/Ahoy) | [OS Labs](https://opensourcelabs.io/) | [Medium Article] (https://joe-bigelow.medium.com/introducing-ahoy-a-helm-gui-7d391981f9e1)
