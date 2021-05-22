@@ -1,3 +1,5 @@
 theme: jekyll-theme-cayman
 title: Ahoy!
 description: An easy-to-use GUI for Helm
+# Google Analytics
+google_analytics: G-ZDSD66Q4TJ
